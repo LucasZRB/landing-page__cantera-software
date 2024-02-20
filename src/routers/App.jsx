@@ -1,13 +1,19 @@
 import '../assets/styles/App.css';
+import { Laout } from '../components/common/Laout';
+import { Header } from '../components/common/Header';
+import { Footer } from '../components/common/Footer';
+import { Main } from '../components/common/Main';
 
 function App() {
   return (
     <>
-      <div className='text-red-600 size-2 font-bold w-full h-auto underline underline-offset-8'>
-        Prueba React con Tailwind
-      </div>
+      <Laout>
+        <Header />
+        <Main />
+        <Footer />
+      </Laout>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
