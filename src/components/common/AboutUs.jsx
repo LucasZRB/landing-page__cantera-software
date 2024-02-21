@@ -1,11 +1,11 @@
 import React from 'react';
+import { Image } from './Image';
 
 const AboutUs = () => {
   return (
-    <div>
-      <section class="" aria-label="Sobre nosotros">
-        <h2 className="">Sobre nosotros</h2>
-        <p className="">
+      <section className="mb-24 text-xl bg-cover bg-no-repeat bg-center bg-gradient-to-tr from-white_hover to-pure_white p-5">
+        <h2 className="text-blue_title text-[2.5rem] font-bold mb-4">Sobre nosotros</h2>
+        <p>
           Somos un equipo de apasionados profesionales en{' '}
           <abbr className="" aria-hidden="true" title="Informática">
             IT
@@ -18,8 +18,8 @@ const AboutUs = () => {
           un sólido soporte técnico, mentores tecnológicos, asesores
           psicológicos y expertos en desarrollo de habilidades blandas.
         </p>
-        <div className="">
-          <div className="">
+        <div className="flex items-center justify-center gap-8 mt-16" >
+          <div className='flex flex-col flex-1 gap-6'>
             <p>
               Colaboramos estrechamente con fundaciones comprometidas para
               identificar y apoyar a talentos prometedores que, de otra manera,
@@ -39,12 +39,9 @@ const AboutUs = () => {
               la sociedad en su conjunto.
             </p>
           </div>
-          <div>
-            <img src="../../../public/images/Sobrenosotros.png" />
-          </div>
+          <Image src={"../../../public/images/Sobrenosotros.png"} width={"flex-1"} />
         </div>
       </section>
-    </div>
   );
 };
 
