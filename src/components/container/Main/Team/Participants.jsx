@@ -10,7 +10,12 @@ const Participants = ({
 }) => {
   return (
     <div>
-      <a href={href} title={title} target="_blank" rel="noopener noreferrer">
+      <a
+        className="outline-none focus:after:content-[''] focus:after:block focus:after:border-b-2 focus:after:border-blue_title focus:after:mt-1 focus:after:w-1/2 focus:after:mx-auto"
+        href={href}
+        title={title}
+        target="_blank"
+        rel="noopener noreferrer">
         <figure>
           <img className="max-w-48 h-48" src={imgSrc} loading="lazy" />
         </figure>

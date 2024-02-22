@@ -1,6 +1,8 @@
 import React from 'react';
 
-const Laout = ({ children, className = "m-5 font-montserrat" }) => {
+const Laout = ({ children, className = "" }) => {
+  className += ' px-10 flex justify-center';
+
   return (
     <div className={className}>
       {children}

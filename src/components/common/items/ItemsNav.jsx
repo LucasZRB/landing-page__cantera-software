@@ -1,6 +1,9 @@
 import React from 'react';
 
-const ItemsNav = ({ href, className, title, message, outLink = false }) => {
+var button =
+  'text-base font-bold text-blue_title hover:text-white hover:bg-blue_title focus:outline-green_focus no-underline border-none py-3 px-4 rounded-full cursor-pointer transition-colors ease-linear duration-300';
+
+const ItemsNav = ({ href, className = button, title, message, outLink = false }) => {
   var target = '', rel = '';
   if (outLink) {
     target = '_blank';

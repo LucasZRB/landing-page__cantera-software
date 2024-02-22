@@ -1,15 +1,14 @@
 import React from 'react';
 import { Button } from '../../common/button/Button';
-import {ItemsNav} from '../../common/items/ItemsNav';
+import { ItemsNav } from '../../common/items/ItemsNav';
 
 const Navbar = () => {
   return (
     <nav className="w-full">
-      <ul className="flex gap-12 ml-12 flex-wrap">
+      <ul className="flex gap-8 ml-12 flex-wrap">
         <li>
           <ItemsNav
             href="#about-us"
-            className="text-blue_title text-base font-bold"
             title="Botón ir al contenido sobre nosotros"
             message="Sobre nosotros"
           />
@@ -17,7 +16,6 @@ const Navbar = () => {
         <li>
           <ItemsNav
             href="#program"
-            className="text-blue_title text-base font-bold"
             title="Botón ir al contenido acerca de nuestro programa"
             message="Nuestro programa"
           />
@@ -25,7 +23,6 @@ const Navbar = () => {
         <li>
           <ItemsNav
             href="#team"
-            className="text-blue_title text-base font-bold"
             title="Botón ir al contenido del equipo"
             message="Equipo"
           />
@@ -33,7 +30,6 @@ const Navbar = () => {
         <li>
           <ItemsNav
             href="#info-colaboration"
-            className="text-blue_title text-base font-bold"
             title="Botón ir al contenido para saber cómo colaborar"
             message="Cómo colaborar"
           />

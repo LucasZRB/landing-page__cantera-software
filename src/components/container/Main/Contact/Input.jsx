@@ -1,13 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const Input = ({ type = 'text', id, placeholder, aria, title }) => {
+  const [isFocused, setIsFocused] = useState(false);
   var className =
-    'w-full p-3 mt-3 border-b-2 border-green_focus bg-transparent transition-colors focus:outline-none focus:border-b-main_green';
+    'w-full p-3 mt-3 border-b-2 border-green_focus bg-transparent transition-colors ease-linear duration-300 focus:outline-none focus:border-b-main_green';
 
   return (
     <div className="relative w-full">
       {type != 'textarea' ? (
         <input
+          onFocus={() => setIsFocused(true)}
+          onBlur={() => setIsFocused(false)}
           className={className}
           type={type}
           id={id}
@@ -19,6 +22,8 @@ const Input = ({ type = 'text', id, placeholder, aria, title }) => {
         />
       ) : (
         <textarea
+          onFocus={() => setIsFocused(true)}
+          onBlur={() => setIsFocused(false)}
           className={className}
           name={id}
           id={id}
@@ -28,7 +33,11 @@ const Input = ({ type = 'text', id, placeholder, aria, title }) => {
           aria-describedby={aria}
           title={title}></textarea>
       )}
-      <span className="sr-only" id={aria}>
+      <span
+        className={`absolute -top-6 left-0 p-2 bg-green_hover text-pure_white text-xs font-bold border-green_focus border rounded ${
+          isFocused ? 'opacity-1' : 'opacity-0'
+        } transition-opacity ease-in-out duration-300 pointer-events-none`}
+        id={aria}>
         {title}
       </span>
     </div>

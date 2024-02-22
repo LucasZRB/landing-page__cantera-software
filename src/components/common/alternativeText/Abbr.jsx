@@ -6,7 +6,8 @@ const Abbr = ({
   isShowSrOnly = false,
   descriptionSrOnly = '',
   hasHiddenParentheses = true,
-  ariaHidden = true
+  ariaHidden = true,
+  abbrColor= 'decoration-green_focus'
 }) => {
   const hiddenMessage = isShowSrOnly ? (
     <span className="sr-only">
@@ -24,7 +25,10 @@ const Abbr = ({
 
   return (
     <>
-      <abbr aria-hidden={ariaHidden} title={fullWord}>
+      <abbr
+        className={`underline-offset-4 ${abbrColor}`}
+        aria-hidden={ariaHidden}
+        title={fullWord}>
         {abbr}
       </abbr>
       {hiddenMessage}
