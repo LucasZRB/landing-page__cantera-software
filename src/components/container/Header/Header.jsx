@@ -1,6 +1,6 @@
 import React from 'react';
 import { Navbar } from './Navbar';
-import { Image } from './Image';
+import { Image } from '../../common/Image';
 
 const Header = () => {
   return (

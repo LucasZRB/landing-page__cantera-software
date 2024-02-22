@@ -14,7 +14,7 @@ const Image = ({ width, src, alt = "", description = null }) => {
           {description}
         </figcaption>
       ) : (
-        ''
+        null
       )}
     </figure>
   );

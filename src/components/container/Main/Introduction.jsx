@@ -1,6 +1,6 @@
 import React from 'react';
-import { Button } from './Button';
-import { Image } from './Image';
+import { Button } from '../../common/button/Button';
+import { Image } from '../../common/Image';
 
 const Introduction = () => {
   return (

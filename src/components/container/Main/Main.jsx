@@ -2,10 +2,10 @@ import React from 'react';
 import { Introduction } from './Introduction';
 import { AboutUs } from './AboutUs';
 import { Program } from './Program';
-import { Team } from './Team';
+import { Team } from './Team/Team';
 import { InfoColaboretion } from './InfoColaboretion';
-import { Colaborators } from './Colaborators';
-import { Contact } from './Contact';
+import { Collaborators } from './Collaborators/Collaborators';
+import { Contact } from './Contact/Contact';
 
 const Main = () => {
   return (
@@ -15,7 +15,7 @@ const Main = () => {
       <Program />
       <Team />
       <InfoColaboretion />
-      <Colaborators />
+      <Collaborators />
       <Contact />
     </main>
   );

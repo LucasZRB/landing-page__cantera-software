@@ -1,6 +1,8 @@
 import React from 'react';
-import { Image } from './Image';
-import { ItemNav } from './ItemNav';
+import { Image } from '../../common/Image';
+import { ItemsNav } from '../../common/items/ItemsNav';
+import { Abbr } from '../../common/alternativeText/Abbr';
+import { Pronunciation } from '../../common/alternativeText/Pronunciation';
 
 const Footer = () => {
   return (
@@ -15,7 +17,7 @@ const Footer = () => {
       </section>
       <section>
         <b>Información:</b>
-        <ul className='py-6'>
+        <ul className="py-6">
           <li>
             <span>+549 261 612 3456</span>
           </li>
@@ -28,29 +30,24 @@ const Footer = () => {
             </a>
           </li>
           <li>
-            Godoy Cruz,{' '}
-            <abbr aria-hidden="true" title="Mendoza">
-              Mdz
-            </abbr>
-            <span className="hidden"> (</span>
-            <span className="sr-only">Mendoza</span>
-            <span className="hidden">)</span>, Argentina
+            Godoy Cruz, <Abbr abbr={'Mdz'} fullWord={'Mendoza'} isShowSrOnly />,
+            Argentina
           </li>
         </ul>
         <b>
           &copy;
-          <span aria-hidden="true">2024</span>
-          <span className="hidden"> (</span>
-          <span className="sr-only">Dos mil veinticuatro</span>
-          <span className="hidden">)</span> Cantera Software. Todos los derechos
-          Reservados
+          <Pronunciation
+            word={'2024'}
+            pronunciation={'Dos mil veinticuatro'}
+          />{' '}
+          Cantera Software. Todos los derechos Reservados
         </b>
       </section>
-      <section className='flex flex-col items-end'>
+      <section className="flex flex-col items-end">
         <b>Síguenos en:</b>
-        <ul className='flex flex-col items-end pt-3 gap-3'>
+        <ul className="flex flex-col items-end pt-3 gap-3">
           <li>
-            <ItemNav
+            <ItemsNav
               href={'https://www.instagram.com/canterasoftware/'}
               className=""
               message={
@@ -63,7 +60,7 @@ const Footer = () => {
             />
           </li>
           <li>
-            <ItemNav
+            <ItemsNav
               href={'https://www.linkedin.com/company/la-cantera-software/'}
               className=""
               message={

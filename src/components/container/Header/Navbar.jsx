@@ -1,38 +1,38 @@
 import React from 'react';
-import { Button } from './Button';
-import { ItemNav } from './ItemNav';
+import { Button } from '../../common/button/Button';
+import {ItemsNav} from '../../common/items/ItemsNav';
 
 const Navbar = () => {
   return (
     <nav className="w-full">
       <ul className="flex gap-12 ml-12 flex-wrap">
         <li>
-          <ItemNav
-            href="about-us"
+          <ItemsNav
+            href="#about-us"
             className="text-blue_title text-base font-bold"
             title="Botón ir al contenido sobre nosotros"
             message="Sobre nosotros"
           />
         </li>
         <li>
-          <ItemNav
-            href="program"
+          <ItemsNav
+            href="#program"
             className="text-blue_title text-base font-bold"
             title="Botón ir al contenido acerca de nuestro programa"
             message="Nuestro programa"
           />
         </li>
         <li>
-          <ItemNav
-            href="team"
+          <ItemsNav
+            href="#team"
             className="text-blue_title text-base font-bold"
             title="Botón ir al contenido del equipo"
             message="Equipo"
           />
         </li>
         <li>
-          <ItemNav
-            href="info-colaboration"
+          <ItemsNav
+            href="#info-colaboration"
             className="text-blue_title text-base font-bold"
             title="Botón ir al contenido para saber cómo colaborar"
             message="Cómo colaborar"

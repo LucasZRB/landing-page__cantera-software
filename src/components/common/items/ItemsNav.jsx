@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ItemNav = ({ href, className, title, message, outLink = false }) => {
+const ItemsNav = ({ href, className, title, message, outLink = false }) => {
   var target = '', rel = '';
   if (outLink) {
     target = '_blank';
@@ -9,9 +9,9 @@ const ItemNav = ({ href, className, title, message, outLink = false }) => {
 
   return (
     <a
-      href={`#${href}`}
+      href={href}
       className={className}
-      aria-label={title}
+      aria-describedby={title}
       title={title}
       role="button"
       target={target}
@@ -21,4 +21,4 @@ const ItemNav = ({ href, className, title, message, outLink = false }) => {
   );
 };
 
-export { ItemNav };
+export { ItemsNav };
