@@ -1,4 +1,5 @@
 import React from 'react';
+import { Bubble } from '../../../../assets/svgs/Bubble';
 
 const Participants = ({
   href,
@@ -6,7 +7,8 @@ const Participants = ({
   imgSrc,
   fullName,
   position,
-  description
+  description,
+  color
 }) => {
   return (
     <div>
@@ -16,6 +18,7 @@ const Participants = ({
         title={title}
         target="_blank"
         rel="noopener noreferrer">
+        <Bubble bg={color} />
         <figure>
           <img className="max-w-48 h-48" src={imgSrc} loading="lazy" />
         </figure>

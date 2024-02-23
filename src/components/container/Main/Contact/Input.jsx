@@ -16,7 +16,7 @@ const Input = ({ type = 'text', id, placeholder, aria, title, pattern, value, on
           id={id}
           name={id}
           placeholder={placeholder}
-          // required
+          required
           aria-describedby={aria}
           title={title}
           pattern={pattern}
@@ -33,7 +33,7 @@ const Input = ({ type = 'text', id, placeholder, aria, title, pattern, value, on
           id={id}
           placeholder={placeholder}
           rows="4"
-          // required
+          required
           aria-describedby={aria}
           title={title}
           maxLength={225}
