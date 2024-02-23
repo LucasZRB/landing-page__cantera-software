@@ -1,3 +1,17 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .border-b-solid {
+    border-style: none;
+    border-bottom-style: solid;
+  }
+}
+
+@layer components {
+  .--tw-hidde-shadow {
+    --tw-ring-shadow: none;
+    box-shadow: none;
+  }
+}

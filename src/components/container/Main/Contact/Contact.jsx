@@ -1,15 +1,28 @@
 import React, { useState } from 'react';
+import ReCaptcha from '@matt-block/react-recaptcha-v2';
 import { Input } from './Input';
 import { Laout } from '../../../common/Laout';
-import ReCaptcha from '@matt-block/react-recaptcha-v2';
+import { SuccessMessage } from '../../../common/notifications/SuccessMessage';
+import { WarningMessage } from '../../../common/notifications/WarningMessage';
+import { ErrorMessage } from '../../../common/notifications/ErrorMessage';
 
 const Contact = () => {
+  const [validCaptcha, setValidCaptcha] = useState(false);
+
   const [formData, setFormData] = useState({
     fullName: '',
     email: '',
     subject: '',
     message: ''
   });
+
+  const [successNotifications, setSuccessNotifications] = useState([]);
+  const [warningnotifications, setWarningNotifications] = useState([]);
+  const [errorNotifications, setErrorNotifications] = useState([]);
+
+  const removeSuccessNotif = id => setSuccessNotifications(pv => pv.filter(n => n.id !== id));
+  const removeWarningNotif = id => setWarningNotifications(pv => pv.filter(n => n.id !== id));
+  const removeErrorNotif = id => setErrorNotifications(pv => pv.filter(n => n.id !== id));
 
   const handleChange = event => {
     const { name, value } = event.target;
@@ -28,26 +41,19 @@ const Contact = () => {
       !formData.fullName ||
       !formData.email ||
       !formData.subject ||
-      !formData.message
+      !formData.message ||
+      !validCaptcha
     )
-      return alert('Por favor, completa todos los campos');
+      return setErrorNotifications(pv => [{ id: Math.random(), text: "Por favor, completa todos los campos y el reCaptcha" }, ...pv]);
 
     if (!fullNamePattern.test(formData.fullName))
-      return alert(
-        'Por favor, ingresa tu nombre y apellido (Solo letras y espacios).'
-      );
+      return setErrorNotifications(pv => [{ id: Math.random(), text: "Por favor, ingresa tu nombre y apellido (Solo letras y espacios)." }, ...pv]);
     if (!emailPattern.test(formData.email))
-      return alert(
-        'Por favor, ingresa una dirección de correo electrónico válida (Solo letras, números, puntos y guiones, seguido de un @ (arroba), subdominio (opcional), dominio, un punto y la parte final (.com, .org, .es. .ar, .co, etc.)).'
-      );
+      return setErrorNotifications(pv => [{ id: Math.random(), text: "Por favor, ingresa una dirección de correo electrónico válida (Solo letras, números, puntos y guiones, seguido de un @ (arroba), subdominio (opcional), dominio, un punto y la parte final (.com, .org, .es. .ar, .co, etc.))." }, ...pv]);
     if (!hispanicPattern.test(formData.subject))
-      return alert(
-        'Por favor, ingresa un asunto válido (Letras y caracteres dentro del teclado español).'
-      );
+      return setErrorNotifications(pv => [{ id: Math.random(), text: "Por favor, ingresa un asunto válido (Letras y caracteres dentro del teclado español)." }, ...pv]);
     if (!hispanicPattern.test(formData.message))
-      return alert(
-        'Por favor, ingresa un mensaje válido (Letras y caracteres dentro del teclado español).'
-      );
+      return setErrorNotifications(pv => [{ id: Math.random(), text: "Por favor, ingresa un mensaje válido (Letras y caracteres dentro del teclado español)." }, ...pv]);
 
     const data = new FormData();
 
@@ -57,12 +63,13 @@ const Contact = () => {
     data.append('mensaje', formData.message);
 
     try {
-      fetch('https://formsubmit.co/b28d3a684ad13c79b5cf3793d2ad9c2a', {
+      fetch(`https://${import.meta.env.VITE_URL_EMAIL}/${import.meta.env.VITE_KEY_EMAIL}`, {
         method: 'POST',
         body: data
       })
         .then(response => {
-          console.log('Succes:', response);
+          console.log('Succes:');
+          setSuccessNotifications(pv => [{ id: Math.random(), text: "Enviado con éxito!" }, ...pv]);
           setFormData({
             fullName: '',
             email: '',
@@ -80,9 +87,11 @@ const Contact = () => {
         })
         .catch(error => {
           console.log('Error de envío:', error);
+          setErrorNotifications(pv => [{ id: Math.random(), text: "Algo salió mal al realizar el envío. Intentalo más tarde" }, ...pv]);
         });
     } catch (error) {
       console.error('Error al realizar la solicitud:', error);
+      setErrorNotifications(pv => [{ id: Math.random(), text: "Algo salió mal al realizar tu solicitud" }, ...pv]);
     }
   };
 
@@ -156,17 +165,20 @@ const Contact = () => {
 
             <div className="pt-4 pb-14 m-auto">
               <ReCaptcha
-                siteKey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
+                siteKey={import.meta.env.VITE_TEST_KEY_RECAPTCHA}
                 theme="light"
                 size="normal"
-                onSuccess={captcha => console.log(`Successful`)}
+                onSuccess={() => {console.log(`Successful`);setValidCaptcha(true);}}
                 onError={() =>
-                  console.log('Something went wrong, check your conenction')
+                  {setErrorNotifications(pv => [{ id: Math.random(), text: "Algo salió mal, revisa tu conexión" }, ...pv]);setValidCaptcha(false);}
                 }
                 onExpire={() =>
-                  console.log('Verification has expired, re-verify.')
+                  {setWarningNotifications(pv => [{ id: Math.random(), text: "La verificación ha caducado, vuelve a verificarte." }, ...pv]);setValidCaptcha(false);}
                 }
               />
+              <SuccessMessage notifications={successNotifications} removeNotif={removeSuccessNotif} />
+              <WarningMessage notifications={warningnotifications} removeNotif={removeWarningNotif} />
+              <ErrorMessage notifications={errorNotifications} removeNotif={removeErrorNotif} />
             </div>
 
             <input
