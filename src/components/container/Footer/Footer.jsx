@@ -4,10 +4,11 @@ import { ItemsNav } from '../../common/items/ItemsNav';
 import { Abbr } from '../../common/alternativeText/Abbr';
 import { Pronunciation } from '../../common/alternativeText/Pronunciation';
 import { Laout } from '../../common/Laout';
+import { FaInstagram, FaLinkedinIn } from 'react-icons/fa';
 
 const Footer = () => {
   var focus =
-    'focus:outline-green_hover focus:outline-dotted focus:outline-4 focus:outline-offset-4 focus:rounded-xl';
+    'flex items-center justify-center focus:outline-green_hover focus:outline-dotted focus:outline-4 focus:outline-offset-4 focus:rounded-xl';
 
   return (
     <Laout className="bg-blue_title mt-24">
@@ -37,7 +38,13 @@ const Footer = () => {
             </li>
             <li>
               Godoy Cruz,{' '}
-              <Abbr abbr={'Mdz'} fullWord={'Mendoza'} isShowSrOnly abbrColor="decoration-green_hover" />, Argentina
+              <Abbr
+                abbr={'Mdz'}
+                fullWord={'Mendoza'}
+                isShowSrOnly
+                abbrColor="decoration-green_hover"
+              />
+              , Argentina
             </li>
           </ul>
           <b>
@@ -58,7 +65,7 @@ const Footer = () => {
                 className={focus}
                 message={
                   <>
-                    Canterasoftware <span aria-hidden="true">&#9654;</span>
+                    Canterasoftware <FaInstagram className='ml-3' aria-hidden="true"/>
                   </>
                 }
                 title={'Ir al Instagram de Canterasoftware'}
@@ -71,7 +78,7 @@ const Footer = () => {
                 className={focus}
                 message={
                   <>
-                    La Cantera Software <span aria-hidden="true">&#9654;</span>
+                    La Cantera Software <FaLinkedinIn className='ml-3' aria-hidden="true"/>
                   </>
                 }
                 title={'Ir al Linkedin de Canterasoftware'}

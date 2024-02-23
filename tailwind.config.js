@@ -16,7 +16,8 @@ export default {
         section2: "#E9F2E9",
         section3: "#F7F7F7",
         blue_title: "#00425E",
-        black_text: "#000000"
+        black_text: "#000000",
+        bluck_check: "#01CEDA"
       },
     },
     fontFamily: {

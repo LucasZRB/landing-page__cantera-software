@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const Input = ({ type = 'text', id, placeholder, aria, title }) => {
+const Input = ({ type = 'text', id, placeholder, aria, title, pattern, value, onChange, autoCapitalize = 'sentences' }) => {
   const [isFocused, setIsFocused] = useState(false);
   var className =
     'w-full p-3 mt-3 border-b-2 border-green_focus bg-transparent transition-colors ease-linear duration-300 focus:outline-none focus:border-b-main_green';
@@ -16,9 +16,13 @@ const Input = ({ type = 'text', id, placeholder, aria, title }) => {
           id={id}
           name={id}
           placeholder={placeholder}
-          required
+          // required
           aria-describedby={aria}
           title={title}
+          pattern={pattern}
+          value={value}
+          onChange={onChange}
+          autoCapitalize={autoCapitalize}
         />
       ) : (
         <textarea
@@ -29,9 +33,15 @@ const Input = ({ type = 'text', id, placeholder, aria, title }) => {
           id={id}
           placeholder={placeholder}
           rows="4"
-          required
+          // required
           aria-describedby={aria}
-          title={title}></textarea>
+          title={title}
+          maxLength={225}
+          pattern={pattern}
+          value={value}
+          onChange={onChange}
+          autoCapitalize={autoCapitalize}
+          ></textarea>
       )}
       <span
         className={`absolute -top-6 left-0 p-2 bg-green_hover text-pure_white text-xs font-bold border-green_focus border rounded ${
