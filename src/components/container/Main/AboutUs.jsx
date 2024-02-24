@@ -46,7 +46,7 @@ const AboutUs = () => {
           </div>
           <Image
             src={'../../../public/images/Sobrenosotros.png'}
-            width={'flex-1'}
+            width={'flex-1 max-w-[38.75rem] w-full max-h-96 h-full'}
           />
         </div>
       </section>

@@ -18,7 +18,7 @@ const Footer = () => {
             src={
               'https://www.canterasoft.com/static/media/logo-cantera-2.898ff237f5d3228d9a81c2e6dfe08dd3.svg'
             }
-            width={'w-[18.75rem]'}
+            width={'w-[18.75rem] h-14'}
           />
         </section>
         <section>
@@ -65,7 +65,8 @@ const Footer = () => {
                 className={focus}
                 message={
                   <>
-                    Canterasoftware <FaInstagram className='ml-3' aria-hidden="true"/>
+                    Canterasoftware{' '}
+                    <FaInstagram className="ml-3" aria-hidden="true" />
                   </>
                 }
                 title={'Ir al Instagram de Canterasoftware'}
@@ -78,7 +79,8 @@ const Footer = () => {
                 className={focus}
                 message={
                   <>
-                    La Cantera Software <FaLinkedinIn className='ml-3' aria-hidden="true"/>
+                    La Cantera Software{' '}
+                    <FaLinkedinIn className="ml-3" aria-hidden="true" />
                   </>
                 }
                 title={'Ir al Linkedin de Canterasoftware'}

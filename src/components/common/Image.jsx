@@ -1,22 +1,40 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { MdImageSearch } from 'react-icons/md';
 
-const Image = ({ width, src, alt = "", description = null }) => {
+const Image = ({ width, src, alt = '', description = null }) => {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 1000);
+  }, []);
+
   return (
-    <figure className={width}>
-      <img
-        src={src}
-        alt={alt}
-        loading="lazy"
-        aria-describedby="description-image"
-      />
-      {description ? (
-        <figcaption id="description-image" className="sr-only">
-          {description}
-        </figcaption>
+    <>
+      {loading ? (
+        <div className={`flex justify-center items-center border p-5 rounded-xl shadow-2xl ${width}`}>
+          <div className={`flex justify-center items-center ${width} bg-gray-300 animate-pulse`}>
+            <MdImageSearch className={`text-gray-200 ${width}`} />
+          </div>
+        </div>
       ) : (
-        null
+        <figure className={width}>
+          <img
+            className="w-full h-full object-cover"
+            src={src}
+            alt={alt}
+            loading="lazy"
+            aria-describedby="description-image"
+          />
+          {description ? (
+            <figcaption id="description-image" className="sr-only">
+              {description}
+            </figcaption>
+          ) : null}
+        </figure>
       )}
-    </figure>
+    </>
   );
 };
 

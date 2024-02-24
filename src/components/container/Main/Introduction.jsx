@@ -5,7 +5,7 @@ import { Laout } from "../../common/Laout";
 
 const Introduction = () => {
   return (
-    <Laout className='my-24'>
+    <Laout className="my-24">
       <section
         id="introduction"
         className="flex max-w-7xl w-full items-center justify-center text-start gap-8">
@@ -24,7 +24,7 @@ const Introduction = () => {
         </div>
         <Image
           src={'../../../public/images/ImagenHeader.png'}
-          width={'flex-1'}
+          width={'flex-1 max-w-[38.75rem] w-full max-h-[36rem] h-full'}
         />
       </section>
     </Laout>

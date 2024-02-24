@@ -21,7 +21,7 @@ const InfoColaboretion = () => {
         </p>
 
         <div className="text-start">
-          <div className="flex items-center mb-24">
+          <div className="flex items-center gap-8 mb-24">
             <div className="flex-1">
               <span className="text-blue_title font-bold">
                 Fundaciones y {''}
@@ -51,14 +51,14 @@ const InfoColaboretion = () => {
             </div>
 
             <Image
-              width={'flex-1'}
+              width={'flex-1 max-w-[37.5rem] max-h-[30rem] w-full h-full'}
               src={'../../../public/images/Comocolaborarimagen1.png'}
             />
           </div>
 
-          <div className="flex items-center">
+          <div className="flex gap-8 items-center">
             <Image
-              width={'flex-1'}
+              width={'flex-1 max-w-[38.75rem] w-full max-h-[38.75rem] h-full'}
               src={'../../../public/images/Comocolaborar.png'}
             />
 
