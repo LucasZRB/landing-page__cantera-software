@@ -47,13 +47,13 @@ const Contact = () => {
       return setErrorNotifications(pv => [{ id: Math.random(), text: "Por favor, completa todos los campos y el reCaptcha" }, ...pv]);
 
     if (!fullNamePattern.test(formData.fullName))
-      return setErrorNotifications(pv => [{ id: Math.random(), text: "Por favor, ingresa tu nombre y apellido (Solo letras y espacios)." }, ...pv]);
+      return setErrorNotifications(pv => [{ id: Math.random(), text: "Por favor, ingresa tu nombre y apellido (Solo letras y espacios)" }, ...pv]);
     if (!emailPattern.test(formData.email))
-      return setErrorNotifications(pv => [{ id: Math.random(), text: "Por favor, ingresa una dirección de correo electrónico válida (Solo letras, números, puntos y guiones, seguido de un @ (arroba), subdominio (opcional), dominio, un punto y la parte final (.com, .org, .es. .ar, .co, etc.))." }, ...pv]);
+      return setErrorNotifications(pv => [{ id: Math.random(), text: "Por favor, ingresa una dirección de correo electrónico válida (Solo letras, números, puntos y guiones, seguido de un @ (arroba), subdominio (opcional), dominio, un punto y la parte final (.com, .org, .es. .ar, .co, etc.))" }, ...pv]);
     if (!hispanicPattern.test(formData.subject))
-      return setErrorNotifications(pv => [{ id: Math.random(), text: "Por favor, ingresa un asunto válido (Letras y caracteres dentro del teclado español)." }, ...pv]);
+      return setErrorNotifications(pv => [{ id: Math.random(), text: "Por favor, ingresa un asunto válido (Letras y caracteres dentro del teclado español)" }, ...pv]);
     if (!hispanicPattern.test(formData.message))
-      return setErrorNotifications(pv => [{ id: Math.random(), text: "Por favor, ingresa un mensaje válido (Letras y caracteres dentro del teclado español)." }, ...pv]);
+      return setErrorNotifications(pv => [{ id: Math.random(), text: "Por favor, ingresa un mensaje válido (Letras y caracteres dentro del teclado español)" }, ...pv]);
 
     const data = new FormData();
 
@@ -87,11 +87,11 @@ const Contact = () => {
         })
         .catch(error => {
           console.log('Error de envío:', error);
-          setErrorNotifications(pv => [{ id: Math.random(), text: "Algo salió mal al realizar el envío. Intentalo más tarde" }, ...pv]);
+          setErrorNotifications(pv => [{ id: Math.random(), text: "Algo salió mal al realizar el envío. Intentalo más tarde." }, ...pv]);
         });
     } catch (error) {
       console.error('Error al realizar la solicitud:', error);
-      setErrorNotifications(pv => [{ id: Math.random(), text: "Algo salió mal al realizar tu solicitud" }, ...pv]);
+      setErrorNotifications(pv => [{ id: Math.random(), text: "Algo salió mal al realizar tu solicitud." }, ...pv]);
     }
   };
 
@@ -100,15 +100,17 @@ const Contact = () => {
       <section
         className="text-xl flex flex-col items-center justify-center max-w-7xl w-full"
         id="contact">
-        <h2 className="text-blue_title text-[2.5rem] font-bold">Contacto</h2>
+        <h2 className="text-blue_title text-[2.5rem] font-bold">
+          Contacto<span className="sr-only">:</span>
+        </h2>
         <p className="mt-5 mb-14">
           Si te interesa saber más de nosotros, y/o quieres colaborar completa
-          el siguiente formulario
+          el siguiente formulario.
         </p>
         <form onSubmit={handleSubmit} className="w-full max-w-[37rem]">
           <fieldset className="w-full relative pt-14 flex flex-col items-start">
             <legend className="text-3xl font-bold absolute top-0">
-              Contacta con nosotros
+              Contacta con nosotros<span className="sr-only">:</span>
             </legend>
 
             <Input
@@ -168,17 +170,43 @@ const Contact = () => {
                 siteKey={import.meta.env.VITE_TEST_KEY_RECAPTCHA}
                 theme="light"
                 size="normal"
-                onSuccess={() => {console.log(`Successful`);setValidCaptcha(true);}}
-                onError={() =>
-                  {setErrorNotifications(pv => [{ id: Math.random(), text: "Algo salió mal, revisa tu conexión" }, ...pv]);setValidCaptcha(false);}
-                }
-                onExpire={() =>
-                  {setWarningNotifications(pv => [{ id: Math.random(), text: "La verificación ha caducado, vuelve a verificarte." }, ...pv]);setValidCaptcha(false);}
-                }
+                onSuccess={() => {
+                  console.log(`Successful`);
+                  setValidCaptcha(true);
+                }}
+                onError={() => {
+                  setErrorNotifications(pv => [
+                    {
+                      id: Math.random(),
+                      text: 'Algo salió mal, revisa tu conexión.'
+                    },
+                    ...pv
+                  ]);
+                  setValidCaptcha(false);
+                }}
+                onExpire={() => {
+                  setWarningNotifications(pv => [
+                    {
+                      id: Math.random(),
+                      text: 'La verificación ha caducado, vuelve a verificarte.'
+                    },
+                    ...pv
+                  ]);
+                  setValidCaptcha(false);
+                }}
               />
-              <SuccessMessage notifications={successNotifications} removeNotif={removeSuccessNotif} />
-              <WarningMessage notifications={warningnotifications} removeNotif={removeWarningNotif} />
-              <ErrorMessage notifications={errorNotifications} removeNotif={removeErrorNotif} />
+              <SuccessMessage
+                notifications={successNotifications}
+                removeNotif={removeSuccessNotif}
+              />
+              <WarningMessage
+                notifications={warningnotifications}
+                removeNotif={removeWarningNotif}
+              />
+              <ErrorMessage
+                notifications={errorNotifications}
+                removeNotif={removeErrorNotif}
+              />
             </div>
 
             <input
@@ -186,10 +214,10 @@ const Contact = () => {
               type="submit"
               value={'Enviar'}
               aria-describedby="sendTooltip"
-              title="Enviar formulario"
+              title="Enviar formulario."
             />
             <span className="sr-only" id="sendTooltip">
-              Enviar formulario
+              Enviar formulario.
             </span>
           </fieldset>
         </form>

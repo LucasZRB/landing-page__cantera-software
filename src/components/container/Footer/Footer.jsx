@@ -25,9 +25,12 @@ const Footer = () => {
           <b>Información:</b>
           <ul className="py-6">
             <li>
+              <span className="sr-only">Teléfono:</span>
               <span>+549 261 612 3456</span>
+              <span className="sr-only">.</span>
             </li>
             <li>
+              <span className="sr-only">Email:</span>
               <a
                 className={focus}
                 href="mailto:info@canterasoft.com"
@@ -35,8 +38,10 @@ const Footer = () => {
                 title="Enviar correo a La Cantera">
                 info@canterasoft.com
               </a>
+              <span className="sr-only">.</span>
             </li>
             <li>
+              <span className="sr-only">Dirección:</span>
               Godoy Cruz,{' '}
               <Abbr
                 abbr={'Mdz'}
@@ -44,16 +49,16 @@ const Footer = () => {
                 isShowSrOnly
                 abbrColor="decoration-green_hover"
               />
-              , Argentina
+              , Argentina.
             </li>
           </ul>
           <b>
             &copy;
             <Pronunciation
               word={'2024'}
-              pronunciation={'Dos mil veinticuatro'}
+              pronunciation={'Dos mil veinticuatro.'}
             />{' '}
-            Cantera Software. Todos los derechos Reservados
+            Cantera Software. Todos los derechos Reservados.
           </b>
         </section>
         <section className="flex flex-col items-end">
@@ -67,9 +72,10 @@ const Footer = () => {
                   <>
                     Canterasoftware{' '}
                     <FaInstagram className="ml-3" aria-hidden="true" />
+                    <span className="sr-only">.</span>
                   </>
                 }
-                title={'Ir al Instagram de Canterasoftware'}
+                title={'Ir al Instagram de Canterasoftware.'}
                 outLink={true}
               />
             </li>
@@ -81,9 +87,10 @@ const Footer = () => {
                   <>
                     La Cantera Software{' '}
                     <FaLinkedinIn className="ml-3" aria-hidden="true" />
+                    <span className="sr-only">.</span>
                   </>
                 }
-                title={'Ir al Linkedin de Canterasoftware'}
+                title={'Ir al Linkedin de Canterasoftware.'}
                 outLink={true}
               />
             </li>

@@ -25,7 +25,7 @@ const Notification = ({ text, id, removeNotif, menssageOptions }) => {
         color={menssageOptions.color}
         icon={menssageOptions.icon}
         onDismiss={() => removeNotif(id)}>
-        <span className="font-semibold">{menssageOptions.type}</span> {text}
+        <span className="font-semibold" aria-hidden>{menssageOptions.type}</span> {text}
       </Alert>
     </motion.div>
   );

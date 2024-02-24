@@ -4,6 +4,8 @@ import { MdImageSearch } from 'react-icons/md';
 const Image = ({ width, src, alt = '', description = null }) => {
   const [loading, setLoading] = useState(true);
 
+  const isHidden = alt == '';
+
   useEffect(() => {
     setTimeout(() => {
       setLoading(false);
@@ -24,6 +26,7 @@ const Image = ({ width, src, alt = '', description = null }) => {
             className="w-full h-full object-cover"
             src={src}
             alt={alt}
+            aria-hidden={isHidden}
             loading="lazy"
             aria-describedby="description-image"
           />

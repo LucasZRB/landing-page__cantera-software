@@ -17,7 +17,7 @@ const InfoColaboretion = () => {
           metas más grandes y extender nuestra red de impacto. Tu ayuda y
           colaboración son esenciales para llevar la educación en tecnología a
           nuevos horizontes. Descubre cómo puedes ser parte de esta
-          transformación
+          transformación.
         </p>
 
         <div className="text-start">
@@ -36,7 +36,7 @@ const InfoColaboretion = () => {
               <p className="mt-5">
                 Trabajamos con distintas fundaciones para promover el acceso a
                 la educación a jóvenes adultos que se encuentran en situaciones
-                vulnerables
+                vulnerables.
               </p>
               <p className="my-6">
                 Para esto evaluamos los perfiles de los alumnos y disponemos de
@@ -63,7 +63,8 @@ const InfoColaboretion = () => {
             />
 
             <div className="flex-1">
-              <span className="text-blue_title font-bold">Empresas</span>
+              <span className="text-blue_title font-bold">Empresas
+              <span className='sr-only'>:</span></span>
               <p className="mt-5 mb-6">
                 Tú y tu empresa pueden ser parte de este gran sueño y ser la
                 fuerza que impulse a más personas hacia una educación de
@@ -77,7 +78,7 @@ const InfoColaboretion = () => {
                   <ItemCheck
                     term={'Apoyo Financiero:'}
                     definition={
-                      'Contribuye directamente al éxito educativo proporcionando becas y recursos necesarios'
+                      'Contribuye directamente al éxito educativo proporcionando becas y recursos necesarios.'
                     }
                   />
                 </li>
@@ -110,7 +111,7 @@ const InfoColaboretion = () => {
               <p className="mt-6 mb-7">
                 Únete a nosotros en la misión de transformar vidas a través de
                 la educación en tecnología. Tu colaboración es clave para
-                construir mejor futuro para todos
+                construir mejor futuro para todos.
               </p>
               <Button message={'Contáctanos'} px={'px-11'} py={'py-3'} />
             </div>

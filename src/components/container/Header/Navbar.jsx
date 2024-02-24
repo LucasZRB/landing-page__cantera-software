@@ -9,28 +9,28 @@ const Navbar = () => {
         <li>
           <ItemsNav
             href="#about-us"
-            title="Botón ir al contenido sobre nosotros"
+            title="Botón ir al contenido sobre nosotros."
             message="Sobre nosotros"
           />
         </li>
         <li>
           <ItemsNav
             href="#program"
-            title="Botón ir al contenido acerca de nuestro programa"
+            title="Botón ir al contenido acerca de nuestro programa,"
             message="Nuestro programa"
           />
         </li>
         <li>
           <ItemsNav
             href="#team"
-            title="Botón ir al contenido del equipo"
+            title="Botón ir al contenido del equipo."
             message="Equipo"
           />
         </li>
         <li>
           <ItemsNav
             href="#info-colaboration"
-            title="Botón ir al contenido para saber cómo colaborar"
+            title="Botón ir al contenido para saber cómo colaborar."
             message="Cómo colaborar"
           />
         </li>

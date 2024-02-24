@@ -9,7 +9,7 @@ const Button = ({ message, py, px }) => {
       title="Botón ir al formulario"
       role="button">
       <b>{message}</b>
-      <span className="sr-only"> Ir al formulario de contacto</span>
+      <span className="sr-only">, ir al formulario de contacto.</span>
     </a>
   );
 };

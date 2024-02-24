@@ -47,7 +47,8 @@ const Input = ({ type = 'text', id, placeholder, aria, title, pattern, value, on
         className={`whitespace-nowrap hover:whitespace-normal overflow-hidden text-ellipsis max-w-[75%] absolute -top-6 left-0 p-2 bg-green_hover text-pure_white text-xs font-bold border-green_focus border rounded ${
           isFocused ? 'opacity-1 pointer-events-auto' : 'opacity-0 pointer-events-none'
         } transition-opacity ease-in-out duration-300`}
-        id={aria}>
+        id={aria}
+        aria-hidden={!isFocused}>
         {title}
       </span>
     </div>

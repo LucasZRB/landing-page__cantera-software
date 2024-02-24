@@ -9,6 +9,7 @@ const AboutUs = () => {
       <section className="max-w-7xl w-full text-xl">
         <h2 className="text-blue_title text-[2.5rem] font-bold mb-4">
           Sobre nosotros
+          <span className="sr-only">:</span>
         </h2>
         <p>
           Somos un equipo de apasionados profesionales en{' '}
@@ -28,14 +29,14 @@ const AboutUs = () => {
             <p>
               Colaboramos estrechamente con fundaciones comprometidas para
               identificar y apoyar a talentos prometedores que, de otra manera,
-              no tendrían acceso a formación en tecnología
+              no tendrían acceso a formación en tecnología.
             </p>
             <p>
               Nos comprometemos a proporcionar becas educativas que van más allá
               del respaldo financiero, creando un entorno de aprendizaje
               innovador y colaborativo. Buscamos formar a la próxima generación
               de expertos en tecnología, dotándolos de habilidades sólidas y
-              fomentando valores de compromiso, perseverancia y excelencia
+              fomentando valores de compromiso, perseverancia y excelencia.
             </p>
             <p>
               A su vez, nuestro trabajo no sólo contribuye al crecimiento
