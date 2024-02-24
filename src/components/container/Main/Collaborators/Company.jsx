@@ -1,10 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const Company = ({ href, title, imgSrc, imgAlt }) => {
+  const [isFocused, setIsFocused] = useState(false);
+  const focusClass =
+    "after:content-[''] after:block after:border-b-2 after:border-blue_title after:mt-1 after:w-1/2 after:mx-auto";
+
   return (
-    <div>
+    <div className={isFocused ? focusClass : ''}>
       <a
-        className="w-52 h-32 flex justify-center items-center bg-pure_white rounded-xl outline-none focus:after:content-[''] focus:after:block focus:after:border-b-2 focus:after:border-blue_title focus:after:mt-1 focus:after:w-1/2 focus:after:mx-auto"
+        className="w-52 h-32 flex justify-center items-center bg-pure_white rounded-xl outline-none"
+        onFocus={() => setIsFocused(true)}
+        onBlur={() => setIsFocused(false)}
         href={href}
         title={title}
         target="_blank"
