@@ -19,6 +19,15 @@ export default {
         blue_title: '#00425E',
         black_text: '#000000',
         bluck_check: '#01CEDA'
+      },
+      keyframes: {
+        loading: {
+          '0%, 100%': { transform: 'translateY(0)' },
+          '50%': { transform: 'translateY(-10px)' }
+        }
+      },
+      animation: {
+        loading: 'loading 1.75s ease infinite'
       }
     },
     fontFamily: {

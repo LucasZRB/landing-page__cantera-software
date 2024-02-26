@@ -12,4 +12,4 @@ const Bubble = ({ width='12rem', height='12rem', bg='#000', props}) => (
     />
   </svg>
 );
-export {Bubble};
+export { Bubble };

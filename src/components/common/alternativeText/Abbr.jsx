@@ -26,7 +26,7 @@ const Abbr = ({
   return (
     <>
       <abbr
-        className={`underline-offset-4 ${abbrColor}`}
+        className={`cursor-help underline-offset-4 ${abbrColor}`}
         aria-hidden={ariaHidden}
         title={fullWord}>
         {abbr}

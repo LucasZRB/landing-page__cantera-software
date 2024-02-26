@@ -7,7 +7,7 @@ import { Laout } from '../../common/Laout';
 import { FaInstagram, FaLinkedinIn } from 'react-icons/fa';
 
 const Footer = () => {
-  var focus =
+  const focus =
     'flex items-center justify-center focus:outline-green_hover focus:outline-dotted focus:outline-4 focus:outline-offset-4 focus:rounded-xl';
 
   return (
@@ -29,10 +29,10 @@ const Footer = () => {
               <span>+549 261 612 3456</span>
               <span className="sr-only">.</span>
             </li>
-            <li>
+            <li className='flex justify-center items-center'>
               <span className="sr-only">Email:</span>
               <a
-                className={focus}
+                className={focus + ' w-max'}
                 href="mailto:info@canterasoft.com"
                 aria-label="Enviar correo a La Cantera"
                 title="Enviar correo a La Cantera">

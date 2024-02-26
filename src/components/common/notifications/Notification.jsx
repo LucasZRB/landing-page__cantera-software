@@ -1,33 +1,16 @@
-import React, { useEffect } from 'react';
-import { motion } from 'framer-motion';
-import { Alert } from 'flowbite-react';
+import React from 'react';
+import { AnimatePresence } from 'framer-motion';
+import { NotificationManager } from './NotificationManager';
 
-const NOTIFICATION_TTL = 5000;
-
-const Notification = ({ text, id, removeNotif, menssageOptions }) => {
-  useEffect(() => {
-    const timeoutRef = setTimeout(() => {
-      removeNotif(id);
-    }, NOTIFICATION_TTL);
-
-    return () => clearTimeout(timeoutRef);
-  }, []);
-
+const Notification = ({ notifications, removeNotif }) => {
   return (
-    <motion.div
-      layout
-      initial={{ y: -15, scale: 0.95 }}
-      animate={{ y: 0, scale: 1 }}
-      exit={{ x: '100%', opacity: 0 }}
-      transition={{ duration: 0.35, ease: 'easeOut' }}
-      className="pointer-events-auto">
-      <Alert
-        color={menssageOptions.color}
-        icon={menssageOptions.icon}
-        onDismiss={() => removeNotif(id)}>
-        <span className="font-semibold" aria-hidden>{menssageOptions.type}</span> {text}
-      </Alert>
-    </motion.div>
+    <div className="flex flex-col gap-1 w-72 fixed bottom-2 right-2 z-50 pointer-events-none">
+      <AnimatePresence>
+        {notifications.map(n => (
+          <NotificationManager key={n.id} {...n} removeNotif={removeNotif} />
+        ))}
+      </AnimatePresence>
+    </div>
   );
 };
 

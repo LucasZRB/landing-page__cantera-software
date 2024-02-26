@@ -1,0 +1,106 @@
+.title-bar {
+  background: #313861;
+  color: #bdbdbd;
+}
+
+.ball-father {
+  position: relative;
+  width: 16px;
+  height: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ball {
+  position: absolute;
+  border-radius: 50%;
+  animation-duration: 1.5s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+.ball-1 {
+  width: 30px;
+  height: 30px;
+}
+
+.ball-red .ball-1:has(~ .ball-3:hover) { background: linear-gradient(109.8deg, rgba(255,48,73, 0.1855) 0%, rgba(255, 57, 80, 0.196) 100%); }
+.ball-yellow .ball-1:has(~ .ball-3:hover) { background: linear-gradient(109.8deg, rgba(255,218,86, 0.1855) 0%, rgba(252, 218, 96, 0.196) 100%); }
+.ball-green .ball-1:has(~ .ball-3:hover) { background: linear-gradient(109.8deg, rgba(6, 214, 160, 0.1855) 0%, rgba(24, 223, 170, 0.196) 100%); }
+
+.ball-2 {
+  width: 24px;
+  height: 24px;
+}
+
+.ball-red .ball-2:has(+ .ball-3:hover) { background: linear-gradient(109.8deg, rgba(255,48,73, 0.265) 0%, rgba(255, 57, 80, 0.28) 100%); }
+.ball-yellow .ball-2:has(+ .ball-3:hover) { background: linear-gradient(109.8deg, rgba(255,218,86, 0.265) 0%, rgba(252, 218, 96, 0.28) 100%); }
+.ball-green .ball-2:has(+ .ball-3:hover) { background: linear-gradient(109.8deg, rgba(6, 214, 160, 0.265) 0%, rgba(24, 223, 170, 0.28) 100%); }
+
+.ball-3 {
+  width: 16px;
+  height: 16px;
+}
+
+.ball-1:has(~ .ball-3:hover) {
+  animation-name: ball-1-animation;
+}
+
+.ball-2:has(+ .ball-3:hover) {
+  animation-name: ball-2-animation;
+}
+
+.ball-3:hover {
+  animation-name: ball-3-animation;
+}
+
+.ball-red .ball-3 { background: #ff3049; }
+.ball-yellow .ball-3 { background: #ffda56; }
+.ball-green .ball-3 { background: #06d6a0; }
+
+.ball-red .ball-3:hover { background: linear-gradient(109.8deg, rgba(255,48,73, 0.265) 0%, rgba(255, 57, 80, 0.28) 100%); }
+.ball-yellow .ball-3:hover { background: linear-gradient(109.8deg, rgba(255,218,86, 0.265) 0%, rgba(252, 218, 96, 0.28) 100%); }
+.ball-green .ball-3:hover { background: linear-gradient(109.8deg, rgba(6, 214, 160, 0.265) 0%, rgba(24, 223, 170, 0.28) 100%); }
+
+@keyframes ball-1-animation {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.2);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes ball-2-animation {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.2);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes ball-3-animation {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.2);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}

@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { TitleBar } from './TitleBar';
 
 const Video = () => {
   const videoRef = useRef(null);
@@ -35,8 +36,9 @@ const Video = () => {
   }, []);
 
   return (
-    <div>
-      <video ref={videoRef} autoPlay muted loop className="flex-1 rounded-lg" loading="lazy">
+    <div className='flex-1'>
+      <TitleBar />
+      <video ref={videoRef} autoPlay muted loop className="rounded-b-lg max-h-[90vh]" loading="lazy">
         <source
           src="https://www.canterasoft.com/static/media/video.b3b3efb8854058371083.mp4"
           type="video/mp4"

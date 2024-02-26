@@ -6,8 +6,8 @@ import { Laout } from '../../../common/Laout';
 const Team = () => {
   const colors = ['#FFD55F', '#48B95D', '#FF6B79', '#01CEDA'];
   const participants = [
-    { url: '#', title: 'Ir a la página de Lucas.', imgSrc: '../../../public/Lucas.png', fullName: 'Lucas Muñoz', position: 'Co-Founder', description: 'Esta persona es Lucas, Director Ejecutivo, también llamado CEO, y Coh-Founder de la empresa.' },
-    { url: '#', title: 'Ir a la página de Fernando.', imgSrc: '../../../public/Nogara.png', fullName: 'Fernando Nogara', position: <><Abbr abbr={'CEO'} fullWord={'Director Ejecutivo'} /> y Co-Founder</>, description: 'Esta persona es Fernando, Coh-Founder de la empresa.' },
+    { url: '#', title: 'Ir a la página de Lucas.', imgSrc: '../../../public/Lucas.png', fullName: 'Lucas Muñoz', position: <><Abbr abbr={'CEO'} fullWord={'Director Ejecutivo'} /> y Co-Founder</>, description: 'Esta persona es Lucas, Director Ejecutivo, también llamado CEO, y Coh-Founder de la empresa.' },
+    { url: '#', title: 'Ir a la página de Fernando.', imgSrc: '../../../public/Nogara.png', fullName: 'Fernando Nogara', position: 'Co-Founder', description: 'Esta persona es Fernando, Coh-Founder de la empresa.' },
     { url: '#', title: 'Ir a la página de Carla.', imgSrc: '../../../public/Panelo.png', fullName: 'Carla Panelo', position: <><Abbr abbr={'HR'} fullWord={'Recursos humanos'} /> Manager</>, description: 'Esta persona es Carla, Manayer de Recursos Humanos de la empresa.' },
     { url: '#', title: 'Ir a la página de Paulina.', imgSrc: '../../../public/Paulina.png', fullName: 'Paulina Ibarra', position: 'Marketing Manager', description: 'Esta persona es Paulina, Marketing Manayer de la empresa.' }
   ];
