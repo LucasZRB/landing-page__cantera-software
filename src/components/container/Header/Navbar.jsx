@@ -29,7 +29,7 @@ const Navbar = () => {
         </li>
         <li>
           <ItemsNav
-            href="#info-colaboration"
+            href="#info-collaboration"
             title="Botón ir al contenido para saber cómo colaborar."
             message="Cómo colaborar"
           />

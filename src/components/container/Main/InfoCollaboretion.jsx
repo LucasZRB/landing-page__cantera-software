@@ -5,11 +5,11 @@ import { ItemCheck } from '../../common/items/ItemCheck';
 import { Image } from '../../common/Image';
 import { Laout } from '../../common/Laout';
 
-const InfoColaboretion = () => {
+const InfoCollaboretion = () => {
   return (
-    <Laout className="my-11">
-      <section className="text-xl max-w-7xl w-full" id="info-colaboration">
-        <h2 className="text-blue_title text-[2.5rem] font-bold">
+    <Laout>
+      <section className="text-ct-base max-w-7xl w-full" id="info-collaboration">
+        <h2 className="text-blue_title text-ct-sub-title font-bold">
           ¿Cómo colaborar?
         </h2>
         <p className="mt-4 mb-8">
@@ -122,4 +122,4 @@ const InfoColaboretion = () => {
   );
 };
 
-export { InfoColaboretion };
+export { InfoCollaboretion };

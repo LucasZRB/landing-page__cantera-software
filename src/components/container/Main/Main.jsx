@@ -3,7 +3,7 @@ import { Introduction } from './Introduction';
 import { AboutUs } from './AboutUs';
 import { Program } from './Program/Program';
 import { Team } from './Team/Team';
-import { InfoColaboretion } from './InfoColaboretion';
+import { InfoCollaboretion } from './InfoCollaboretion';
 import { Collaborators } from './Collaborators/Collaborators';
 import { Contact } from './Contact/Contact';
 
@@ -14,7 +14,7 @@ const Main = () => {
       <AboutUs />
       <Program />
       <Team />
-      <InfoColaboretion />
+      <InfoCollaboretion />
       <Collaborators />
       <Contact />
     </main>

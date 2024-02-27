@@ -19,7 +19,7 @@ const Participants = ({
         target="_blank"
         rel="noopener noreferrer">
         <Bubble bg={color} alt='' />
-        <figure className='absolute top-0 right-1'>
+        <figure className='absolute top-3 right-1'>
           <img className="max-w-48 h-48" src={imgSrc} alt='' loading="lazy" />
         </figure>
         <div className="mt-7">

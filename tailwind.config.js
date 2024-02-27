@@ -32,9 +32,13 @@ export default {
     },
     fontFamily: {
       montserrat: ['Montserrat', 'sans-serif']
+    },
+    fontSize: {
+      'ct-sm': 'clamp(0.875rem, 0.8461538461538461rem + 0.1282051282051282vw, 1rem)',
+      'ct-base': 'clamp(1rem, 0.9423076923076923rem + 0.2564102564102564vw, 1.25rem)',
+      'ct-sub-title': 'clamp(1.5rem, 1.2692307692307692rem + 1.0256410256410255vw, 2.5rem)',
+      'ct-main-title': 'clamp(1.875rem, 1.4423076923076923rem + 1.9230769230769231vw, 3.75rem)'
     }
   },
-  plugins: [
-    require('flowbite/plugin')
-  ]
+  plugins: [require('flowbite/plugin')]
 };

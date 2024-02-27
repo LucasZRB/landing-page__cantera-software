@@ -4,16 +4,16 @@ import { Video } from './Video';
 
 const Program = () => {
   return (
-    <Laout className='mb-24'>
-      <section id="program" className="text-xl text-start max-w-7xl w-full flex flex-col items-center">
-        <h2 className="w-4/5 text-main_green text-[2.5rem] font-bold mb-16">
+    <Laout>
+      <section id="program" className="text-ct-base text-start max-w-7xl w-full flex flex-col items-center">
+        <h2 className="w-4/5 text-main_green text-ct-sub-title font-bold mb-16">
           Nuestro programa
           <span className='sr-only'>:</span>
         </h2>
         <div className="flex justify-center gap-10">
           <Video />
           <div className="flex-1 max-w-96">
-            <h3 className="text-blue_title text-[2.5rem] font-bold leading-10">
+            <h3 className="text-blue_title text-ct-sub-title font-bold leading-10">
               Desarrolla tus conocimientos en tecnología
               <span className='sr-only'>:</span>
             </h3>

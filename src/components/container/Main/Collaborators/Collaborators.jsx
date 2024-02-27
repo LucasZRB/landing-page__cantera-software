@@ -4,10 +4,17 @@ import { Company } from './Company';
 import { Laout } from '../../../common/Laout';
 
 const Collaborators = () => {
+  const companies = [
+    { href: '#', title: '', imgSrc: '../../../../../public/images/logo_fonbec.png', imgAlt: 'Fombec' },
+    { href: '#', title: '', imgSrc: '../../../../../public/images/logo_eddy.png', imgAlt: 'Fundación Eddy' },
+    { href: '#', title: '', imgSrc: '../../../../../public/images/logo_rueca.png', imgAlt: 'La Rueca Asocación' },
+    { href: '#', title: '', imgSrc: '../../../../../public/images/logo_nogadev.png', imgAlt: 'Nogadev' }
+  ];
+
   return (
-    <Laout className="py-14 bg-section3">
-      <section className="text-xl max-w-7xl w-full" id="collaborators">
-        <h2 className="text-blue_title text-[2.5rem] font-bold">
+    <Laout className="py-[8.438rem] bg-section3">
+      <section className="text-ct-base max-w-7xl w-full" id="collaborators">
+        <h2 className="text-blue_title text-ct-sub-title font-bold">
           Colaboran con nosotros
           <span className="sr-only">:</span>
         </h2>
@@ -16,29 +23,10 @@ const Collaborators = () => {
           <Pronunciation word={'ONG’s'} pronunciation={'ONGes'} /> que nos
           ayudan a potenciarnos y llegar más lejos.
         </p>
-        <div className="flex items-center justify-center gap-7">
-          <Company
-            href={'#'}
-            title={'Ir a la página del Colaborador.'}
-            imgSrc={'https://www.canterasoft.com/favicon.ico'}
-            imgAlt={'Logo 1'}
-          />
-          <Company
-            href={'#'}
-            title={'Ir a la página de Fombec.'}
-            imgSrc={
-              'https://www.helpargentina.org/images/default/ong/logotipo_fonbec.jpg'
-            }
-            imgAlt={'Fombec'}
-          />
-          <Company
-            href={'#'}
-            title={'Ir a la página de Cimientos.'}
-            imgSrc={
-              'https://www.canterasoft.com/static/media/logo-cimientos.a0a31b686f84d9df10ee2cc195decc43.svg'
-            }
-            imgAlt={'Cimientos'}
-          />
+        <div className="flex flex-wrap items-center justify-center gap-7">
+          {companies.map((company, index) => (
+            <Company key={index} {...company} title={`Ir a la página de ${company.imgAlt}`} />
+          ))}
         </div>
       </section>
     </Laout>

@@ -5,9 +5,9 @@ import { Laout } from '../../common/Laout';
 
 const AboutUs = () => {
   return (
-    <Laout className="mb-20 py-12 bg-section1">
-      <section className="max-w-7xl w-full text-xl">
-        <h2 className="text-blue_title text-[2.5rem] font-bold mb-4">
+    <Laout className="py-[8.438rem] bg-section1">
+      <section className="max-w-7xl w-full text-ct-base">
+        <h2 className="text-blue_title text-ct-sub-title font-bold py-12">
           Sobre nosotros
           <span className="sr-only">:</span>
         </h2>
@@ -25,11 +25,12 @@ const AboutUs = () => {
           psicológicos y expertos en desarrollo de habilidades blandas.
         </p>
         <div className="flex items-center justify-center gap-8 mt-16">
-          <div className="flex flex-col flex-1 gap-6">
+          <div className="flex flex-col flex-1 gap-6 text-start">
             <p>
-              Colaboramos estrechamente con fundaciones comprometidas para
-              identificar y apoyar a talentos prometedores que, de otra manera,
-              no tendrían acceso a formación en tecnología.
+              Colaboramos estrechamente con fundaciones de <b>Argentina</b> y{' '}
+              <b>España</b>, que se encuentran comprometidas para identificar y
+              apoyar a talentos prometedores que, de otra manera, no tendrían
+              acceso a formación en tecnología.
             </p>
             <p>
               Nos comprometemos a proporcionar becas educativas que van más allá

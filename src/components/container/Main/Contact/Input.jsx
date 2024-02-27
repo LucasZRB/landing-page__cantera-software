@@ -39,7 +39,7 @@ const Input = ({
     });
     const maxCharacters = Math.floor(tooltipWidth / averageCharacterWidth);
 
-    setShouldTruncate(title.length > maxCharacters);
+    setShouldTruncate(title.split(' (')[0].length > maxCharacters);
   }, [title]);
 
   return (
@@ -95,7 +95,7 @@ const Input = ({
         aria-hidden={!isFocused}
         ref={tooltipRef}>
         <p className={shouldTruncate && !isExpanded ? 'truncate' : ''}>
-          {title}
+          {title.split(' (')[0]}
         </p>
         {shouldTruncate && (
           <button

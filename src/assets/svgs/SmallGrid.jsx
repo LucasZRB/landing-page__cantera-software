@@ -12,4 +12,4 @@ const SvgComponent = ({ width='4.75rem', height='9.875rem', bg='#C1C1C1', props}
     />
   </svg>
 );
-export {SvgComponent};
+export { SvgComponent };

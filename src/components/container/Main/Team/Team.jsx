@@ -13,9 +13,9 @@ const Team = () => {
   ];
 
   return (
-    <Laout className="py-24 bg-section2">
-      <section className="text-xl max-w-7xl w-full" id="team">
-        <h2 className="text-blue_title text-[2.5rem] font-bold">
+    <Laout className="py-[8.438rem] bg-section2">
+      <section className="text-ct-base max-w-7xl w-full" id="team">
+        <h2 className="text-blue_title text-ct-sub-title font-bold">
           Nuestro equipo
           <span className='sr-only'>:</span>
         </h2>

@@ -158,11 +158,11 @@ const Contact = () => {
   };
 
   return (
-    <Laout className="mt-16">
+    <Laout>
       <section
-        className="text-xl flex flex-col items-center justify-center max-w-7xl w-full"
+        className="text-ct-base flex flex-col items-center justify-center max-w-7xl w-full"
         id="contact">
-        <h2 className="text-blue_title text-[2.5rem] font-bold">
+        <h2 className="text-blue_title text-ct-sub-title font-bold">
           Contacto<span className="sr-only">:</span>
         </h2>
         <p className="mt-5 mb-14">
@@ -170,10 +170,7 @@ const Contact = () => {
           el siguiente formulario.
         </p>
         <form onSubmit={handleSubmit} className="w-full max-w-[37rem]">
-          <fieldset className="w-full relative pt-14 flex flex-col items-start">
-            <legend className="text-3xl font-bold absolute top-0">
-              Contacta con nosotros<span className="sr-only">:</span>
-            </legend>
+          <fieldset className="w-full relative flex flex-col items-start">
 
             <Input
               id={'fullName'}
