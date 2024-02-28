@@ -43,7 +43,7 @@ const Video = () => {
           src="https://www.canterasoft.com/static/media/video.b3b3efb8854058371083.mp4"
           type="video/mp4"
         />
-        <track kind="description" src="descripcion_video_corto.vtt" />
+        <track kind="descriptions" src="short_video_description.vtt" />
       </video>
     </div>
   );

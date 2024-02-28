@@ -5,10 +5,10 @@ import { Laout } from '../../../common/Laout';
 
 const Collaborators = () => {
   const companies = [
-    { href: '#', title: '', imgSrc: '../../../../../public/images/logo_fonbec.png', imgAlt: 'Fombec' },
-    { href: '#', title: '', imgSrc: '../../../../../public/images/logo_eddy.png', imgAlt: 'Fundación Eddy' },
-    { href: '#', title: '', imgSrc: '../../../../../public/images/logo_rueca.png', imgAlt: 'La Rueca Asocación' },
-    { href: '#', title: '', imgSrc: '../../../../../public/images/logo_nogadev.png', imgAlt: 'Nogadev' }
+    { href: '#', title: '', imgSrc: './src/assets/images/companies/logo_fonbec.png', imgAlt: 'Fombec' },
+    { href: '#', title: '', imgSrc: './src/assets/images/companies/logo_eddy.png', imgAlt: 'Fundación Eddy' },
+    { href: '#', title: '', imgSrc: './src/assets/images/companies/logo_rueca.png', imgAlt: 'La Rueca Asocación' },
+    { href: '#', title: '', imgSrc: './src/assets/images/companies/logo_nogadev.png', imgAlt: 'Nogadev' }
   ];
 
   return (

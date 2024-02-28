@@ -26,7 +26,7 @@ const Introduction = () => {
         </div>
         <Image
           style={{ gridColumn: 2, gridRow: 'span 3' }}
-          src={'../../../public/images/ImagenHeader.png'}
+          src={'./src/assets/images/decoratives/introductionImg.png'}
           width={'max-w-[38.75rem] w-full max-h-[36rem] h-full'}
         />
       </section>
