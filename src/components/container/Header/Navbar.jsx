@@ -4,7 +4,7 @@ import { ItemsNav } from '../../common/items/ItemsNav';
 
 const Navbar = () => {
   return (
-    <nav className="w-full">
+    <nav>
       <ul className="flex gap-8 ml-12 flex-wrap">
         <li>
           <ItemsNav
@@ -29,7 +29,7 @@ const Navbar = () => {
         </li>
         <li>
           <ItemsNav
-            href="#info-colaboration"
+            href="#info-collaboration"
             title="Botón ir al contenido para saber cómo colaborar."
             message="Cómo colaborar"
           />

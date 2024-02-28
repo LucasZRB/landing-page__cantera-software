@@ -1,5 +1,5 @@
 import * as React from 'react';
-const Bubble = ({ width='12rem', height='12rem', bg='#000', props}) => (
+const Bubble = ({ width='12.625rem', height='12.625rem', bg='#000', props}) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width={width}

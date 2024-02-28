@@ -5,13 +5,18 @@ import { Laout } from '../../common/Laout';
 
 const AboutUs = () => {
   return (
-    <Laout className="mb-20 py-12 bg-section1">
-      <section className="max-w-7xl w-full text-xl">
-        <h2 className="text-blue_title text-[2.5rem] font-bold mb-4">
+    <Laout className="py-[8.438rem] bg-section1">
+      <section
+        className="grid gap-12 max-w-7xl w-full text-ct-base"
+        id="about-us"
+        style={{ gridTemplateColumns: 'repeat(2, 1fr)' }}>
+        <h2
+          className="text-blue_title text-ct-sub-title font-bold"
+          style={{ gridColumn: 'span 2' }}>
           Sobre nosotros
           <span className="sr-only">:</span>
         </h2>
-        <p>
+        <p style={{ gridColumn: 'span 2' }}>
           Somos un equipo de apasionados profesionales en{' '}
           <Abbr
             abbr={'IT'}
@@ -24,12 +29,24 @@ const AboutUs = () => {
           un sólido soporte técnico, mentores tecnológicos, asesores
           psicológicos y expertos en desarrollo de habilidades blandas.
         </p>
-        <div className="flex items-center justify-center gap-8 mt-16">
-          <div className="flex flex-col flex-1 gap-6">
+        <div
+          className="grid gap-8 justify-items-center items-center"
+          style={{
+            gridColumn: 'span 2',
+            gridTemplateColumns: 'repeat(2, 1fr)'
+          }}>
+          <div
+            className="grid gap-6 justify-items-center items-center text-start"
+            style={{
+              gridColumn: 'span 1',
+              gridRow: 'span 3',
+              gridTemplateRows: 'repeat(3, auto)'
+            }}>
             <p>
-              Colaboramos estrechamente con fundaciones comprometidas para
-              identificar y apoyar a talentos prometedores que, de otra manera,
-              no tendrían acceso a formación en tecnología.
+              Colaboramos estrechamente con fundaciones de <b>Argentina</b> y{' '}
+              <b>España</b>, que se encuentran comprometidas para identificar y
+              apoyar a talentos prometedores que, de otra manera, no tendrían
+              acceso a formación en tecnología.
             </p>
             <p>
               Nos comprometemos a proporcionar becas educativas que van más allá
@@ -46,8 +63,9 @@ const AboutUs = () => {
             </p>
           </div>
           <Image
-            src={'../../../public/images/Sobrenosotros.png'}
-            width={'flex-1 max-w-[38.75rem] w-full max-h-96 h-full'}
+            style={{ gridColumn: 'span 1', gridRow: 'span 3' }}
+            src={'./src/assets/images/decoratives/aboutUsImg.png'}
+            width={'max-w-[38.75rem] w-full max-h-96 h-full'}
           />
         </div>
       </section>

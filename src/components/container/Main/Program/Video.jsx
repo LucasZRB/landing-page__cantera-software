@@ -36,15 +36,17 @@ const Video = () => {
   }, []);
 
   return (
-    <div className='flex-1'>
-      <TitleBar />
-      <video ref={videoRef} autoPlay muted loop className="rounded-b-lg max-h-[90vh]" loading="lazy">
-        <source
-          src="https://www.canterasoft.com/static/media/video.b3b3efb8854058371083.mp4"
-          type="video/mp4"
-        />
-        <track kind="description" src="descripcion_video_corto.vtt" />
-      </video>
+    <div className='grid justify-items-center' style={{ gridRow: 'span 3', gridColumn: 'span 1', gridTemplateRows: 'repeat(3, 1fr)', gridTemplateColumns: 'repeat(2, 1fr)' }}>
+      <div className='flex flex-col' style={{ gridRow: 'span 3', gridColumn: 'span 3' }}>
+        <TitleBar />
+        <video ref={videoRef} autoPlay muted loop className="rounded-b-lg object-cover" loading="lazy" style={{ maxHeight: 'min(90vh, 22.341rem)' }}>
+          <source
+            src="./src/assets/video/canteraVideo.mp4"
+            type="video/mp4"
+          />
+          <track kind="descriptions" src="short_video_description.vtt" />
+        </video>
+      </div>
     </div>
   );
 };

@@ -8,7 +8,7 @@ const Button = ({ message, py, px }) => {
       aria-label="Botón ir al formulario"
       title="Botón ir al formulario"
       role="button">
-      <b>{message}</b>
+      <b className='text-ct-sm'>{message}</b>
       <span className="sr-only">, ir al formulario de contacto.</span>
     </a>
   );

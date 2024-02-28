@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { MdImageSearch } from 'react-icons/md';
 
-const Image = ({ width, src, alt = '', description = null }) => {
+const Image = ({ width, src, alt = '', description = null, style={} }) => {
   const [loading, setLoading] = useState(true);
 
   const isHidden = alt == '';
@@ -21,7 +21,7 @@ const Image = ({ width, src, alt = '', description = null }) => {
           </div>
         </div>
       ) : (
-        <figure className={width}>
+        <figure className={width} style={style}>
           <img
             className="w-full h-full object-cover"
             src={src}
