@@ -64,7 +64,7 @@ const AboutUs = () => {
           </div>
           <Image
             style={{ gridColumn: 'span 1', gridRow: 'span 3' }}
-            src={'./images/decoratives/aboutUsImg.png'}
+            src={'./images/decoratives/aboutUsImgDesktop.png'}
             width={'max-w-[38.75rem] w-full max-h-96 h-full'}
           />
         </div>

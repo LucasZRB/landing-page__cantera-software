@@ -97,64 +97,56 @@ const Contact = () => {
 
     setIsloading(true);
 
-    // try {
-    //   fetch(
-    //     `https://${import.meta.env.VITE_URL_EMAIL}/${
-    //       import.meta.env.VITE_KEY_EMAIL
-    //     }`,
-    //     {
-    //       method: 'POST',
-    //       body: data
-    //     }
-    //   )
-    //     .then(response => {
-    //       console.log('Succes:');
-    //       setNotifications(pv => [
-    //         { type: 'success', id: Math.random(), text: 'Enviado con éxito!' },
-    //         ...pv
-    //       ]);
-    //       setFormData({
-    //         fullName: '',
-    //         email: '',
-    //         subject: '',
-    //         message: ''
-    //       });
-    //     })
-    //     .then(data => {
-    //       setFormData({
-    //         fullName: '',
-    //         email: '',
-    //         subject: '',
-    //         message: ''
-    //       });
-    //     })
-    //     .catch(error => {
-    //       console.log('Error de envío:', error);
-    //       setNotifications(pv => [
-    //         {
-    //           type: 'error', id: Math.random(),
-    //           text: 'Algo salió mal al realizar el envío. Intentalo más tarde.'
-    //         },
-    //         ...pv
-    //       ]);
-    //     });
-    // } catch (error) {
-    //   console.error('Error al realizar la solicitud:', error);
-    //   setNotifications(pv => [
-    //     { type: 'error', id: Math.random(), text: 'Algo salió mal al realizar tu solicitud.' },
-    //     ...pv
-    //   ]);
-    // } finally {
-    //   setIsloading(false);
-    // }
-
-    setTimeout(() => {
-      setIsloading(false);
+    try {
+      fetch(
+        `https://${import.meta.env.VITE_URL_EMAIL}/${
+          import.meta.env.VITE_KEY_EMAIL
+        }`,
+        {
+          method: 'POST',
+          body: data
+        }
+      )
+        .then(response => {
+          console.log('Succes:');
+          setNotifications(pv => [
+            { type: 'success', id: Math.random(), text: 'Enviado con éxito!' },
+            ...pv
+          ]);
+          setFormData({
+            fullName: '',
+            email: '',
+            subject: '',
+            message: ''
+          });
+        })
+        .then(data => {
+          setFormData({
+            fullName: '',
+            email: '',
+            subject: '',
+            message: ''
+          });
+        })
+        .catch(error => {
+          console.log('Error de envío:', error);
+          setNotifications(pv => [
+            {
+              type: 'error', id: Math.random(),
+              text: 'Algo salió mal al realizar el envío. Intentalo más tarde.'
+            },
+            ...pv
+          ]);
+        });
+    } catch (error) {
+      console.error('Error al realizar la solicitud:', error);
       setNotifications(pv => [
-        { type: 'success', id: Math.random(), text: 'Enviado con éxito!' },
+        { type: 'error', id: Math.random(), text: 'Algo salió mal al realizar tu solicitud.' },
         ...pv
       ]);
-    }, 10000);
+    } finally {
+      setIsloading(false);
+    }
   };
 
   return (
@@ -171,7 +163,6 @@ const Contact = () => {
         </p>
         <form onSubmit={handleSubmit} className="w-full max-w-[37rem]">
           <fieldset className="w-full relative flex flex-col items-start">
-
             <Input
               id={'fullName'}
               placeholder={'Nombre y Apellido'}
@@ -228,7 +219,7 @@ const Contact = () => {
 
             <div className="pt-4 pb-14 m-auto">
               <ReCaptcha
-                siteKey={import.meta.env.VITE_TEST_KEY_RECAPTCHA}
+                siteKey={import.meta.env.VITE_KEY_RECAPTCHA}
                 theme="light"
                 size="normal"
                 onSuccess={() => {
