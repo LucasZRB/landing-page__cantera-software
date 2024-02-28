@@ -4,7 +4,7 @@ import { Video } from './Video';
 
 const Program = () => {
   return (
-    <Laout className="bg-no-repeat bg-cover bg-center" style={{ backgroundImage: "url('./src/assets/images/desktop_backgrounds/programBackground.png')" }}>
+    <Laout className="bg-no-repeat bg-cover bg-center" style={{ backgroundImage: "url('./images/desktop_backgrounds/programBackground.png')" }}>
       <section id="program" className="grid gap-16 text-ct-base text-start max-w-7xl w-full" style={{ gridTemplateColumns: '1fr 1fr' }}>
         <h2 className="text-main_green text-ct-sub-title font-bold" style={{ gridColumn: 'span 2' }}>
           Nuestro programa
