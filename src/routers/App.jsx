@@ -7,7 +7,7 @@ import { Footer } from '../components/container/Footer/Footer';
 function App() {
   return (
     <>
-      {/* <ScrollTop /> */}
+      <ScrollTop />
       <Header />
       <Main />
       <Footer />

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Bubble } from '../../../../assets/svgs/Bubble';
+import { FaLinkedinIn } from 'react-icons/fa';
 
 const Participants = ({
   href,
@@ -18,9 +19,10 @@ const Participants = ({
         title={title}
         target="_blank"
         rel="noopener noreferrer">
-        <Bubble bg={color} alt='' />
-        <figure className='absolute top-3 right-1'>
-          <img className="max-w-48 h-48" src={imgSrc} alt='' loading="lazy" />
+        <Bubble bg={color} alt="" />
+        <FaLinkedinIn className="absolute top-2 right-2 text-ct-base" aria-hidden="true" />
+        <figure className="absolute top-3 right-1">
+          <img className="max-w-48 h-48" src={imgSrc} alt="" loading="lazy" />
         </figure>
         <div className="mt-7">
           <span className="sr-only">{description}</span>

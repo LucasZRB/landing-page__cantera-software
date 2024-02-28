@@ -5,14 +5,14 @@ import { Laout } from '../../../common/Laout';
 
 const Collaborators = () => {
   const companies = [
-    { href: '#', title: '', imgSrc: './src/assets/images/companies/logo_fonbec.png', imgAlt: 'Fombec' },
-    { href: '#', title: '', imgSrc: './src/assets/images/companies/logo_eddy.png', imgAlt: 'Fundación Eddy' },
-    { href: '#', title: '', imgSrc: './src/assets/images/companies/logo_rueca.png', imgAlt: 'La Rueca Asocación' },
-    { href: '#', title: '', imgSrc: './src/assets/images/companies/logo_nogadev.png', imgAlt: 'Nogadev' }
+    { href: 'https://www.fonbec.org.ar/', title: '', imgSrc: './src/assets/images/companies/logo_fonbec.png', imgAlt: 'Fonbec' },
+    { href: 'https://fundacioneddy.org/', title: '', imgSrc: './src/assets/images/companies/logo_eddy.png', imgAlt: 'Fundación Eddy' },
+    { href: 'https://larueca.info/', title: '', imgSrc: './src/assets/images/companies/logo_rueca.png', imgAlt: 'La Rueca Asociación' },
+    { href: 'https://www.nogadev.com/', title: '', imgSrc: './src/assets/images/companies/logo_nogadev.png', imgAlt: 'Nogadev' }
   ];
 
   return (
-    <Laout className="py-[8.438rem] bg-section3">
+    <Laout className="py-[8.438rem] bg-section3 bg-no-repeat bg-cover bg-center" style={{ backgroundImage: "url('./src/assets/images/desktop_backgrounds/collaboratorsBackground.png')" }}>
       <section className="text-ct-base max-w-7xl w-full" id="collaborators">
         <h2 className="text-blue_title text-ct-sub-title font-bold">
           Colaboran con nosotros

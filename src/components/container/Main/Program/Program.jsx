@@ -4,15 +4,15 @@ import { Video } from './Video';
 
 const Program = () => {
   return (
-    <Laout>
-      <section id="program" className="grid gap-16 text-ct-base text-start max-w-7xl w-full" style={{ gridTemplateRows: 'auto 1fr', gridTemplateColumns: '1fr 1fr' }}>
-        <h2 className="text-main_green text-ct-sub-title font-bold" style={{ gridRow: 'span 1', gridColumn: 'span 2' }}>
+    <Laout className="bg-no-repeat bg-cover bg-center" style={{ backgroundImage: "url('./src/assets/images/desktop_backgrounds/programBackground.png')" }}>
+      <section id="program" className="grid gap-16 text-ct-base text-start max-w-7xl w-full" style={{ gridTemplateColumns: '1fr 1fr' }}>
+        <h2 className="text-main_green text-ct-sub-title font-bold" style={{ gridColumn: 'span 2' }}>
           Nuestro programa
           <span className='sr-only'>:</span>
         </h2>
-        <div className="grid gap-10" style={{ gridRow: 'span 1', gridColumn: 'span 2', gridTemplateRows: 'repeat(3, 1fr)', gridTemplateColumns: '1fr, 1fr' }}>
+        <div className="grid gap-10" style={{ gridColumn: 'span 2', gridTemplateRows: 'repeat(3, 1fr)', gridTemplateColumns: 'repeat(2, 1fr)' }}>
           <Video />
-          <div className="flex flex-col justify-between max-w-96" style={{ gridRow: 'span 3', gridColumn: '2' }}>
+          <div className="flex flex-col justify-between" style={{ gridRow: 'span 3', gridColumn: 'span 1', gridTemplateRows: 'repeat(3, 1fr)', gridTemplateColumns: 'repeat(2, 1fr)' }}>
             <h3 className="text-blue_title text-ct-sub-title font-bold leading-10">
               Desarrolla tus conocimientos en tecnología
               <span className='sr-only'>:</span>

@@ -5,7 +5,7 @@ import { Laout } from '../../common/Laout';
 
 const Introduction = () => {
   return (
-    <Laout className="pt-[5.625rem] pb-[8.438rem]">
+    <Laout className="pt-[5.625rem] pb-[8.438rem] bg-no-repeat bg-cover bg-center" style={{ backgroundImage: "url('./src/assets/images/desktop_backgrounds/introductionBackground.png')" }}>
       <section
         id="introduction"
         className="max-w-7xl w-full text-start grid justify-items-center gap-8" style={{ gridTemplateColumns: 'repeat(2, 1fr)', gridTemplateRows: 'repeat(3, auto)' }}>

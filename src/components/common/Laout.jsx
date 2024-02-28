@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Laout = ({ children, className = "" }) => {
+const Laout = ({ children, className = "", style = {} }) => {
   let setClassName = 'flex justify-center px-10 ';
   if (className.includes('py-') || className.includes('pt-') || className.includes('pb-')) {
     setClassName += className
@@ -9,7 +9,7 @@ const Laout = ({ children, className = "" }) => {
   }
 
   return (
-    <div className={setClassName}>
+    <div className={setClassName} style={style}>
       {children}
     </div>
   );
