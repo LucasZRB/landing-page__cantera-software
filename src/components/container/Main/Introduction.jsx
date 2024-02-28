@@ -8,8 +8,8 @@ const Introduction = () => {
     <Laout className="pt-[5.625rem] pb-[8.438rem]">
       <section
         id="introduction"
-        className="flex max-w-7xl w-full items-center justify-center text-start gap-8">
-        <div className="flex-1">
+        className="max-w-7xl w-full text-start grid justify-items-center gap-8" style={{ gridTemplateColumns: 'repeat(2, 1fr)', gridTemplateRows: 'repeat(3, auto)' }}>
+        <div className='grid justify-items-center items-center' style={{ gridColumn: 1, gridRow: 'span 3', gridTemplateRows: 'repeat(3, 1ft)' }}>
           <h1 className="text-blue_title text-ct-main-title font-bold">
             Transformando sueños en código <span className="sr-only">:</span>
           </h1>
@@ -20,11 +20,14 @@ const Introduction = () => {
             diversidad en la industria. ¿Querés ser parte de esta
             transformación?
           </p>
-          <Button message={'Quiero colaborar'} px={'px-20'} py={'py-3'} />
+          <div className='w-full'>
+            <Button message={'Quiero colaborar'} px={'px-20'} py={'py-3'} />
+          </div>
         </div>
         <Image
+          style={{ gridColumn: 2, gridRow: 'span 3' }}
           src={'../../../public/images/ImagenHeader.png'}
-          width={'flex-1 max-w-[38.75rem] w-full max-h-[36rem] h-full'}
+          width={'max-w-[38.75rem] w-full max-h-[36rem] h-full'}
         />
       </section>
     </Laout>

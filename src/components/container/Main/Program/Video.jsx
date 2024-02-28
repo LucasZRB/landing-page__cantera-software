@@ -36,9 +36,9 @@ const Video = () => {
   }, []);
 
   return (
-    <div className='flex-1'>
+    <div className='flex flex-col' style={{ gridRow: 'span 3', gridColumn: 'span 1' }}>
       <TitleBar />
-      <video ref={videoRef} autoPlay muted loop className="rounded-b-lg max-h-[90vh]" loading="lazy">
+      <video ref={videoRef} autoPlay muted loop className="rounded-b-lg max-h-[90vh] object-cover" loading="lazy">
         <source
           src="https://www.canterasoft.com/static/media/video.b3b3efb8854058371083.mp4"
           type="video/mp4"

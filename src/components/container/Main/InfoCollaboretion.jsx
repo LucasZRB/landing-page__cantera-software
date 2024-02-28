@@ -8,11 +8,11 @@ import { Laout } from '../../common/Laout';
 const InfoCollaboretion = () => {
   return (
     <Laout>
-      <section className="text-ct-base max-w-7xl w-full" id="info-collaboration">
-        <h2 className="text-blue_title text-ct-sub-title font-bold">
+      <section className="grid text-ct-base max-w-7xl w-full" id="info-collaboration" style={{ gridTemplateColumns: 'repeat(2, 1fr)' }}>
+        <h2 className="text-blue_title text-ct-sub-title font-bold" style={{ gridColumn: 'span 2' }}>
           ¿Cómo colaborar?
         </h2>
-        <p className="mt-4 mb-8">
+        <p className="mt-4 mb-8" style={{ gridColumn: 'span 2' }}>
           En La Cantera, creemos en la fuerza de la colaboración para alcanzar
           metas más grandes y extender nuestra red de impacto. Tu ayuda y
           colaboración son esenciales para llevar la educación en tecnología a
@@ -20,9 +20,9 @@ const InfoCollaboretion = () => {
           transformación.
         </p>
 
-        <div className="text-start">
-          <div className="flex items-center gap-8 mb-24">
-            <div className="flex-1">
+        <div className="grid gap-24 text-start" style={{ gridColumn: 'span 2', gridTemplateColumns: 'repeat(2, 1fr)' }}>
+          <div className="grid gap-8 items-stretch" style={{ gridColumn: 'span 2', gridTemplateColumns: 'repeat(2, 1fr)' }}>
+            <div className="flex flex-col justify-between items-start">
               <span className="text-blue_title font-bold">
                 Fundaciones y {''}
                 <Abbr
@@ -51,18 +51,18 @@ const InfoCollaboretion = () => {
             </div>
 
             <Image
-              width={'flex-1 max-w-[37.5rem] max-h-[30rem] w-full h-full'}
+              width={' max-w-[37.5rem] max-h-[30rem] w-full h-full'}
               src={'../../../public/images/Comocolaborarimagen1.png'}
             />
           </div>
 
-          <div className="flex gap-8 items-center">
+          <div className="grid gap-8 items-stretch" style={{ gridColumn: 'span 2', gridTemplateColumns: 'repeat(2, 1fr)' }}>
             <Image
-              width={'flex-1 max-w-[38.75rem] w-full max-h-[38.75rem] h-full'}
+              width={' max-w-[38.75rem] w-full h-full'}
               src={'../../../public/images/Comocolaborar.png'}
             />
 
-            <div className="flex-1">
+            <div className="">
               <span className="text-blue_title font-bold">Empresas
               <span className='sr-only'>:</span></span>
               <p className="mt-5 mb-6">
