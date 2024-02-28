@@ -41,7 +41,7 @@ const Video = () => {
         <TitleBar />
         <video ref={videoRef} autoPlay muted loop className="rounded-b-lg object-cover" loading="lazy" style={{ maxHeight: 'min(90vh, 22.341rem)' }}>
           <source
-            src="./src/assets/video/canteraVideo.mp4"
+            src="./video/canteraVideo.mp4"
             type="video/mp4"
           />
           <track kind="descriptions" src="short_video_description.vtt" />

@@ -52,14 +52,14 @@ const InfoCollaboretion = () => {
 
             <Image
               width={' max-w-[37.5rem] max-h-[30rem] w-full h-full'}
-              src={'./src/assets/images/decoratives/collaboretionImg-A.png'}
+              src={'./images/decoratives/collaboretionImg-A.png'}
             />
           </div>
 
           <div className="grid gap-8 items-stretch" style={{ gridColumn: 'span 2', gridTemplateColumns: 'repeat(2, 1fr)' }}>
             <Image
               width={' max-w-[38.75rem] w-full h-full'}
-              src={'./src/assets/images/decoratives/collaboretionImg-B.png'}
+              src={'./images/decoratives/collaboretionImg-B.png'}
             />
 
             <div className="">
