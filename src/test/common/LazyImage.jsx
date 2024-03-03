@@ -29,6 +29,8 @@ const LazyImage = props => {
           observer.unobserve(imageRef.current);
         }
       });
+    }, {
+      rootMargin: '50px'
     });
 
     observer.observe(imageRef.current);

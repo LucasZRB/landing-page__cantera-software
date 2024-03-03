@@ -8,7 +8,8 @@ const Button2 = ({
   message,
   description,
   title,
-  ariaId
+  ariaId,
+  onClick
 }) => {
   const baseStyles = `flex m-auto no-underline border-none ${px} ${py} rounded-full cursor-pointer`;
   const colorStyles = 'bg-main_green text-pure_white';
@@ -25,7 +26,8 @@ const Button2 = ({
       type={type}
       disabled={isDisable}
       aria-describedby={`${ariaId}Tooltip`}
-      title={title}>
+      title={title}
+      onClick={onClick}>
       <b className="text-ct-sm font-bold">{message}</b>
       <span className="sr-only">{description}</span>
     </button>
