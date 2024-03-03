@@ -1,17 +1,21 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { TbFaceIdError } from 'react-icons/tb';
 import { SkImage } from '../common/skeletons/SkImage';
+import { motion } from 'framer-motion';
 
-const LazyImage = ({
-  src,
-  alt = '',
-  title = '',
-  figureClass = 'size-full',
-  imageClass = 'size-full',
-  SuccessBackground = null,
-  LoadingBackground = () => <SkImage />,
-  ErrorBackground = () => <TbFaceIdError className='size-full' />
-}) => {
+const LazyImage = props => {
+  const {
+    src,
+    alt = '',
+    title = '',
+    figureClass = 'size-full',
+    imageClass = 'size-full',
+    SuccessBackground = null,
+    LoadingBackground = () => <SkImage />,
+    ErrorBackground = () => <TbFaceIdError className="size-full" />,
+    ...extra
+  } = props;
+
   const imageRef = useRef();
   const [isIntersecting, setIsIntersecting] = useState(false);
   const [isImageLoaded, setIsImageLoaded] = useState(false);
@@ -42,6 +46,18 @@ const LazyImage = ({
     setError(err);
   };
 
+  const propsImage = {
+    ref: imageRef,
+    src: isIntersecting ? src : null,
+    alt: alt,
+    title: title,
+    loading: 'lazy',
+    className: `${isImageLoaded ? 'opacity-100' : 'opacity-0'} ${imageClass}`,
+    onLoad: handleImageLoad,
+    onError: handleImageError,
+    ...extra
+  };
+
   return (
     <figure className={`relative ${figureClass}`}>
       {!isImageLoaded && !error && LoadingBackground && (
@@ -59,18 +75,11 @@ const LazyImage = ({
           <SuccessBackground />
         </div>
       )}
-      <img
-        ref={imageRef}
-        src={isIntersecting ? src : null}
-        alt={alt}
-        title={title}
-        loading="lazy"
-        className={`${
-          isImageLoaded ? 'opacity-100' : 'opacity-0'
-        } ${imageClass}`}
-        onLoad={handleImageLoad}
-        onError={handleImageError}
-      />
+      {propsImage.animate ? (
+        <motion.img {...propsImage} />
+      ) : (
+        <img {...propsImage} />
+      )}
       {title !== '' && (
         <figcaption id="description-image" className="sr-only">
           {title}

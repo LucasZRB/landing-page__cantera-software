@@ -32,4 +32,4 @@ const Company = ({ href, title, imgSrc, imgAlt }) => {
   );
 };
 
-export { Company };
+export default Company;
