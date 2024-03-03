@@ -1,13 +1,13 @@
 import '../assets/styles/App.css';
 import { ScrollTop } from './ScrollTop';
-import { Header } from '../components/container/Header/Header';
-import { Main } from '../components/container/Main/Main';
-import { Footer } from '../components/container/Footer/Footer';
+import { Header } from '../test/container/Header/Header';
+import { Main } from '../test/container/Main/Main';
+import { Footer } from '../test/container/Footer/Footer';
 
 function App() {
   return (
     <>
-      <ScrollTop />
+      {/* <ScrollTop /> */}
       <Header />
       <Main />
       <Footer />

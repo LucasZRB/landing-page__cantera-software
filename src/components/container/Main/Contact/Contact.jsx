@@ -219,7 +219,7 @@ const Contact = () => {
 
             <div className="pt-4 pb-14 m-auto">
               <ReCaptcha
-                siteKey={import.meta.env.VITE_KEY_RECAPTCHA}
+                siteKey={import.meta.env.VITE_TEST_KEY_RECAPTCHA}
                 theme="light"
                 size="normal"
                 onSuccess={() => {

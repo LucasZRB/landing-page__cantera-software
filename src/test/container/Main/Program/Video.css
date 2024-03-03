@@ -1,0 +1,22 @@
+.video-container__grid {
+  display: grid;
+  justify-items: center;
+  grid-row: span 3;
+  grid-column: span 1;
+  grid-template-rows: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.video-container {
+  display: flex;
+  flex-direction: column;
+  grid-row: span 3;
+  grid-column: span 3;
+}
+
+.video {
+  border-bottom-right-radius: 0.5rem/* 8px */;
+  border-bottom-left-radius: 0.5rem/* 8px */;
+  object-fit: cover;
+  max-height: min(90vh, 22.341rem);
+}

@@ -5,7 +5,7 @@ const Laout = ({ children, className = "", style = {} }) => {
   if (className.includes('py-') || className.includes('pt-') || className.includes('pb-')) {
     setClassName += className
   } else {
-    setClassName += 'py-[8.438rem] ' + className;
+    setClassName += 'py-ct-margins ' + className;
   }
 
   return (

@@ -28,16 +28,52 @@ export default {
       },
       animation: {
         loading: 'loading 1.75s ease infinite'
+      },
+      spacing: {
+        'ct-margins': '8.438rem',
+        'ct-min': '17.5rem',
+        'ct-max': '80rem'
       }
     },
     fontFamily: {
       montserrat: ['Montserrat', 'sans-serif']
     },
     fontSize: {
-      'ct-sm': 'clamp(0.875rem, 0.8461538461538461rem + 0.1282051282051282vw, 1rem)',
-      'ct-base': 'clamp(1rem, 0.9423076923076923rem + 0.2564102564102564vw, 1.25rem)',
-      'ct-sub-title': 'clamp(1.5rem, 1.2692307692307692rem + 1.0256410256410255vw, 2.5rem)',
-      'ct-main-title': 'clamp(1.875rem, 1.4423076923076923rem + 1.9230769230769231vw, 3.75rem)'
+      'ct-sm': [
+        'clamp(0.875rem, 0.8461538461538461rem + 0.1282051282051282vw, 1rem)',
+        {
+          lineHeight: '1.25rem',
+          fontWeight: '400'
+        }
+      ],
+      'ct-base': [
+        'clamp(1rem, 0.9423076923076923rem + 0.2564102564102564vw, 1.25rem)',
+        {
+          lineHeight: '1.5rem',
+          fontWeight: '400'
+        }
+      ],
+      'ct-heading': [
+        'clamp(1.5rem, 1.2692307692307692rem + 1.0256410256410255vw, 2.5rem)',
+        {
+          lineHeight: '1.75rem',
+          fontWeight: '600'
+        }
+      ],
+      'ct-sub-title': [
+        'clamp(1.5rem, 1.2692307692307692rem + 1.0256410256410255vw, 2.5rem)',
+        {
+          lineHeight: '2.5rem',
+          fontWeight: '700'
+        }
+      ],
+      'ct-main-title': [
+        'clamp(1.875rem, 1.4423076923076923rem + 1.9230769230769231vw, 3.75rem)',
+        {
+          lineHeight: '1',
+          fontWeight: '700'
+        }
+      ]
     }
   },
   plugins: [require('flowbite/plugin')]
