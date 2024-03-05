@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Laout = ({ children, className = "" }) => {
+const Layout = ({ children, className = "" }) => {
   let setClassName = 'flex justify-center px-10 ';
   if (className.includes('py-') || className.includes('pt-') || className.includes('pb-')) {
     setClassName += className
@@ -16,4 +16,4 @@ const Laout = ({ children, className = "" }) => {
   );
 };
 
-export { Laout };
+export { Layout };

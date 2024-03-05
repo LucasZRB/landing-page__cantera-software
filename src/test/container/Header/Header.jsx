@@ -1,11 +1,12 @@
 import React from 'react';
-import { Laout } from '../../common/Laout';
+import { Layout } from '../../common/Layout';
 import { SmallLogoCantera } from '../../../assets/svgs/SmallLogoCantera';
-import { HamburgerMenu } from './HamburgerMenu';
+import { HamburgerMenu } from "./Hamburger/HamburgerMenu";
+// cSpell:ignore Cantera svgs
 
 const Header = () => {
   return (
-    <Laout className="pt-5 pb-9 bg-pure_white">
+    <Layout className="pt-5 pb-9 bg-pure_white">
       <header className="flex min-w-ct-min w-full min-h-9 justify-between items-center">
         <figure className="flex items-center w-full h-full">
           <SmallLogoCantera
@@ -18,7 +19,7 @@ const Header = () => {
         </figure>
         <HamburgerMenu />
       </header>
-    </Laout>
+    </Layout>
   );
 };
 

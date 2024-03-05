@@ -1,11 +1,13 @@
 import React from 'react';
-import { Laout } from '../../common/Laout';
+import { Layout } from '../../common/Layout';
 import { Abbr } from '../../../components/common/alternativeText/Abbr';
 import { Button } from '../../common/button/Button';
+/* spell-checker: disable */
+// TODO: Dar vuelta tarjeta, y leer más
 
 const InfoCollaboretion = () => {
   return (
-    <Laout className="bg-pure_white w-full">
+    <Layout className="bg-pure_white w-full">
       <section
         id="info-collaboration"
         className="flex flex-col text-ct-base min-w-ct-min w-full">
@@ -49,7 +51,7 @@ const InfoCollaboretion = () => {
           </div>
         </div>
       </section>
-    </Laout>
+    </Layout>
   );
 };
 

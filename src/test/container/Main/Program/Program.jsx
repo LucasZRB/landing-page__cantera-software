@@ -1,6 +1,6 @@
 import React from 'react';
 import { Video } from './Video';
-import { Laout } from '../../../common/Laout';
+import { Layout } from '../../../common/Layout';
 import { ExpandableText } from '../../../common/alternativeText/ExpandableText';
 
 const Program = () => {
@@ -29,7 +29,7 @@ const Program = () => {
   };
 
   return (
-    <Laout className="bg-pure_white w-full">
+    <Layout className="bg-pure_white w-full">
       <section
         id="program"
         className="flex flex-col items-center gap-6 text-ct-base text-start min-w-ct-min w-full">
@@ -48,7 +48,7 @@ const Program = () => {
           <Video />
         </div>
       </section>
-    </Laout>
+    </Layout>
   );
 };
 

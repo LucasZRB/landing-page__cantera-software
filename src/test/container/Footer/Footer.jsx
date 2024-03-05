@@ -1,10 +1,12 @@
 import React from 'react';
 import { ItemsNav } from '../../../components/common/items/ItemsNav';
 import { Pronunciation } from '../../../components/common/alternativeText/Pronunciation';
-import { Laout } from '../../common/Laout';
+import { Layout } from '../../common/Layout';
 import { FaInstagram, FaLinkedinIn } from 'react-icons/fa';
 import { IoMail } from 'react-icons/io5';
 import { SmallLogoCantera } from '../../../assets/svgs/SmallLogoCantera';
+
+// Responsive y parserearlo
 
 const Footer = () => {
   const classBase = 'flex items-center justify-center';
@@ -13,7 +15,7 @@ const Footer = () => {
   const mainClass = `${classBase} ${focusClass}`
 
   return (
-    <Laout className="bg-blue_title py-9">
+    <Layout className="bg-blue_title py-9">
       <footer className="min-w-ct-min w-full text-ct-sm text-pure_white flex flex-col gap-6 items-center">
         <section>
           <SmallLogoCantera bg={'v2'} />
@@ -82,7 +84,7 @@ const Footer = () => {
           </div>
         </section>
       </footer>
-    </Laout>
+    </Layout>
   );
 };
 

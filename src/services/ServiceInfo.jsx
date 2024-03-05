@@ -1,4 +1,3 @@
-import React from 'react';
 import { Abbr } from '../components/common/alternativeText/Abbr';
 
 export const colors = ['#FFD55F', '#48B95D', '#FF6B79', '#01CEDA'];
@@ -71,5 +70,39 @@ export const companies = [
     title: '',
     imgSrc: './images/companies/logo_nogadev.png',
     imgAlt: 'Nogadev'
+  }
+];
+
+export const links = [
+  {
+    href: 'introduction',
+    title: 'Botón volver al inicio.',
+    message: 'Inicio'
+  },
+  {
+    href: 'about-us',
+    title: 'Botón ir al contenido sobre nosotros.',
+    message: 'Sobre nosotros'
+  },
+  {
+    href: 'program',
+    title: 'Botón ir al contenido acerca de nuestro programa,',
+    message: 'Nuestro programa'
+  },
+  {
+    href: 'team',
+    title: 'Botón ir al contenido del equipo.',
+    message: 'Equipo'
+  },
+  {
+    href: 'info-collaboration',
+    title: 'Botón ir al contenido para saber cómo colaborar.',
+    message: 'Cómo colaborar'
+  },
+  {
+    href: 'contact',
+    title: 'Botón ir al formulario.',
+    message: 'Contacto',
+    className: 'font-bold'
   }
 ];

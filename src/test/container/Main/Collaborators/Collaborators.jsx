@@ -1,10 +1,11 @@
 import React, { useState, useEffect, lazy, Suspense } from 'react';
 import { companies } from '../../../../services/ServiceInfo';
-import { Laout } from '../../../common/Laout';
+import { Layout } from '../../../common/Layout';
 import { Pronunciation } from '../../../../components/common/alternativeText/Pronunciation';
 
 const Company = lazy(() => import('./Company'));
 const SliderTest = lazy(() => import('./SliderTest'));
+// TODO: Flexbox desktop
 
 const Collaborators = () => {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
@@ -22,7 +23,7 @@ const Collaborators = () => {
   }, []);
 
   return (
-    <Laout className="bg-section3 w-full">
+    <Layout className="bg-section3 w-full">
       <section id="collaborators" className="text-ct-base min-w-ct-min w-full">
         <h2 className="text-blue_title text-ct-sub-title">
           Colaboran con nosotros
@@ -51,7 +52,7 @@ const Collaborators = () => {
           </Suspense>
         </div>
       </section>
-    </Laout>
+    </Layout>
   );
 };
 

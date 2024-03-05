@@ -1,10 +1,11 @@
 import React from 'react';
 import { Button } from '../../common/button/Button';
-import { Laout } from '../../common/Laout';
+import { Layout } from '../../common/Layout';
+/* spell-checker: disable */
 
 const Introduction = () => {
     return (
-      <Laout className="bg-pure_white w-full flex">
+      <Layout className="bg-pure_white w-full flex">
         <section id="introduction" className="min-w-[17.5rem]">
           <div className="grid justify-items-center items-center">
             <h1 className="text-blue_title text-ct-main-title">
@@ -23,7 +24,7 @@ const Introduction = () => {
           </div>
           {/* <div>Responsive Img</div> */}
         </section>
-      </Laout>
+      </Layout>
     );
   };
   

@@ -1,6 +1,8 @@
 import React from 'react';
-import { Laout } from '../../../common/Laout';
+import { Layout } from '../../../common/Layout';
 import { Button2 } from '../../../common/button/Button2';
+
+// TODO: Falta hacer todo, y alertas arriba
 
 const Contact = () => {
   const handleSubmit = async event => {
@@ -8,7 +10,7 @@ const Contact = () => {
   }
 
   return (
-    <Laout className="bg-pure_white w-full">
+    <Layout className="bg-pure_white w-full">
       <section
         id="contact"
         className="text-ct-base flex flex-col items-center justify-center min-w-ct-min w-full">
@@ -51,7 +53,7 @@ const Contact = () => {
           </fieldset>
         </form>
       </section>
-    </Laout>
+    </Layout>
   );
 };
 

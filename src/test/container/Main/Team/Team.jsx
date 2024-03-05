@@ -1,11 +1,12 @@
 import React from 'react';
 import { colors, participants } from '../../../../services/ServiceInfo';
-import { Laout } from '../../../common/Laout';
+import { Layout } from '../../../common/Layout';
 import { Participants } from './Participants';
-
+/* spell-checker: disable */
+// TODO: Carrusel y Flexbox desktop
 const Team = () => {
   return (
-    <Laout className="bg-section2 w-full">
+    <Layout className="bg-section2 w-full">
       <section id="team" className="text-ct-base min-w-ct-min w-full">
         <h2 className="text-blue_title text-ct-sub-title">
           Nuestro equipo
@@ -30,7 +31,7 @@ const Team = () => {
           })}
         </div>
       </section>
-    </Laout>
+    </Layout>
   );
 };
 

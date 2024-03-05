@@ -4,6 +4,7 @@ import { LazyImage } from '../../../common/LazyImage';
 import { Bubble } from '../../../../assets/svgs/Bubble';
 import { PersonIconError } from '../../../../assets/svgs/PersonIconError';
 import { SkBubble } from '../../../common/skeletons/SkBubble';
+// cSpell:ignore Cantera svgs
 
 const Participants = ({
   href,

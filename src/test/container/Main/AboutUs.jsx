@@ -1,8 +1,9 @@
 import React from 'react';
-import { Laout } from '../../common/Laout';
+import { Layout } from '../../common/Layout';
 import { Abbr } from '../../../components/common/alternativeText/Abbr';
 import { LazyImage } from '../../common/LazyImage';
 import { ExpandableText } from '../../common/alternativeText/ExpandableText';
+/* spell-checker: disable */
 
 const AboutUs = () => {
   const optionsImage = {
@@ -59,7 +60,7 @@ const AboutUs = () => {
   };
 
   return (
-    <Laout className="bg-section1 w-full">
+    <Layout className="bg-section1 w-full">
       <section
         id="about-us"
         className="flex min-w-ct-min w-full flex-col justify-center items-center text-ct-base text-start">
@@ -72,7 +73,7 @@ const AboutUs = () => {
         />
         <LazyImage {...optionsImage} />
       </section>
-    </Laout>
+    </Layout>
   );
 };
 
