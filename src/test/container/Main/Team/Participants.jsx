@@ -57,4 +57,4 @@ const Participants = ({
   );
 };
 
-export { Participants };
+export default Participants;

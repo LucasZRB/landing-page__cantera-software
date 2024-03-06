@@ -7,7 +7,7 @@ import { Pronunciation } from '../../../../components/common/alternativeText/Pro
 const Company = lazy(() => import('./Company'));
 const SliderTest = lazy(() => import('./SliderTest'));
 // TODO: Flexbox desktop
-
+/* spell-checker: disable */
 const Collaborators = () => {
   const isMobile = useGetWidthSize(768);
 

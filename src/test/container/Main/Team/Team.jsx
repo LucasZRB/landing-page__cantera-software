@@ -1,10 +1,16 @@
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import { colors, participants } from '../../../../services/ServiceInfo';
 import { Layout } from '../../../common/Layout';
-import { Participants } from './Participants';
+import { useGetWidthSize } from '../../../hooks/useGetWidthSize';
 /* spell-checker: disable */
-// TODO: Carrusel y Flexbox desktop
+// TODO: Flexbox desktop
+
+const Participants = lazy(() => import('./Participants'));
+const SliderTeam = lazy(() => import('./SliderTeam'));
+
 const Team = () => {
+  const isMobile = useGetWidthSize(768);
+
   return (
     <Layout className="bg-section2 w-full">
       <section id="team" className="text-ct-base min-w-ct-min w-full">
@@ -19,16 +25,24 @@ const Team = () => {
           través de la educación en tecnología. ¡Conócelos!
         </p>
         <div className="flex flex-col justify-center items-center">
-          {participants.map((participant, index) => {
-            const colorPosition = colors[index % colors.length];
-            return (
-              <Participants
-                key={index}
-                color={colorPosition}
-                {...participant}
-              />
-            );
-          })}
+          <Suspense fallback={<div>Cargando...</div>}>
+            {isMobile ? (
+              <SliderTeam />
+            ) : (
+              <>
+                {participants.map((participant, index) => {
+                  const colorPosition = colors[index % colors.length];
+                  return (
+                    <Participants
+                      key={index}
+                      color={colorPosition}
+                      {...participant}
+                    />
+                  );
+                })}
+              </>
+            )}
+          </Suspense>
         </div>
       </section>
     </Layout>

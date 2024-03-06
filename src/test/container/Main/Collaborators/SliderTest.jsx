@@ -61,7 +61,9 @@ const SliderTest = () => {
       </button>
       <a
         className="w-52 h-32 flex justify-center items-center bg-pure_white rounded-xl outline-none"
-        href={'#'}>
+        href={companies[index].href}
+        target='_blank'
+        rel='noopener noreferrer'>
         <AnimatePresence initial={false} custom={direction}>
           <LazyImage
             src={companies[index].imgSrc}

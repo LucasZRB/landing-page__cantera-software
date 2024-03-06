@@ -56,12 +56,11 @@ const LazyImage = props => {
     loading: 'lazy',
     className: `${isImageLoaded ? 'opacity-100' : 'opacity-0'} ${imageClass}`,
     onLoad: handleImageLoad,
-    onError: handleImageError,
-    ...extra
+    onError: handleImageError
   };
 
   return (
-    <figure className={`relative ${figureClass}`}>
+    <motion.figure {...extra} className={`relative ${figureClass}`}>
       {!isImageLoaded && !error && LoadingBackground && (
         <div className="flex justify-center items-center size-full">
           <LoadingBackground />
@@ -77,17 +76,13 @@ const LazyImage = props => {
           <SuccessBackground />
         </div>
       )}
-      {propsImage.animate ? (
-        <motion.img {...propsImage} />
-      ) : (
         <img {...propsImage} />
-      )}
       {title !== '' && (
         <figcaption id="description-image" className="sr-only">
           {title}
         </figcaption>
       )}
-    </figure>
+    </motion.figure>
   );
 };
 
