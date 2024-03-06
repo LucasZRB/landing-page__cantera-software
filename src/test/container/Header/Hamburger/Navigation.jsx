@@ -12,13 +12,13 @@ const variants = {
   }
 };
 
-export const Navigation = ({ isOpen }) => {
+export const Navigation = ({ isOpen, setIsOpen }) => {
   return (
     <motion.ul
       variants={variants}
       className={`flex flex-col gap-5 p-6 absolute top-[6.25rem] w-[14.375rem] ${isOpen ? '' : 'pointer-events-none'}`}>
       {links.map((_, i) => (
-        <MenuItem i={i} key={i} />
+        <MenuItem i={i} setState={setIsOpen} key={i} />
       ))}
     </motion.ul>
   );

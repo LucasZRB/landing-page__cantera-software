@@ -10,7 +10,7 @@
 }
 
 @layer components {
-  .--tw-hidde-shadow {
+  .hidden-shadow {
     --tw-ring-shadow: none;
     box-shadow: none;
   }

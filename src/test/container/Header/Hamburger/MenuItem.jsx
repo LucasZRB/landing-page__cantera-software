@@ -19,12 +19,13 @@ const variants = {
   }
 };
 
-const introToView = href => {
+const introToView = (href, setState) => {
   const section = document.getElementById(href);
+  setState();
   section.scrollIntoView({ behavior: 'smooth' });
 };
 
-const MenuItem = ({ i }) => {
+const MenuItem = ({ i, setState }) => {
   return (
     <motion.li
       variants={variants}
@@ -36,7 +37,7 @@ const MenuItem = ({ i }) => {
         type="button"
         aria-describedby={links[i].title}
         title={links[i].title}
-        onClick={() => introToView(links[i].href)}>
+        onClick={() => introToView(links[i].href, setState)}>
         {links[i].message}
       </a>
     </motion.li>

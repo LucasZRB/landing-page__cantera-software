@@ -29,7 +29,9 @@ const Button2 = ({
       title={title}
       onClick={onClick}>
       <b className="text-ct-sm font-bold">{message}</b>
-      <span className="sr-only">{description}</span>
+      <span className="sr-only" id={`${ariaId}Tooltip`}>
+        {description}
+      </span>
     </button>
   );
 };

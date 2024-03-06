@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 
-const useVideoControler = (videoRef, rootMargin = '0px') => {
+const useVideoController = (videoRef, rootMargin = '0px') => {
   useEffect(() => {
     const video = videoRef.current;
     const options = {
@@ -32,4 +32,4 @@ const useVideoControler = (videoRef, rootMargin = '0px') => {
   return null;
 };
 
-export { useVideoControler };
+export { useVideoController };

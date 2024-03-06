@@ -45,11 +45,11 @@ const HamburgerMenu = () => {
         variants={sidebar}
       />
       <img
-        className={`absolute top-3 left-3 h-[3.75rem] object-cover transition-all ${isOpen ? 'opacity-1 duration-500' : 'opacity-0 duration-1000'}`}
+        className={`absolute top-3 left-3 h-[3.75rem] object-cover aspect-[92/37] transition-all ${isOpen ? 'opacity-1 duration-500' : 'opacity-0 duration-1000'}`}
         src="../../../../public/images/mobile_backgrounds/hamburgerLogo.png"
         alt=""
       />
-      <Navigation isOpen={isOpen} />
+      <Navigation isOpen={isOpen} setIsOpen={setIsOpen} />
       <MenuIcon toggle={toggleOpen} />
     </motion.nav>
   );

@@ -1,6 +1,7 @@
-import React, { useState, useEffect, lazy, Suspense } from 'react';
+import React, { lazy, Suspense } from 'react';
 import { companies } from '../../../../services/ServiceInfo';
 import { Layout } from '../../../common/Layout';
+import { useGetWidthSize } from "../../../../test/hooks/useGetWidthSize";
 import { Pronunciation } from '../../../../components/common/alternativeText/Pronunciation';
 
 const Company = lazy(() => import('./Company'));
@@ -8,19 +9,7 @@ const SliderTest = lazy(() => import('./SliderTest'));
 // TODO: Flexbox desktop
 
 const Collaborators = () => {
-  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
-
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth <= 768);
-    };
-
-    window.addEventListener('resize', handleResize);
-
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);
+  const isMobile = useGetWidthSize(768);
 
   return (
     <Layout className="bg-section3 w-full">

@@ -5,7 +5,7 @@ import { FiCheckSquare, FiAlertTriangle } from 'react-icons/fi';
 
 const NOTIFICATION_TTL = 5000;
 
-const menssageTypes = {
+const messageTypes = {
   success: {
     color: 'success',
     icon: FiCheckSquare,
@@ -23,10 +23,10 @@ const menssageTypes = {
   }
 };
 
-const NotificationManager = ({ type, id, text, removeNotif }) => {
+const NotificationManager = ({ type, id, text, removeNotification }) => {
   useEffect(() => {
     const timeoutRef = setTimeout(() => {
-      removeNotif(id);
+      removeNotification(id);
     }, NOTIFICATION_TTL);
 
     return () => clearTimeout(timeoutRef);
@@ -39,13 +39,13 @@ const NotificationManager = ({ type, id, text, removeNotif }) => {
       animate={{ y: 0, scale: 1 }}
       exit={{ x: '100%', opacity: 0 }}
       transition={{ duration: 0.35, ease: 'easeOut' }}
-      className="pointer-events-auto">
+      className="pointer-events-auto h-10">
       <Alert
-        color={menssageTypes[type].color}
-        icon={menssageTypes[type].icon}
-        onDismiss={() => removeNotif(id)}>
+        color={messageTypes[type].color}
+        icon={messageTypes[type].icon}
+        onDismiss={() => removeNotification(id)}>
         <span className="font-semibold" aria-hidden>
-          {menssageTypes[type].type}
+          {messageTypes[type].type}
         </span>{' '}
         {text}
       </Alert>

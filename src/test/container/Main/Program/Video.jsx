@@ -1,11 +1,11 @@
 import React, { useRef } from 'react';
 import { TitleBar } from './TitleBar';
-import { useVideoControler } from '../../../hooks/useVideoControler';
+import { useVideoController } from '../../../hooks/useVideoController';
 import './Video.css';
 
 const Video = () => {
   const videoRef = useRef(null);
-  useVideoControler(videoRef);
+  useVideoController(videoRef);
 
   return (
     <div className="video-container__grid">
