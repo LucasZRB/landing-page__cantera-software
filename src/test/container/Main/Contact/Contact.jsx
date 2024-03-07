@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import ReCaptcha from '@matt-block/react-recaptcha-v2';
 import { Input } from "./Input";
 import { Layout } from '../../../common/Layout';
@@ -6,8 +6,11 @@ import { Button2 } from '../../../common/button/Button2';
 import { Notification } from '../../../../components/common/notifications/Notification';
 import { TextAnimation } from '../../../../components/common/TextAnimation';
 import { useGetWidthSize } from '../../../hooks/useGetWidthSize';
+import { useMeasurement } from '../../../hooks/useMeasurement';
 
 const Contact = () => {
+  const bgRef = useRef(null);
+  const { width, height } = useMeasurement(bgRef);
   const [validCaptcha, setValidCaptcha] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -154,7 +157,14 @@ const Contact = () => {
   };
 
   return (
-    <Layout className="text-ct-base flex flex-col items-center justify-center max-w-7xl w-full">
+    <Layout
+      bgRef={bgRef}
+      className="text-ct-base flex flex-col items-center justify-center max-w-7xl w-full bg-no-repeat bg-center"
+      style={{
+        backgroundImage:
+          "url('./images/mobile_backgrounds/programBackground.png')",
+        backgroundSize: `${width}px ${height}px`
+      }}>
       <section
         id="contact"
         className="text-ct-base flex flex-col items-center justify-center min-w-ct-min w-full">

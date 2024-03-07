@@ -1,9 +1,13 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { Video } from './Video';
 import { Layout } from '../../../common/Layout';
 import { ExpandableText } from '../../../common/alternativeText/ExpandableText';
+import { useMeasurement } from '../../../hooks/useMeasurement';
 
 const Program = () => {
+  const bgRef = useRef(null);
+  const { width, height } = useMeasurement(bgRef);
+
   const buttonOptions = {
     shortText: (
       <p className="mt-4 mb-6">
@@ -29,7 +33,14 @@ const Program = () => {
   };
 
   return (
-    <Layout className="bg-pure_white w-full">
+    <Layout
+      bgRef={bgRef}
+      className="bg-pure_white w-full bg-no-repeat bg-center"
+      style={{
+        backgroundImage:
+          "url('./images/mobile_backgrounds/programBackground.png')",
+        backgroundSize: `${width}px ${height}px`
+      }}>
       <section
         id="program"
         className="flex flex-col items-center gap-6 text-ct-base text-start min-w-ct-min w-full">

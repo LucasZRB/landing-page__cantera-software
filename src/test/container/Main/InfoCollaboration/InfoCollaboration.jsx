@@ -1,11 +1,22 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { Layout } from '../../../common/Layout';
 import { CardFlip } from './CardFlip';
+import { useMeasurement } from '../../../hooks/useMeasurement';
 /* spell-checker: disable */
 
 const InfoCollaboration = () => {
+  const bgRef = useRef(null);
+  const { width, height } = useMeasurement(bgRef);
+
   return (
-    <Layout className="bg-pure_white w-full">
+    <Layout
+      bgRef={bgRef}
+      className="bg-pure_white w-full bg-no-repeat bg-center"
+      style={{
+        backgroundImage:
+          "url('./images/mobile_backgrounds/programBackground.png')",
+        backgroundSize: `${width}px ${height}px`
+      }}>
       <section
         id="info-collaboration"
         className="flex flex-col text-ct-base min-w-ct-min w-full">

@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Layout = ({ children, className = "" }) => {
+const Layout = ({ children, className = "", style = {}, bgRef }) => {
   let setClassName = 'flex justify-center px-10 ';
   if (className.includes('py-') || className.includes('pt-') || className.includes('pb-')) {
     setClassName += className
@@ -10,7 +10,7 @@ const Layout = ({ children, className = "" }) => {
   }
 
   return (
-    <div className={setClassName}>
+    <div ref={bgRef} className={setClassName} style={style}>
       {children}
     </div>
   );

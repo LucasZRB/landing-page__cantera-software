@@ -103,7 +103,7 @@ const SliderTeam = () => {
               className="absolute top-[8px] right-[8px] text-ct-base"
               aria-hidden="true"
             />
-            <div className="mt-7" {...animations}>
+            <div className="mt-7">
               <span className="sr-only">{description}</span>
               <p aria-hidden>
                 <b>{fullName}</b>
