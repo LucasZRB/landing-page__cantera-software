@@ -79,7 +79,7 @@ const LazyImage = props => {
         <img {...propsImage} />
       {title !== '' && (
         <figcaption id="description-image" className="sr-only">
-          Imagen: {title}
+          {title}
         </figcaption>
       )}
     </motion.figure>

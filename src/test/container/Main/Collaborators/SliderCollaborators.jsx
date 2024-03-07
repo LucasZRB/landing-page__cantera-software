@@ -32,9 +32,10 @@ const variants = {
   })
 };
 
-const SliderTest = () => {
+const SliderCollaborators = () => {
   const [index, setIndex] = useState(0);
   const [direction, setDirection] = useState(0);
+  const { href, imgSrc, imgAlt, title } = companies[index];
 
   const prevStep = () => {
     setDirection(-1);
@@ -52,6 +53,23 @@ const SliderTest = () => {
     setIndex(index + 1);
   };
 
+  const optionsImage = {
+    src: imgSrc,
+    alt: imgAlt,
+    title: title === '' ? `Ir a la página de ${imgAlt}` : title,
+    imageClass: 'size-full object-contain',
+    LoadingBackground: null
+  };
+
+  const animations = {
+    variants: variants,
+    animate: 'animate',
+    initial: 'initial',
+    exit: 'exit',
+    key: href,
+    custom: direction
+  }
+
   return (
     <div className={'flex'}>
       <button
@@ -61,22 +79,12 @@ const SliderTest = () => {
       </button>
       <a
         className="w-52 h-32 flex justify-center items-center bg-pure_white rounded-xl outline-none"
-        href={companies[index].href}
+        href={href}
         target='_blank'
         rel='noopener noreferrer'>
         <AnimatePresence initial={false} custom={direction}>
           <LazyImage
-            src={companies[index].imgSrc}
-            alt={companies[index].imgAlt}
-            title={companies[index].imgAlt}
-            imageClass="size-full object-contain"
-            LoadingBackground={null}
-            variants={variants}
-            animate="animate"
-            initial="initial"
-            exit="exit"
-            key={companies[index].href}
-            custom={direction}
+            {...optionsImage} {...animations}
           />
         </AnimatePresence>
       </a>
@@ -89,4 +97,4 @@ const SliderTest = () => {
   );
 };
 
-export default SliderTest;
+export default SliderCollaborators;

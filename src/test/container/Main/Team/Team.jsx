@@ -2,8 +2,6 @@ import React, { lazy, Suspense } from 'react';
 import { colors, participants } from '../../../../services/ServiceInfo';
 import { Layout } from '../../../common/Layout';
 import { useGetWidthSize } from '../../../hooks/useGetWidthSize';
-/* spell-checker: disable */
-// TODO: Flexbox desktop
 
 const Participants = lazy(() => import('./Participants'));
 const SliderTeam = lazy(() => import('./SliderTeam'));
@@ -24,7 +22,7 @@ const Team = () => {
           apasionados profesionales dedicados a la misión de transformar vidas a
           través de la educación en tecnología. ¡Conócelos!
         </p>
-        <div className="flex flex-col justify-center items-center">
+        <div className="flex flex-col sm:flex-row justify-center items-center flex-wrap gap-28">
           <Suspense fallback={<div>Cargando...</div>}>
             {isMobile ? (
               <SliderTeam />

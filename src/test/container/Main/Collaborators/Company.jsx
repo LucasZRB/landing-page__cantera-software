@@ -14,8 +14,7 @@ const Company = ({ href, title, imgSrc, imgAlt }) => {
   };
 
   return (
-    <div className={isFocused ? focusClass : '' + ' flex'}>
-      <button className="pr-4">&lt;</button>
+    <div className={isFocused ? focusClass : ''}>
       <a
         className="w-52 h-32 flex justify-center items-center bg-pure_white rounded-xl outline-none"
         onFocus={() => setIsFocused(true)}
@@ -27,7 +26,6 @@ const Company = ({ href, title, imgSrc, imgAlt }) => {
         aria-describedby="description-image">
         <LazyImage {...optionsImage} />
       </a>
-      <button className="pl-4">&gt;</button>
     </div>
   );
 };
