@@ -1,6 +1,7 @@
 .video-container__grid {
   display: grid;
   justify-items: center;
+  align-items: center;
   grid-row: span 3;
   grid-column: span 1;
   grid-template-rows: repeat(3, 1fr);

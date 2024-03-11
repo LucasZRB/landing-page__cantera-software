@@ -37,6 +37,12 @@ const SliderCollaborators = () => {
   const [direction, setDirection] = useState(0);
   const { href, imgSrc, imgAlt, title } = companies[index];
 
+  const baseClass = "w-52 h-32 flex justify-center items-center bg-pure_white rounded-xl outline-none"
+  const focusBaseClass =
+    "focus:after:content-[''] focus:after:block focus:after:absolute focus:after:h-full focus:after:border-b-2 focus:after:mt-1 focus:after:w-1/2 focus:after:mx-auto";
+  const focusColorClass = 'focus:after:border-blue_title';
+  const classNameImg = `${baseClass} ${focusBaseClass} ${focusColorClass}`
+
   const prevStep = () => {
     setDirection(-1);
     if (index === 0) {
@@ -71,25 +77,27 @@ const SliderCollaborators = () => {
   }
 
   return (
-    <div className={'flex'}>
+    <div className={'flex relative'}>
       <button
-        className="pr-4 hover:text-main_green text-ct-main-title"
+        className="mr-4 my-auto size-fit hover:text-main_green text-ct-main-title"
+        aria-label="Compañia anterior"
+        title="Compañia anterior"
         onClick={prevStep}>
         <RiArrowDropLeftLine aria-hidden="true" />
       </button>
       <a
-        className="w-52 h-32 flex justify-center items-center bg-pure_white rounded-xl outline-none"
+        className={classNameImg}
         href={href}
-        target='_blank'
-        rel='noopener noreferrer'>
+        target="_blank"
+        rel="noopener noreferrer">
         <AnimatePresence initial={false} custom={direction}>
-          <LazyImage
-            {...optionsImage} {...animations}
-          />
+          <LazyImage {...optionsImage} {...animations} />
         </AnimatePresence>
       </a>
       <button
-        className="pl-4 hover:text-main_green text-ct-main-title"
+        className="ml-4 my-auto size-fit hover:text-main_green text-ct-main-title"
+        aria-label="Compañia siguiente"
+        title="Compañia siguiente"
         onClick={nextStep}>
         <RiArrowDropRightLine aria-hidden="true" />
       </button>

@@ -1,0 +1,39 @@
+.program {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem; /* 24px */
+  align-items: center;
+  text-align: start;
+}
+
+.program-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem; /* 40px */
+}
+
+@media (min-width: 768px) {
+  .program {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 4rem /* 64px */;
+  }
+
+  .program-title {
+    grid-column: span 2;
+  }
+
+  .program-content {
+    display: grid;
+    grid-column: span 2;
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .program-information {
+    grid-column: span 1;
+    grid-row: span 3;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+  }
+}

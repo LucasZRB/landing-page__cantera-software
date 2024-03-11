@@ -76,9 +76,11 @@ const LazyImage = props => {
           <SuccessBackground />
         </div>
       )}
-        <img {...propsImage} />
+      <img {...propsImage} />
       {title !== '' && (
-        <figcaption id="description-image" className="sr-only">
+        <figcaption
+          id={`description-image-${alt.split(' ').join('-')}`}
+          className="sr-only">
           {title}
         </figcaption>
       )}

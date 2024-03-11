@@ -19,7 +19,18 @@ const Video = () => {
           loop
           loading="lazy">
           <source src="./video/canteraVideo.mp4" type="video/mp4" />
-          <track kind="descriptions" src="short_video_description.vtt" />
+          <track
+            label="Español"
+            kind="descriptions"
+            srcLang="es"
+            src="short_video_description.vtt"
+          />
+          <track
+            label="Español"
+            kind="captions"
+            srcLang="es"
+            src="short_video_description.vtt"
+          />
         </video>
       </div>
     </div>

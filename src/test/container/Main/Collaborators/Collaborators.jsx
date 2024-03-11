@@ -12,7 +12,10 @@ const Collaborators = () => {
 
   return (
     <Layout className="bg-section3 w-full">
-      <section id="collaborators" className="text-ct-base min-w-ct-min w-full">
+      <section
+        id="collaborators"
+        tabIndex={-1}
+        className="text-ct-base min-w-ct-min w-full">
         <h2 className="text-blue_title text-ct-sub-title">
           Colaboran con nosotros
           <span className="sr-only">:</span>

@@ -1,5 +1,5 @@
 import * as React from 'react';
-const LogoCantera = ({ bg, props }) => {
+const LogoCantera = ({ bg, section, props }) => {
   const bigText = bg == 'v2' ? '#fff' : '#4F4D4C';
   const smallText = bg == 'v2' ? '#fff' : '#438761';
 
@@ -27,7 +27,7 @@ const LogoCantera = ({ bg, props }) => {
       />
       <g opacity={0.65}>
         <mask
-          id="a"
+          id={`${section}-a`}
           width={58}
           height={58}
           x={0}
@@ -41,14 +41,14 @@ const LogoCantera = ({ bg, props }) => {
             d="m39.66 10.77.01 7.29h7.28l10.63 10.62-10.61 10.63-7.3-.02v7.31L29.04 57.22 18.41 46.6v-7.29l-6.77.51L.5 28.68l10.62-10.62h7.3l-.01-7.29L29.04.13l10.62 10.64Z"
           />
         </mask>
-        <g mask="url(#a)">
+        <g mask={`url(#${section}-a)`}>
           <path
             fill="#60D85A"
             d="m58.22 39.28-3.72 3.67 3.8 3.65.15 10.65-10.98.05-3.8-3.64-3.73 3.67-10.96.05-.13-10.65 3.71-3.67-3.8-3.13-.14-11.16 10.96-.05 3.81 3.64 3.72-3.68 10.98-.05.13 10.65Z"
           />
         </g>
         <mask
-          id="b"
+          id={`${section}-b`}
           width={58}
           height={58}
           x={0}
@@ -62,7 +62,7 @@ const LogoCantera = ({ bg, props }) => {
             d="m39.66 10.77.01 7.29h7.28l10.63 10.62-10.61 10.63-7.3-.02v7.31L29.04 57.22 18.41 46.6v-7.29l-6.77.51L.5 28.68l10.62-10.62h7.3l-.01-7.29L29.04.13l10.62 10.64Z"
           />
         </mask>
-        <g mask="url(#b)">
+        <g mask={`url(#${section}-b)`}>
           <path
             fill="#153B28"
             d="m28.89 10.85-3.63 3.64 3.5 3.65-.19 10.6-10.41-.06-3.5-3.66-3.64 3.62-10.41-.06.2-10.62 3.64-3.62-3.51-3.15.2-11.12 10.4.06 3.51 3.67L18.68.18l10.41.07-.2 10.6Z"
@@ -72,4 +72,4 @@ const LogoCantera = ({ bg, props }) => {
     </svg>
   );
 };
-export { LogoCantera };
+export default LogoCantera;

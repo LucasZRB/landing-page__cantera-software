@@ -7,7 +7,6 @@ import { Bubble } from '../../../../assets/svgs/Bubble';
 import { SkBubble } from '../../../common/skeletons/SkBubble';
 import { colors, participants } from '../../../../services/ServiceInfo';
 import { PersonIconError } from '../../../../assets/svgs/PersonIconError';
-// cSpell:ignore Cantera svgs
 
 const variants = {
   initial: direction => ({
@@ -24,7 +23,7 @@ const variants = {
       opacity: { duration: 0.2 }
     }
   },
-  initial: direction => ({
+  exit: direction => ({
     x: -200 * direction,
     opacity: 0,
     scale: 0.5,
@@ -57,9 +56,9 @@ const SliderTeam = () => {
     setIndex(index + 1);
   };
 
-  const baseClass = 'relative outline-none';
+  const baseClass = 'relative outline-none w-[12.625rem] h-[17.375rem]';
   const focusBaseClass =
-    "focus:after:content-[''] focus:after:block focus:after:border-b-2 focus:after:mt-1 focus:after:w-1/2 focus:after:mx-auto";
+    "focus:after:content-[''] focus:after:block focus:after:h-full focus:after:border-b-2 focus:after:mt-1 focus:after:w-1/2 focus:after:mx-auto";
   const focusColorClass = 'focus:after:border-blue_title';
   const className = `${baseClass} ${focusBaseClass} ${focusColorClass}`;
 
@@ -87,6 +86,8 @@ const SliderTeam = () => {
     <div className={'flex'}>
       <button
         className="mr-4 my-auto size-fit hover:text-main_green text-ct-main-title"
+        aria-label="Participante anterior"
+        title='Participante anterior'
         onClick={prevStep}>
         <RiArrowDropLeftLine aria-hidden="true" />
       </button>
@@ -97,7 +98,7 @@ const SliderTeam = () => {
         target="_blank"
         rel="noopener noreferrer">
         <AnimatePresence initial={false} custom={direction}>
-          <motion.div {...animations}>
+          <motion.div {...animations} className='absolute'>
             <LazyImage {...optionsImage} />
             <FaLinkedinIn
               className="absolute top-[8px] right-[8px] text-ct-base"
@@ -115,6 +116,8 @@ const SliderTeam = () => {
       </a>
       <button
         className="mr-4 my-auto size-fit hover:text-main_green text-ct-main-title"
+        aria-label="Participante siguiente"
+        title='Participante siguiente'
         onClick={nextStep}>
         <RiArrowDropRightLine aria-hidden="true" />
       </button>

@@ -1,4 +1,6 @@
 import { Abbr } from '../components/common/alternativeText/Abbr';
+import { IoMail } from 'react-icons/io5';
+import { FaInstagram, FaLinkedinIn } from 'react-icons/fa';
 
 export const colors = ['#FFD55F', '#48B95D', '#FF6B79', '#01CEDA'];
 export const participants = [
@@ -103,6 +105,31 @@ export const links = [
     href: 'contact',
     title: 'Botón ir al formulario.',
     message: 'Contacto',
-    className: 'font-bold'
+    className: 'font-bold',
+    type: 'btn'
+  }
+];
+
+export const infoFooter = [
+  {
+    href: 'https://www.instagram.com/canterasoftware/',
+    title: 'Ir al Instagram de Canterasoftware.',
+    message: 'Canterasoftware',
+    Icon: FaInstagram,
+    outLink: true
+  },
+  {
+    href: 'https://www.linkedin.com/company/la-cantera-software/',
+    title: 'Ir al Linkedin de Canterasoftware.',
+    message: 'La Cantera Software',
+    Icon: FaLinkedinIn,
+    outLink: true
+  },
+  {
+    href: 'mailto:info@canterasoft.com',
+    'aria-label': 'Enviar correo a La Cantera.',
+    title: 'Enviar correo a La Cantera',
+    message: 'info@canterasoft.com',
+    Icon: IoMail
   }
 ];

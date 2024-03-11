@@ -1,5 +1,5 @@
 import * as React from 'react';
-const SmallLogoCantera = ({ bg, props }) => {
+const SmallLogoCantera = ({ bg, section, props }) => {
   const bigText = bg == 'v2' ? '#fff' : '#4F4D4C';
   const smallText = bg == 'v2' ? '#fff' : '#438761';
 
@@ -27,7 +27,7 @@ const SmallLogoCantera = ({ bg, props }) => {
       />
       <g opacity={0.65}>
         <mask
-          id="a"
+          id={`${section}-a`}
           width={29}
           height={29}
           x={0}
@@ -41,14 +41,14 @@ const SmallLogoCantera = ({ bg, props }) => {
             d="m19.648 6.338.005 3.658h3.652l5.334 5.328-5.324 5.334-3.662-.01v3.667l-5.334 5.329-5.333-5.329v-3.657l-3.397.256L0 15.324l5.328-5.328h3.663l-.005-3.658L14.319 1l5.329 5.338Z"
           />
         </mask>
-        <g mask="url(#a)">
+        <g mask={`url(#${section}-a)`}>
           <path
             fill="#60D85A"
             d="m28.96 20.643-1.867 1.841L29 24.315l.075 5.344-5.509.025-1.906-1.826-1.872 1.841-5.499.025-.065-5.343 1.861-1.842-1.906-1.57-.07-5.6 5.499-.024 1.911 1.826 1.867-1.847 5.509-.025.065 5.344Z"
           />
         </g>
         <mask
-          id="b"
+          id={`${section}-b`}
           width={29}
           height={29}
           x={0}
@@ -62,7 +62,7 @@ const SmallLogoCantera = ({ bg, props }) => {
             d="m19.648 6.338.005 3.658h3.652l5.334 5.328-5.324 5.334-3.662-.01v3.667l-5.334 5.329-5.333-5.329v-3.657l-3.397.256L0 15.324l5.328-5.328h3.663l-.005-3.658L14.319 1l5.329 5.338Z"
           />
         </mask>
-        <g mask="url(#b)">
+        <g mask={`url(#${section}-b)`}>
           <path
             fill="#153B28"
             d="m14.244 6.379-1.821 1.826 1.756 1.831-.095 5.319-5.223-.03-1.757-1.837-1.826 1.816-5.223-.03.1-5.328L1.983 8.13.22 6.55.32.97 5.54 1 7.3 2.841l1.821-1.816 5.223.035-.1 5.319Z"
@@ -72,4 +72,4 @@ const SmallLogoCantera = ({ bg, props }) => {
     </svg>
   );
 };
-export { SmallLogoCantera };
+export default SmallLogoCantera;

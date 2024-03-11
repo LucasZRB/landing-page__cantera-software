@@ -15,3 +15,11 @@
     box-shadow: none;
   }
 }
+
+@layer components {
+  .size-section {
+    min-width: 280px;
+    max-width: 1280px;
+    width: 100%;
+  }
+}

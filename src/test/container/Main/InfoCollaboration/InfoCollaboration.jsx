@@ -1,25 +1,31 @@
-import React, { useRef } from 'react';
+import React, { Suspense, lazy, useRef } from 'react';
 import { Layout } from '../../../common/Layout';
-import { CardFlip } from './CardFlip';
 import { useMeasurement } from '../../../hooks/useMeasurement';
+import { useGetWidthSize } from '../../../hooks/useGetWidthSize';
 /* spell-checker: disable */
+
+const CardFlip = lazy(() => import('./CardFlip'));
+const ContentBlock = lazy(() => import('./ContentBlock'));
 
 const InfoCollaboration = () => {
   const bgRef = useRef(null);
   const { width, height } = useMeasurement(bgRef);
+  const isMobile = useGetWidthSize(768);
 
   return (
     <Layout
       bgRef={bgRef}
       className="bg-pure_white w-full bg-no-repeat bg-center"
       style={{
-        backgroundImage:
-          "url('./images/mobile_backgrounds/programBackground.png')",
+        backgroundImage: `url('./images/${
+          isMobile ? 'mobile' : 'desktop'
+        }_backgrounds/programBackground.png')`,
         backgroundSize: `${width}px ${height}px`
       }}>
       <section
         id="info-collaboration"
-        className="flex flex-col text-ct-base min-w-ct-min w-full">
+        tabIndex={-1}
+        className="size-section text-ct-base">
         <h2 className="text-blue_title text-ct-sub-title">¿Cómo colaborar?</h2>
         <p className="mt-4 mb-8">
           En La Cantera, creemos en la fuerza de la colaboración para alcanzar
@@ -28,8 +34,7 @@ const InfoCollaboration = () => {
           nuevos horizontes. Descubre cómo puedes ser parte de esta
           transformación.
         </p>
-
-        <CardFlip />
+        <Suspense>{isMobile ? <CardFlip /> : <ContentBlock />}</Suspense>
       </section>
     </Layout>
   );

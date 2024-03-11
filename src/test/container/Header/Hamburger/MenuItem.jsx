@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { links } from '../../../../services/ServiceInfo';
+import { introToView } from '../../../../utils/introToView';
 
 const variants = {
   open: {
@@ -19,26 +20,29 @@ const variants = {
   }
 };
 
-const introToView = (href, setState) => {
-  const section = document.getElementById(href);
-  setState();
-  section.scrollIntoView({ behavior: 'smooth' });
+const intoView = (href, toggle) => {
+  toggle();
+  introToView(href);
 };
 
-const MenuItem = ({ i, setState }) => {
+const MenuItem = ({ i, toggle }) => {
+  const { href, title, message, className } = links[i];
+  const onKeyDown = e => e.key === 'Enter' && intoView(href, toggle);
+
   return (
     <motion.li
       variants={variants}
       whileHover={{ scale: 1.1 }}
       whileTap={{ scale: 0.95 }}
-      className="text-start text-pure_white text-ct-sm">
+      className="text-start text-pure_white text-ct-sm"
+      onClick={() => intoView(href, toggle)}
+      onKeyDown={onKeyDown}>
       <a
-        className={links[i].className ?? ''}
-        type="button"
-        aria-describedby={links[i].title}
-        title={links[i].title}
-        onClick={() => introToView(links[i].href, setState)}>
-        {links[i].message}
+        className={className ?? ''}
+        role="button"
+        aria-label={title}
+        title={title}>
+        {message}
       </a>
     </motion.li>
   );

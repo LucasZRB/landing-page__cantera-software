@@ -39,7 +39,7 @@ const NotificationManager = ({ type, id, text, removeNotification }) => {
       animate={{ y: 0, scale: 1 }}
       exit={{ x: '100%', opacity: 0 }}
       transition={{ duration: 0.35, ease: 'easeOut' }}
-      className="pointer-events-auto h-10">
+      className="pointer-events-auto h-10 md:h-auto">
       <Alert
         color={messageTypes[type].color}
         icon={messageTypes[type].icon}

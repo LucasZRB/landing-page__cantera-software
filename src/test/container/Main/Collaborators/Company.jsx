@@ -23,7 +23,7 @@ const Company = ({ href, title, imgSrc, imgAlt }) => {
         title={title}
         target="_blank"
         rel="noopener noreferrer"
-        aria-describedby="description-image">
+        aria-describedby={`description-image-${imgAlt.split(' ').join('-')}`}>
         <LazyImage {...optionsImage} />
       </a>
     </div>

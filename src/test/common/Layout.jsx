@@ -6,7 +6,7 @@ const Layout = ({ children, className = "", style = {}, bgRef }) => {
     setClassName += className
   } else {
     // py-ct-margins = 135px | py-11 = 44px
-    setClassName += `py-11 ${className}`;
+    setClassName += `py-11 md:py-ct-margins ${className}`;
   }
 
   return (

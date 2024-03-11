@@ -1,77 +1,50 @@
 import React from 'react';
-import { ItemsNav } from '../../../components/common/items/ItemsNav';
-import { Pronunciation } from '../../../components/common/alternativeText/Pronunciation';
 import { Layout } from '../../common/Layout';
-import { FaInstagram, FaLinkedinIn } from 'react-icons/fa';
-import { IoMail } from 'react-icons/io5';
-import { SmallLogoCantera } from '../../../assets/svgs/SmallLogoCantera';
+import { infoFooter } from '../../../services/ServiceInfo';
+import { useGetWidthSize } from '../../hooks/useGetWidthSize';
+import LogoCantera from '../../../assets/svgs/LogoCantera';
+import { ItemsNav } from '../../../components/common/items/ItemsNav';
+import SmallLogoCantera from '../../../assets/svgs/SmallLogoCantera';
+import { Pronunciation } from '../../../components/common/alternativeText/Pronunciation';
 
 // Responsive y parserearlo
 
 const Footer = () => {
+  const isMobile = useGetWidthSize(768);
+  const Icon = isMobile ? SmallLogoCantera : LogoCantera;
+
   const classBase = 'flex items-center justify-center';
   const focusClass =
     'focus:outline-green_hover focus:outline-dotted focus:outline-4 focus:outline-offset-4 focus:rounded-xl';
-  const mainClass = `${classBase} ${focusClass}`
+  const mainClass = `${classBase} ${focusClass}`;
 
   return (
-    <Layout className="bg-blue_title py-9">
-      <footer className="min-w-ct-min w-full text-ct-sm text-pure_white flex flex-col gap-6 items-center">
+    <Layout className="bg-blue_title py-9 md:py-ct-footer">
+      <footer className="size-section text-ct-sm text-pure_white flex flex-col gap-6 items-center md:flex-row md:justify-between md:items-start">
         <section>
-          <SmallLogoCantera bg={'v2'} />
+          <Icon bg={'v2'} section={'footer'} />
         </section>
-        <section className="flex flex-col gap-6">
-          <div>
+        <section className="space-y-6">
+          <div className="md:text-end">
             <b>Información:</b>
-            <ul className="flex flex-col pt-3 gap-3">
-              <li>
-                <ItemsNav
-                  href={'https://www.instagram.com/canterasoftware/'}
-                  className={mainClass}
-                  message={
-                    <>
-                      Canterasoftware{' '}
-                      <FaInstagram className="ml-3" aria-hidden="true" />
-                      <span className="sr-only">.</span>
-                    </>
-                  }
-                  title={'Ir al Instagram de Canterasoftware.'}
-                  outLink={true}
-                />
-              </li>
-              <li>
-                <ItemsNav
-                  href={'https://www.linkedin.com/company/la-cantera-software/'}
-                  className={mainClass}
-                  message={
-                    <>
-                      La Cantera Software{' '}
-                      <FaLinkedinIn className="ml-3" aria-hidden="true" />
-                      <span className="sr-only">.</span>
-                    </>
-                  }
-                  title={'Ir al Linkedin de Canterasoftware.'}
-                  outLink={true}
-                />
-              </li>
-              <li>
-                <ItemsNav
-                  href={'mailto:info@canterasoft.com'}
-                  className={mainClass}
-                  aria-label={'Enviar correo a La Cantera.'}
-                  title={'Enviar correo a La Cantera'}
-                  message={
-                    <>
-                      info@canterasoft.com{' '}
-                      <IoMail className="ml-3" aria-hidden="true" />
-                      <span className="sr-only">.</span>
-                    </>
-                  }
-                />
-              </li>
+            <ul className="flex flex-col md:items-end pt-3 gap-3">
+              {infoFooter.map(({ message, Icon, ...extra }, index) => (
+                <li key={index}>
+                  <ItemsNav
+                    className={mainClass}
+                    message={
+                      <>
+                        {message} <Icon className="ml-3" aria-hidden="true" />
+                        <span className="sr-only">.</span>
+                      </>
+                    }
+                    {...extra}
+                  />
+                </li>
+              ))}
             </ul>
           </div>
-          <div className="flex flex-col">
+          <div className="flex flex-col md:items-end">
             <span className="mt-3 font-bold">
               &copy;
               <Pronunciation

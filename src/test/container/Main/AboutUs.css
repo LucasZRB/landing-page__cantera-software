@@ -1,0 +1,16 @@
+@media (min-width: 768px) {
+  .desktop-aboutAs__content {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .desktop-aboutAs__paragraphs {
+      grid-column: span 1;
+      grid-row: span 3;
+      grid-template-rows: repeat(3, auto);
+  }
+  
+  .desktop-aboutAs__image {
+    grid-column: span 1;
+    grid-row: span 3;
+  }
+}

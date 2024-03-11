@@ -1,12 +1,11 @@
 import React, { useRef, useState } from 'react';
-import ReCaptcha from '@matt-block/react-recaptcha-v2';
 import { Input } from "./Input";
+import { Captcha } from './Captcha';
 import { Layout } from '../../../common/Layout';
 import { Button2 } from '../../../common/button/Button2';
-import { Notification } from '../../../../components/common/notifications/Notification';
-import { TextAnimation } from '../../../../components/common/TextAnimation';
-import { useGetWidthSize } from '../../../hooks/useGetWidthSize';
 import { useMeasurement } from '../../../hooks/useMeasurement';
+import { TextAnimation } from '../../../../components/common/TextAnimation';
+import { Notification } from '../../../../components/common/notifications/Notification';
 
 const Contact = () => {
   const bgRef = useRef(null);
@@ -22,8 +21,6 @@ const Contact = () => {
   });
 
   const [notifications, setNotifications] = useState([]);
-
-  const isCompact = useGetWidthSize(460);
 
   const removeNotification = id => setNotifications(prev => prev.filter(n => n.id !== id));
 
@@ -159,7 +156,7 @@ const Contact = () => {
   return (
     <Layout
       bgRef={bgRef}
-      className="text-ct-base flex flex-col items-center justify-center max-w-7xl w-full bg-no-repeat bg-center"
+      className="text-ct-base flex flex-col items-center justify-center"
       style={{
         backgroundImage:
           "url('./images/mobile_backgrounds/programBackground.png')",
@@ -167,8 +164,9 @@ const Contact = () => {
       }}>
       <section
         id="contact"
-        className="text-ct-base flex flex-col items-center justify-center min-w-ct-min w-full">
-        <h2 className="text-blue_title text-ct-sub-title font-bold">
+        tabIndex={-1}
+        className="size-section text-ct-base flex flex-col items-center justify-center">
+        <h2 className="text-blue_title text-ct-sub-title">
           Contacto<span className="sr-only">:</span>
         </h2>
         <p className="mt-5 mb-14">
@@ -234,37 +232,7 @@ const Contact = () => {
             />
 
             <div className="pt-4 pb-14 m-auto">
-              <ReCaptcha
-                siteKey={import.meta.env.VITE_TEST_KEY_RECAPTCHA}
-                theme="light"
-                size={isCompact ? 'compact' : 'normal'}
-                onSuccess={() => {
-                  console.log(`Successful`);
-                  setValidCaptcha(true);
-                }}
-                onError={() => {
-                  setNotifications(pv => [
-                    {
-                      type: 'error',
-                      id: Math.random(),
-                      text: 'Algo salió mal, revisa tu conexión.'
-                    },
-                    ...pv
-                  ]);
-                  setValidCaptcha(false);
-                }}
-                onExpire={() => {
-                  setNotifications(pv => [
-                    {
-                      type: 'warning',
-                      id: Math.random(),
-                      text: 'La verificación ha caducado, vuelve a verificarte.'
-                    },
-                    ...pv
-                  ]);
-                  setValidCaptcha(false);
-                }}
-              />
+              <Captcha {...{setValidCaptcha, setNotifications}} />
               <Notification
                 notifications={notifications}
                 removeNotification={removeNotification}
@@ -293,9 +261,6 @@ const Contact = () => {
                 )
               }
             />
-            <span className="sr-only" id="sendTooltip">
-              Enviar formulario
-            </span>
           </fieldset>
         </form>
       </section>

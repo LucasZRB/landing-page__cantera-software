@@ -11,7 +11,7 @@ const Team = () => {
 
   return (
     <Layout className="bg-section2 w-full">
-      <section id="team" className="text-ct-base min-w-ct-min w-full">
+      <section id="team" tabIndex={-1} className="text-ct-base min-w-ct-min w-full">
         <h2 className="text-blue_title text-ct-sub-title">
           Nuestro equipo
           <span className="sr-only">:</span>

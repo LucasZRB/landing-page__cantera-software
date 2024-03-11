@@ -7,13 +7,13 @@ const ExpandableText = ({
   articleClass = '',
   buttonProps: { px, py, description, title, ariaId }
 }) => {
-  const [expanded, setExapnded] = useState(false);
+  const [expanded, setExpanded] = useState(false);
   const baseClass = `overflow-hidden transition-all ${
-    expanded ? 'max-h-[700px] duration-[2s]' : 'max-h-0 duration-500'
+    expanded ? 'max-h-full duration-[2s]' : 'max-h-0 duration-500'
   } ${articleClass}`;
 
   const toggleRead = () => {
-    setExapnded(!expanded);
+    setExpanded(!expanded);
   };
 
   const message = expanded ? 'Leer Menos' : 'Leer Más...';
@@ -21,7 +21,7 @@ const ExpandableText = ({
   return (
     <>
       {shortText}
-      <article className={`${baseClass} ${articleClass}`}>{longText}</article>
+      <article className={`${baseClass}`}>{longText}</article>
       <Button2
         px={px}
         py={py}

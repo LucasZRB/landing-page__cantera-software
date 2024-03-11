@@ -17,4 +17,4 @@ const ScrollTop = () => {
   );
 };
 
-export { ScrollTop };
+export default ScrollTop;

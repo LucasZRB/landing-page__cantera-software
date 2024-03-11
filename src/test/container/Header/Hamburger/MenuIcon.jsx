@@ -14,8 +14,9 @@ const Path = props => (
 const MenuIcon = ({ toggle }) => {
   return (
     <button
-      onClick={toggle}
-      className="flex justify-center items-center focus:outline outline-green_focus outline-4 border-none select-none absolute top-2 right-2 w-[3.75rem] h-[3.75rem] rounded-full bg-transparent">
+      className="z-10 flex justify-center items-center focus:outline outline-green_focus outline-4 border-none select-none absolute top-2 right-2 w-[3.75rem] h-[3.75rem] rounded-full bg-transparent"
+      aria-describedby="menuHam"
+      onClick={toggle}>
       <svg width="23" height="23" viewBox="0 0 23 23">
         <Path
           variants={{
@@ -38,6 +39,9 @@ const MenuIcon = ({ toggle }) => {
           }}
         />
       </svg>
+      <span className="sr-only" id='menuHam'>
+        Abrir menú desplegable
+      </span>
     </button>
   );
 };

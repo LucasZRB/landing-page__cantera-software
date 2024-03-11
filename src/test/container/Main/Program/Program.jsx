@@ -3,10 +3,13 @@ import { Video } from './Video';
 import { Layout } from '../../../common/Layout';
 import { ExpandableText } from '../../../common/alternativeText/ExpandableText';
 import { useMeasurement } from '../../../hooks/useMeasurement';
+import { useGetWidthSize } from '../../../hooks/useGetWidthSize';
+import './Program.css';
 
 const Program = () => {
   const bgRef = useRef(null);
   const { width, height } = useMeasurement(bgRef);
+  const isMobile = useGetWidthSize(768);
 
   const buttonOptions = {
     shortText: (
@@ -37,26 +40,36 @@ const Program = () => {
       bgRef={bgRef}
       className="bg-pure_white w-full bg-no-repeat bg-center"
       style={{
-        backgroundImage:
-          "url('./images/mobile_backgrounds/programBackground.png')",
+        backgroundImage: `url('./images/${
+          isMobile ? 'mobile' : 'desktop'
+        }_backgrounds/programBackground.png')`,
         backgroundSize: `${width}px ${height}px`
       }}>
       <section
         id="program"
-        className="flex flex-col items-center gap-6 text-ct-base text-start min-w-ct-min w-full">
+        tabIndex={-1}
+        className="size-section program text-ct-base">
         <h2 className="text-main_green text-ct-sub-title">
           Nuestro programa
           <span className="sr-only">:</span>
         </h2>
-        <div className="flex flex-col gap-10">
-          <div className="flex flex-col justify-between items-center">
+        <div className="program-content">
+          {!isMobile && <Video />}
+          <div className="program-information flex flex-col justify-between items-center">
             <h3 className="text-blue_title text-ct-heading">
               Desarrolla tus conocimientos en tecnología
               <span className="sr-only">:</span>
             </h3>
-            <ExpandableText {...buttonOptions} />
+            {isMobile ? (
+              <ExpandableText {...buttonOptions} />
+            ) : (
+              <>
+                {buttonOptions.shortText}
+                {buttonOptions.longText}
+              </>
+            )}
           </div>
-          <Video />
+          {isMobile && <Video />}
         </div>
       </section>
     </Layout>

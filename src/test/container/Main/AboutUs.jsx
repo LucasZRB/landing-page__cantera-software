@@ -3,17 +3,25 @@ import { Layout } from '../../common/Layout';
 import { Abbr } from '../../../components/common/alternativeText/Abbr';
 import { LazyImage } from '../../common/LazyImage';
 import { ExpandableText } from '../../common/alternativeText/ExpandableText';
+import { useGetWidthSize } from '../../hooks/useGetWidthSize';
+import './AboutUs.css';
 /* spell-checker: disable */
 
 const AboutUs = () => {
+  const isMobile = useGetWidthSize(480);
+
   const optionsImage = {
-    src: './images/decoratives/aboutUsImgMobile.png',
-    figureClass: 'max-w-[38.75rem] w-full max-h-96 h-full'
+    src: `./images/decoratives/aboutUsImg${
+      isMobile ? 'Mobile' : 'Desktop'
+    }.png`,
+    figureClass: `max-w-[38.75rem] w-full ${
+      isMobile ? 'aspect-[283/173]' : 'h-full desktop-aboutAs__image'
+    }`
   };
 
   const buttonOptions = {
     shortText: (
-      <p>
+      <p className={`${isMobile ? 'text-start' : 'text-center'}`}>
         Somos un equipo de apasionados profesionales en{' '}
         <Abbr
           abbr={'IT'}
@@ -28,8 +36,8 @@ const AboutUs = () => {
       </p>
     ),
     longText: (
-      <div className="flex pt-6 gap-8 justify-center items-center">
-        <div className="flex flex-col gap-6 justify-center items-center">
+      <div className="desktop-aboutAs__content grid gap-8 justify-items-center items-center">
+        <div className="desktop-aboutAs__paragraphs grid gap-6 justify-items-center items-center text-start">
           <p>
             Colaboramos estrechamente con fundaciones de <b>Argentina</b> y{' '}
             <b>España</b>, que se encuentran comprometidas para identificar y
@@ -50,6 +58,7 @@ const AboutUs = () => {
             la sociedad en su conjunto.
           </p>
         </div>
+        {isMobile ? null : <LazyImage {...optionsImage} />}
       </div>
     ),
     buttonProps: {
@@ -63,15 +72,23 @@ const AboutUs = () => {
     <Layout className="bg-section1 w-full">
       <section
         id="about-us"
-        className="flex min-w-ct-min w-full flex-col justify-center items-center text-ct-base text-start">
-        <h2 className="text-blue_title pb-6 text-ct-sub-title">
+        tabIndex={-1}
+        className="size-section flex flex-col gap-6 justify-center items-center text-ct-base">
+        <h2 className="text-blue_title text-ct-sub-title">
           Sobre nosotros
           <span className="sr-only">:</span>
         </h2>
-        <ExpandableText
-          {...buttonOptions}
-        />
-        <LazyImage {...optionsImage} />
+        {isMobile ? (
+          <>
+            <ExpandableText {...buttonOptions} />
+            <LazyImage {...optionsImage} />
+          </>
+        ) : (
+          <>
+            {buttonOptions.shortText}
+            {buttonOptions.longText}
+          </>
+        )}
       </section>
     </Layout>
   );

@@ -38,10 +38,19 @@ const CardFlip = () => {
     };
   }, [isFlipped]);
 
-  const handleFlip = () => {
+  const handleFlip = event => {
     if (!isAnimating) {
       setIsFlipped(!isFlipped);
       setIsAnimating(true);
+    }
+    toggleButtonFlip(event.target.id);
+  };
+
+  const toggleButtonFlip = buttonId => {
+    if (buttonId === 'arrow-principal') {
+      reverseRef.current.firstChild.focus();
+    } else if (buttonId === 'arrow-reverse') {
+      principalRef.current.firstChild.focus();
     }
   };
 
@@ -54,32 +63,51 @@ const CardFlip = () => {
         animate={{ rotateY: isFlipped ? 180 : 360 }}
         transition={{ duration: 0.6, AnimationDirection: 'normal' }}
         onAnimationComplete={() => setIsAnimating(false)}>
-        <div ref={principalRef} className="flip-card-front p-3 pt-4 absolute flex flex-col gap-4 justify-center items-center">
-            <button
-              className="absolute top-2 right-2"
-              disabled={isFlipped}
-              onClick={handleFlip}>
-              <RiArrowGoBackLine />
-            </button>
-            {principal}
+        <div
+          ref={principalRef}
+          className="flip-card-front p-3 pt-4 absolute flex flex-col gap-4 justify-center items-center">
+          <button
+            className="absolute top-2 right-2"
+            disabled={isFlipped}
+            aria-label="Voltear carta"
+            title="Voltear carta"
+            onClick={event => handleFlip(event)}>
+            <RiArrowGoBackLine
+              id="arrow-principal"
+              className="text-ct-sub-title"
+            />
+          </button>
+          {principal}
 
-            <Button menssage={'Contáctanos'} px={'px-11'} py={'py-3'} />
+          <Button disabled={isFlipped} message={'Contáctanos'} px={'px-11'} py={'py-3'} />
         </div>
 
-        <div ref={reverseRef} className="flip-card-back p-3 pt-4 absolute flex flex-col gap-4 justify-center items-center">
-            <button
-              className="absolute top-2 right-2"
-              disabled={!isFlipped}
-              onClick={handleFlip}>
-              <RiArrowGoBackLine />
-            </button>
-            {reverse}
+        <div
+          ref={reverseRef}
+          className="flip-card-back p-3 pt-4 absolute flex flex-col gap-4 justify-center items-center">
+          <button
+            className="absolute top-2 right-2"
+            disabled={!isFlipped}
+            aria-label="Voltear carta"
+            title="Voltear carta"
+            onClick={event => handleFlip(event)}>
+            <RiArrowGoBackLine
+              id="arrow-reverse"
+              className="text-ct-sub-title"
+            />
+          </button>
+          {reverse}
 
-            <Button menssage={'Contáctanos'} px={'px-11'} py={'py-3'} />
+          <Button
+            disabled={!isFlipped}
+            message={'Contáctanos'}
+            px={'px-11'}
+            py={'py-3'}
+          />
         </div>
       </motion.div>
     </>
   );
 };
 
-export { CardFlip };
+export default CardFlip;

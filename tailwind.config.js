@@ -31,6 +31,7 @@ export default {
       },
       spacing: {
         'ct-margins': '8.438rem',
+        'ct-footer': '5.625rem',
         'ct-min': '17.5rem',
         'ct-max': '80rem'
       }
