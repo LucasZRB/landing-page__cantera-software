@@ -4,8 +4,7 @@ import { ItemCheck } from '../../../common/Item/ItemCheck';
 /* spell-checker: disable */
 
 const Cards = () => {
-  return {
-    principal: (
+  return [
       <>
         <span className="text-blue_title font-bold">
           Fundaciones y {''}
@@ -28,9 +27,7 @@ const Cards = () => {
           podrían alcanzar.
         </p>
         <p>¿Querés sumar las capacitaciones de La Cantera a tu red?</p>
-      </>
-    ),
-    reverse: (
+      </>,
       <>
         <span className="text-blue_title font-bold">
           Empresas
@@ -64,8 +61,7 @@ const Cards = () => {
           futuro para todos.
         </p>
       </>
-    )
-  };
+  ];
 };
 
 export { Cards };

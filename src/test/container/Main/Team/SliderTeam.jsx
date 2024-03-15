@@ -7,6 +7,7 @@ import { Bubble } from '../../../../assets/svgs/Bubble';
 import { SkBubble } from '../../../common/skeletons/SkBubble';
 import { colors, participants } from '../../../../services/ServiceInfo';
 import { PersonIconError } from '../../../../assets/svgs/PersonIconError';
+import { useAutoSlide } from '../../../hooks/useAutoSlide';
 
 const variants = {
   initial: direction => ({
@@ -56,6 +57,16 @@ const SliderTeam = () => {
     setIndex(index + 1);
   };
 
+  const onKeyDown = e => {
+    if (e.key === 'ArrowLeft') {
+      prevStep();
+    } else if (e.key === 'ArrowRight') {
+      nextStep();
+    }
+  };
+
+  const { changedDelay, isPaused, setIsPaused } = useAutoSlide(index, nextStep);
+
   const baseClass = 'relative outline-none w-[12.625rem] h-[17.375rem]';
   const focusBaseClass =
     "focus:after:content-[''] focus:after:block focus:after:h-full focus:after:border-b-2 focus:after:mt-1 focus:after:w-1/2 focus:after:mx-auto";
@@ -83,45 +94,59 @@ const SliderTeam = () => {
   };
 
   return (
-    <div className={'flex'}>
-      <button
-        className="mr-4 my-auto size-fit hover:text-main_green text-ct-main-title"
-        aria-label="Participante anterior"
-        title='Participante anterior'
-        onClick={prevStep}>
-        <RiArrowDropLeftLine aria-hidden="true" />
-      </button>
-      <a
-        className={className}
-        href={href}
-        title={title}
-        target="_blank"
-        rel="noopener noreferrer">
-        <AnimatePresence initial={false} custom={direction}>
-          <motion.div {...animations} className='absolute'>
-            <LazyImage {...optionsImage} />
-            <FaLinkedinIn
-              className="absolute top-[8px] right-[8px] text-ct-base"
-              aria-hidden="true"
-            />
-            <div className="mt-7">
-              <span className="sr-only">{description}</span>
-              <p aria-hidden>
-                <b>{fullName}</b>
-              </p>
-              <span aria-hidden>{position}</span>
-            </div>
-          </motion.div>
-        </AnimatePresence>
-      </a>
-      <button
-        className="mr-4 my-auto size-fit hover:text-main_green text-ct-main-title"
-        aria-label="Participante siguiente"
-        title='Participante siguiente'
-        onClick={nextStep}>
-        <RiArrowDropRightLine aria-hidden="true" />
-      </button>
-    </div>
+    <>
+      <div className="w-full flex justify-between mb-4">
+        <button onClick={() => changedDelay(3)}>Rapido</button>
+        <button onClick={() => changedDelay(5)}>Normal</button>
+        <button onClick={() => changedDelay(10)}>Lento</button>
+        <button onClick={() => setIsPaused(state => !state)}>
+          {isPaused ? 'Reanudar' : 'Pausar'}
+        </button>
+      </div>
+      <div className={'flex'} onKeyDown={onKeyDown}>
+        <button
+          className="mr-4 my-auto size-fit hover:text-main_green text-ct-main-title"
+          aria-label="Participante anterior"
+          title="Participante anterior"
+          onClick={prevStep}>
+          <RiArrowDropLeftLine aria-hidden="true" />
+        </button>
+        <a
+          className={className}
+          href={href}
+          title={title}
+          target="_blank"
+          rel="noopener noreferrer"
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+          onFocus={() => setIsPaused(true)}
+          onBlur={() => setIsPaused(false)}>
+          <AnimatePresence initial={false} custom={direction}>
+            <motion.div {...animations} className="absolute">
+              <LazyImage {...optionsImage} />
+              <FaLinkedinIn
+                className="absolute top-[8px] right-[8px] text-ct-base"
+                aria-hidden="true"
+              />
+              <div className="mt-7">
+                <span className="sr-only">{description}</span>
+                <p aria-hidden>
+                  <b>{fullName}</b>
+                </p>
+                <span aria-hidden>{position}</span>
+              </div>
+            </motion.div>
+          </AnimatePresence>
+        </a>
+        <button
+          className="mr-4 my-auto size-fit hover:text-main_green text-ct-main-title"
+          aria-label="Participante siguiente"
+          title="Participante siguiente"
+          onClick={nextStep}>
+          <RiArrowDropRightLine aria-hidden="true" />
+        </button>
+      </div>
+    </>
   );
 };
 

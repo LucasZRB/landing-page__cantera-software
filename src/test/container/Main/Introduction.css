@@ -1,10 +1,20 @@
-@media (min-width: 768px) {
+@media (max-width: 549px) {
+  .desktop-introduction__image {
+    margin-top: 4rem /* 64px */;
+  }
+
+  .desktop-introduction__content > h1 {
+    color: #000;
+  }
+}
+
+@media (min-width: 550px) {
   .desktop-introduction__container {
     text-align: start;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     justify-items: center;
-    gap: 2rem;/* 32px */
+    gap: 2rem; /* 32px */
   }
 
   .desktop-introduction__content {
@@ -13,6 +23,10 @@
     grid-row: span 3;
     justify-items: center;
     align-items: center;
+  }
+
+  .desktop-introduction__content > h1 {
+    color: rgb(0 66 94);
   }
 
   .desktop-introduction__image {

@@ -26,7 +26,7 @@ const Introduction = () => {
         tabIndex={-1}
         className="size-section desktop-introduction__container">
         <div className="desktop-introduction__content">
-          <h1 className="text-blue_title text-ct-main-title">
+          <h1 className="text-ct-main-title">
             Transformando sueños en código <span className="sr-only">:</span>
           </h1>
           <p className="text-ct-base mt-4 md:mt-8 mb-6 md:mb-11">
@@ -40,12 +40,10 @@ const Introduction = () => {
             <Button message="Quiero colaborar" px="px-14 md:px-20" py="py-3" />
           </div>
         </div>
-        {isMobile ? null : (
-          <LazyImage
-            src={'./images/decoratives/introductionImg.png'}
-            figureClass={'desktop-introduction__image'}
-          />
-        )}
+        <LazyImage
+          src={'./images/decoratives/introductionImg.png'}
+          figureClass={'desktop-introduction__image'}
+        />
       </section>
     </Layout>
   );

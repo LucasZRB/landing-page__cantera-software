@@ -3,6 +3,7 @@ import { AnimatePresence } from 'framer-motion';
 import { RiArrowDropLeftLine, RiArrowDropRightLine } from 'react-icons/ri';
 import { LazyImage } from '../../../common/LazyImage';
 import { companies } from '../../../../services/ServiceInfo';
+import { useAutoSlide } from '../../../hooks/useAutoSlide';
 
 const variants = {
   initial: direction => ({
@@ -59,6 +60,16 @@ const SliderCollaborators = () => {
     setIndex(index + 1);
   };
 
+  const onKeyDown = e => {
+    if (e.key === 'ArrowLeft') {
+      prevStep();
+    } else if (e.key === 'ArrowRight') {
+      nextStep();
+    }
+  };
+
+  const { changedDelay, isPaused, setIsPaused } = useAutoSlide(index, nextStep);
+
   const optionsImage = {
     src: imgSrc,
     alt: imgAlt,
@@ -77,31 +88,45 @@ const SliderCollaborators = () => {
   }
 
   return (
-    <div className={'flex relative'}>
-      <button
-        className="mr-4 my-auto size-fit hover:text-main_green text-ct-main-title"
-        aria-label="Compañia anterior"
-        title="Compañia anterior"
-        onClick={prevStep}>
-        <RiArrowDropLeftLine aria-hidden="true" />
-      </button>
-      <a
-        className={classNameImg}
-        href={href}
-        target="_blank"
-        rel="noopener noreferrer">
-        <AnimatePresence initial={false} custom={direction}>
-          <LazyImage {...optionsImage} {...animations} />
-        </AnimatePresence>
-      </a>
-      <button
-        className="ml-4 my-auto size-fit hover:text-main_green text-ct-main-title"
-        aria-label="Compañia siguiente"
-        title="Compañia siguiente"
-        onClick={nextStep}>
-        <RiArrowDropRightLine aria-hidden="true" />
-      </button>
-    </div>
+    <>
+      <div className="w-full flex justify-between mb-4">
+        <button onClick={() => changedDelay(3)}>Rapido</button>
+        <button onClick={() => changedDelay(5)}>Normal</button>
+        <button onClick={() => changedDelay(10)}>Lento</button>
+        <button onClick={() => setIsPaused(state => !state)}>
+          {isPaused ? 'Reanudar' : 'Pausar'}
+        </button>
+      </div>
+      <div className={'flex relative'} onKeyDown={onKeyDown}>
+        <button
+          className="mr-4 my-auto size-fit hover:text-main_green text-ct-main-title"
+          aria-label="Compañia anterior"
+          title="Compañia anterior"
+          onClick={prevStep}>
+          <RiArrowDropLeftLine aria-hidden="true" />
+        </button>
+        <a
+          className={classNameImg}
+          href={href}
+          target="_blank"
+          rel="noopener noreferrer"
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+          onFocus={() => setIsPaused(true)}
+          onBlur={() => setIsPaused(false)}>
+          <AnimatePresence initial={false} custom={direction}>
+            <LazyImage {...optionsImage} {...animations} />
+          </AnimatePresence>
+        </a>
+        <button
+          className="ml-4 my-auto size-fit hover:text-main_green text-ct-main-title"
+          aria-label="Compañia siguiente"
+          title="Compañia siguiente"
+          onClick={nextStep}>
+          <RiArrowDropRightLine aria-hidden="true" />
+        </button>
+      </div>
+    </>
   );
 };
 
