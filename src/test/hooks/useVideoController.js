@@ -1,6 +1,11 @@
 import { useEffect } from 'react';
 
-const useVideoController = (videoRef, rootMargin = '0px') => {
+const useVideoController = (
+  videoRef,
+  rootMargin = '0px',
+  isTrue = () => videoRef.current.play(),
+  isFalse = () => videoRef.current.pause()
+) => {
   useEffect(() => {
     const video = videoRef.current;
     const options = {
@@ -13,10 +18,10 @@ const useVideoController = (videoRef, rootMargin = '0px') => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           if (entry.intersectionRatio === 1) {
-            video.play();
+            isTrue();
           }
         } else {
-          video.pause();
+          isFalse();
         }
       });
     };
