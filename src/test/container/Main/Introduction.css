@@ -1,6 +1,6 @@
 @media (max-width: 549px) {
-  .desktop-introduction__image {
-    margin-top: 4rem /* 64px */;
+  .desktop-introduction__content {
+    margin-bottom: 4rem /* 64px */;
   }
 
   .desktop-introduction__content > h1 {

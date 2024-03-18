@@ -30,7 +30,7 @@ const LazyImage = props => {
         }
       });
     }, {
-      rootMargin: '50px'
+      rootMargin: '300px'
     });
 
     observer.observe(imageRef.current);
