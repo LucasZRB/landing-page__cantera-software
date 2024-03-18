@@ -5,7 +5,7 @@ import { useGetWidthSize } from '../../../../test/hooks/useGetWidthSize';
 import { Pronunciation } from '../../../../components/common/alternativeText/Pronunciation';
 
 const Company = lazy(() => import('./Company'));
-const SliderCollaborators = lazy(() => import('./SliderCollaborators'));
+const SliderCollaborators = lazy(() => import('./SliderDataProvider'));
 
 const Collaborators = () => {
   const isMobile = useGetWidthSize(768);

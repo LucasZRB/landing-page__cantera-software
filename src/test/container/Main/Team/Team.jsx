@@ -4,7 +4,7 @@ import { Layout } from '../../../common/Layout';
 import { useGetWidthSize } from '../../../hooks/useGetWidthSize';
 
 const Participants = lazy(() => import('./Participants'));
-const SliderTeam = lazy(() => import('./SliderTeam'));
+const SliderTeam = lazy(() => import('./SliderDataProvider'));
 
 const Team = () => {
   const isMobile = useGetWidthSize(768);
