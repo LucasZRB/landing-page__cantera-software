@@ -10,6 +10,17 @@ const ScrollTop = lazy(() => import('./ScrollTop'));
 
 function App() {
   const isMobile = useGetWidthSize(768);
+  const baseClass =
+    'flex justify-center items-center !right-2 !bottom-12 border-solid border-2';
+  const colorClass =
+    '!bg-blue_check border-pure_white hover:!bg-blue_title focus:!bg-blue_title';
+  const className = `${baseClass} ${colorClass}`;
+
+  const scrollOptions = {
+    smooth: true,
+    color: '#fff',
+    className
+  };
 
   return (
     <>
@@ -17,11 +28,7 @@ function App() {
       <Header />
       <Main />
       <Footer />
-      <ScrollToTop
-        smooth
-        color="#fff"
-        className="flex justify-center items-center bg-blue_check border-solid border-2 right-2 bottom-12 border-pure_white hover:bg-blue_title focus:bg-blue_title"
-      />
+      <ScrollToTop {...scrollOptions} />
     </>
   );
 }

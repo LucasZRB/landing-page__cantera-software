@@ -41,7 +41,10 @@ const Captcha = ({ setValidCaptcha, setNotifications }) => {
           }}
         />
       ) : (
-        <div>Error con el ReCaptcha de Google</div>
+        <>
+          <div>Error con el ReCaptcha de Google</div>
+          {console.error('Captcha Error:\n\t\tMissing required parameters: sitekey')}
+        </>
       )}
     </>
   );
