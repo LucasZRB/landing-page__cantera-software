@@ -1,8 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { motion, useCycle } from 'framer-motion';
-import { useDimensions } from '../../../hooks/useDimensions';
 import { MenuIcon } from './MenuIcon';
 import { Navigation } from './Navigation';
+import { useDimensions } from '../../../hooks/useDimensions';
 
 const sidebar = {
   open: (height = 1000) => ({
@@ -30,7 +30,8 @@ const HamburgerMenu = () => {
   const containerRef = useRef(null);
   const { height } = useDimensions(containerRef);
 
-  const toggleBody = state => document.body.classList.toggle('overflow-hidden', state);
+  const toggleBody = state =>
+    document.body.classList.toggle('overflow-hidden', state);
 
   useEffect(() => {
     if (!isOpen) {
@@ -49,12 +50,29 @@ const HamburgerMenu = () => {
     setIsOpen();
   };
 
+  const baseClass =
+    'absolute top-3 left-3 h-[3.75rem] object-cover aspect-[92/37] transition-all';
+  const variableClass = isOpen
+    ? 'opacity-1 duration-500'
+    : 'opacity-0 duration-1000' + !isVisible && ' hidden';
+  const className = `${baseClass} ${variableClass}`;
+
+  const optionsImage = {
+    className,
+    src: './images/mobile_backgrounds/hamburgerLogo.png',
+    alt: ''
+  };
+
   return (
-    <nav className={`fixed z-10 ${isVisible ? 'h-full w-screen' : ''} top-0 right-0`}>
+    <nav
+      className={`fixed z-10 ${
+        isVisible ? 'h-full w-screen' : ''
+      } top-0 right-0`}>
       <div
         className={`${
-          isVisible ?
-          'h-full bg-black/50 backdrop-blur-sm transition-all duration-500' : ''
+          isVisible
+            ? 'h-full bg-black/50 backdrop-blur-sm transition-all duration-500'
+            : ''
         }`}
         onClick={toggleOpen}></div>
       <motion.section
@@ -72,13 +90,7 @@ const HamburgerMenu = () => {
           }`}
           variants={sidebar}
         />
-        <img
-          className={`absolute top-3 left-3 h-[3.75rem] object-cover aspect-[92/37] transition-all ${
-            isOpen ? 'opacity-1 duration-500' : 'opacity-0 duration-1000'
-          } ${!isVisible && 'hidden'}`}
-          src="../../../../public/images/mobile_backgrounds/hamburgerLogo.png"
-          alt=""
-        />
+        <img {...optionsImage} />
         <Navigation isVisible={isVisible} toggle={toggleOpen} />
       </motion.section>
     </nav>
