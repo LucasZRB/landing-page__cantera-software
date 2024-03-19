@@ -1,8 +1,8 @@
 import React from 'react';
 import { LazyImage } from '../../../common/LazyImage';
 import { Button } from '../../../common/button/Button';
-import { ItemCheck } from '../../../common/Item/ItemCheck';
-import { Abbr } from '../../../../components/common/alternativeText/Abbr';
+import { ItemCheck } from '../../../common/items/ItemCheck';
+import { Abbr } from '../../../common/alternativeText/Abbr';
 import './ContentBlock.css';
 
 const ContentBlock = () => {

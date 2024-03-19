@@ -1,5 +1,5 @@
 import React from 'react';
-import LazyLoadedBackgroundImage from '../hooks/LazyLoadedBackgroundImage';
+import LazyLoadedBackgroundImage from '../hooks/useLazyLoadedBackgroundImage';
 
 const Layout = ({ children, className = '', style = {}, bgRef }) => {
   let setClassName = 'flex justify-center px-10 ';

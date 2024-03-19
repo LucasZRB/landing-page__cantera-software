@@ -4,7 +4,7 @@ import { useGetWidthSize } from '../../../hooks/useGetWidthSize';
 
 const Captcha = ({ setValidCaptcha, setNotifications }) => {
   const isCompact = useGetWidthSize(460);
-  const KEY_CAPTCHA = import.meta.env.VITE_TEST_KEY_RECAPTCHA;
+  const KEY_CAPTCHA = import.meta.env.VITE_KEY_RECAPTCHA;
 
   return (
     <>

@@ -21,7 +21,7 @@ const Input = ({
   const tooltipRef = useRef(null);
 
   const baseClass = 'w-full p-3 mt-3 border-b-solid border-b-2 border-green_focus bg-transparent transition-colors ease-linear duration-300';
-  const focusClass = "focus:--tw-hidde-shadow focus:outline-none focus:border-b-main_green focus:invalid:border-b-[#FF6B79]";
+  const focusClass = "focus:hidden-shadow focus:outline-none focus:border-b-main_green focus:invalid:border-b-[#FF6B79]";
   const disableClass = "disabled:cursor-not-allowed disabled:opacity-50";
   let className = `${baseClass} ${focusClass} ${disableClass}`;
 

@@ -2,7 +2,6 @@ import React, { Suspense, lazy, useRef } from 'react';
 import { Layout } from '../../../common/Layout';
 import { useMeasurement } from '../../../hooks/useMeasurement';
 import { useGetWidthSize } from '../../../hooks/useGetWidthSize';
-/* spell-checker: disable */
 
 const CardFlip = lazy(() => import('./CardFlip'));
 const ContentBlock = lazy(() => import('./ContentBlock'));

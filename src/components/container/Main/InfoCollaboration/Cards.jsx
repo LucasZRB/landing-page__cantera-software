@@ -1,7 +1,6 @@
 import React from 'react';
-import { Abbr } from '../../../../components/common/alternativeText/Abbr';
-import { ItemCheck } from '../../../common/Item/ItemCheck';
-/* spell-checker: disable */
+import { Abbr } from '../../../common/alternativeText/Abbr';
+import { ItemCheck } from '../../../common/items/ItemCheck';
 
 const Cards = () => {
   return [

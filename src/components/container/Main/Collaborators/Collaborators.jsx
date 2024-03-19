@@ -1,35 +1,52 @@
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
+import { companies } from '../../../../services/ServiceInfo';
+import { Layout } from '../../../common/Layout';
+import { useGetWidthSize } from '../../../../components/hooks/useGetWidthSize';
 import { Pronunciation } from '../../../common/alternativeText/Pronunciation';
-import { Company } from './Company';
-import { Laout } from '../../../common/Laout';
+
+const Company = lazy(() => import('./Company'));
+const SliderCollaborators = lazy(() => import('./SliderDataProvider'));
 
 const Collaborators = () => {
-  const companies = [
-    { href: 'https://www.fonbec.org.ar/', title: '', imgSrc: './images/companies/logo_fonbec.png', imgAlt: 'Fonbec' },
-    { href: 'https://fundacioneddy.org/', title: '', imgSrc: './images/companies/logo_eddy.png', imgAlt: 'Fundación Eddy' },
-    { href: 'https://larueca.info/', title: '', imgSrc: './images/companies/logo_rueca.png', imgAlt: 'La Rueca Asociación' },
-    { href: 'https://www.nogadev.com/', title: '', imgSrc: './images/companies/logo_nogadev.png', imgAlt: 'Nogadev' }
-  ];
+  const isMobile = useGetWidthSize(768);
 
   return (
-    <Laout className="py-[8.438rem] bg-section3 bg-no-repeat bg-cover bg-center" style={{ backgroundImage: "url('./images/desktop_backgrounds/collaboratorsBackground.png')" }}>
-      <section className="text-ct-base max-w-7xl w-full" id="collaborators">
-        <h2 className="text-blue_title text-ct-sub-title font-bold">
+    <Layout className="bg-section3 w-full">
+      <section
+        id="collaborators"
+        tabIndex={-1}
+        className="text-ct-base min-w-ct-min w-full">
+        <h2 className="text-blue_title text-ct-sub-title">
           Colaboran con nosotros
           <span className="sr-only">:</span>
         </h2>
-        <p className="mt-5 mb-20">
+        <p className="mt-5 mb-14">
           Contamos con la colaboración de empresas y{' '}
           <Pronunciation word={'ONG’s'} pronunciation={'ONGes'} /> que nos
           ayudan a potenciarnos y llegar más lejos.
         </p>
-        <div className="flex flex-wrap items-center justify-center gap-7">
-          {companies.map((company, index) => (
-            <Company key={index} {...company} title={`Ir a la página de ${company.imgAlt}`} />
-          ))}
+        <div className="flex flex-col sm:flex-row justify-center items-center flex-wrap gap-7">
+          <Suspense fallback={<div>Cargando...</div>}>
+            {isMobile ? (
+              <SliderCollaborators />
+            ) : (
+              <>
+                {companies.map((company, index) => {
+                  company =
+                    company.title === ''
+                      ? {
+                          ...company,
+                          title: `Ir a la página de ${company.imgAlt}`
+                        }
+                      : company;
+                  return <Company key={index} {...company} />;
+                })}
+              </>
+            )}
+          </Suspense>
         </div>
       </section>
-    </Laout>
+    </Layout>
   );
 };
 

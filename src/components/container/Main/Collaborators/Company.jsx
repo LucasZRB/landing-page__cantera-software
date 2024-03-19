@@ -1,9 +1,17 @@
 import React, { useState } from 'react';
+import { LazyImage } from '../../../common/LazyImage';
 
 const Company = ({ href, title, imgSrc, imgAlt }) => {
   const [isFocused, setIsFocused] = useState(false);
   const focusClass =
     "after:content-[''] after:block after:border-b-2 after:border-blue_title after:mt-1 after:w-1/2 after:mx-auto";
+
+  const optionsImage = {
+    src: imgSrc,
+    alt: imgAlt,
+    title: title,
+    imageClass: 'size-full object-contain'
+  };
 
   return (
     <div className={isFocused ? focusClass : ''}>
@@ -15,19 +23,11 @@ const Company = ({ href, title, imgSrc, imgAlt }) => {
         title={title}
         target="_blank"
         rel="noopener noreferrer"
-        aria-describedby="description-image">
-        <img
-          className="w-full h-full object-contain"
-          src={imgSrc}
-          alt={imgAlt}
-          loading="lazy"
-        />
-        <figcaption id="description-image" className="sr-only">
-          {title}
-        </figcaption>
+        aria-describedby={`description-image-${imgAlt.split(' ').join('-')}`}>
+        <LazyImage {...optionsImage} />
       </a>
     </div>
   );
 };
 
-export { Company };
+export default Company;

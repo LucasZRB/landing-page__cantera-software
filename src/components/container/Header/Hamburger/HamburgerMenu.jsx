@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { motion, useCycle } from 'framer-motion';
-import { useDimensions } from './useDimensions';
+import { useDimensions } from '../../../hooks/useDimensions';
 import { MenuIcon } from './MenuIcon';
 import { Navigation } from './Navigation';
 

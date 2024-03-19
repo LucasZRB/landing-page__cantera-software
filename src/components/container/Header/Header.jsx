@@ -1,24 +1,39 @@
-import React from 'react';
-import { Navbar } from './Navbar';
-import { Laout } from '../../common/Laout';
-import { LogoCantera } from '../../../assets/svgs/LogoCantera';
+import React, { lazy, Suspense } from 'react';
+import { Layout } from '../../common/Layout';
+import { useGetWidthSize } from '../../hooks/useGetWidthSize';
+
+const HamburgerMenu = lazy(() => import('./Hamburger/HamburgerMenu'));
+const SmallLogoCantera = lazy(() =>
+  import('../../../assets/svgs/SmallLogoCantera')
+);
+
+const Navbar = lazy(() => import('./Navbar'));
+const LogoCantera = lazy(() => import('../../../assets/svgs/LogoCantera'));
 
 const Header = () => {
+  const isMobile = useGetWidthSize(768);
+  const Icon = isMobile ? SmallLogoCantera : LogoCantera;
+
   return (
-    <Laout className="py-0 mt-6">
-      <header className="flex max-w-7xl w-full justify-between items-center">
-        <figure className="max-w-[18.75rem] w-full max-h-14 h-full">
-          <LogoCantera
-            alt={'Logo Cantera.'}
-            aria-describedby="description-svg"
-          />
+    <Layout className="pt-5 pb-9 bg-pure_white">
+      <header className="size-section flex min-h-9 justify-between items-center">
+        <figure className="flex items-center h-full">
+          <Suspense fallback={<div>Icon..</div>}>
+            <Icon
+              section={'header'}
+              alt={'Logo Cantera.'}
+              aria-describedby="description-svg"
+            />
+          </Suspense>
           <figcaption id="description-svg" className="sr-only">
             Logo: Cantera Software.
           </figcaption>
         </figure>
-        <Navbar />
+        <Suspense fallback={<div>Cargando...</div>}>
+          {isMobile ? <HamburgerMenu /> : <Navbar />}
+        </Suspense>
       </header>
-    </Laout>
+    </Layout>
   );
 };
 

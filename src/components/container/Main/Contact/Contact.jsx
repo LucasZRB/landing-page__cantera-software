@@ -1,13 +1,17 @@
-import React, { useState } from 'react';
-import ReCaptcha from '@matt-block/react-recaptcha-v2';
-import { Input } from './Input';
-import { Laout } from '../../../common/Laout';
-import { Notification } from '../../../common/notifications/Notification';
+import React, { useRef, useState } from 'react';
+import { Input } from "./Input";
+import { Captcha } from './Captcha';
+import { Layout } from '../../../common/Layout';
+import { Button2 } from '../../../common/button/Button2';
+import { useMeasurement } from '../../../hooks/useMeasurement';
 import { TextAnimation } from '../../../common/TextAnimation';
+import { Notification } from '../../../common/notifications/Notification';
 
 const Contact = () => {
+  const bgRef = useRef(null);
+  const { width, height } = useMeasurement(bgRef);
   const [validCaptcha, setValidCaptcha] = useState(false);
-  const [isLoading, setIsloading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const [formData, setFormData] = useState({
     fullName: '',
@@ -18,7 +22,7 @@ const Contact = () => {
 
   const [notifications, setNotifications] = useState([]);
 
-  const removeNotif = id => setNotifications(prev => prev.filter(n => n.id !== id));
+  const removeNotification = id => setNotifications(prev => prev.filter(n => n.id !== id));
 
   const addNotification = (type, text) => {
     setNotifications(prevNotification => [
@@ -34,7 +38,7 @@ const Contact = () => {
   const handleChange = event => {
     const { name, value } = event.target;
     setFormData({ ...formData, [name]: value });
-  };
+  }
 
   const handleSubmit = async event => {
     event.preventDefault();
@@ -95,7 +99,7 @@ const Contact = () => {
     data.append('asunto', formData.subject);
     data.append('mensaje', formData.message);
 
-    setIsloading(true);
+    setIsLoading(true);
 
     try {
       fetch(
@@ -108,7 +112,7 @@ const Contact = () => {
         }
       )
         .then(response => {
-          console.log('Succes:');
+          console.log('Success:');
           setNotifications(pv => [
             { type: 'success', id: Math.random(), text: 'Enviado con éxito!' },
             ...pv
@@ -145,24 +149,34 @@ const Contact = () => {
         ...pv
       ]);
     } finally {
-      setIsloading(false);
+      setIsLoading(false);
     }
   };
 
   return (
-    <Laout>
+    <Layout
+      bgRef={bgRef}
+      className="text-ct-base flex flex-col items-center justify-center"
+      style={{
+        backgroundImage:
+          "url('./images/mobile_backgrounds/programBackground.png')",
+        backgroundSize: `${width}px ${height}px`
+      }}>
       <section
-        className="text-ct-base flex flex-col items-center justify-center max-w-7xl w-full"
-        id="contact">
-        <h2 className="text-blue_title text-ct-sub-title font-bold">
+        id="contact"
+        tabIndex={-1}
+        className="size-section text-ct-base flex flex-col items-center justify-center">
+        <h2 className="text-blue_title text-ct-sub-title">
           Contacto<span className="sr-only">:</span>
         </h2>
         <p className="mt-5 mb-14">
           Si te interesa saber más de nosotros, y/o quieres colaborar completa
           el siguiente formulario.
         </p>
-        <form onSubmit={handleSubmit} className="w-full max-w-[37rem]">
-          <fieldset className="w-full relative flex flex-col items-start">
+        <form
+          onSubmit={handleSubmit}
+          className="w-full min-w-ct-min max-w-[37rem]">
+          <fieldset className="w-full relative flex flex-col items-start border-2 p-8 pt-0 rounded-xl">
             <Input
               id={'fullName'}
               placeholder={'Nombre y Apellido'}
@@ -218,69 +232,39 @@ const Contact = () => {
             />
 
             <div className="pt-4 pb-14 m-auto">
-              <ReCaptcha
-                siteKey={import.meta.env.VITE_TEST_KEY_RECAPTCHA}
-                theme="light"
-                size="normal"
-                onSuccess={() => {
-                  console.log(`Successful`);
-                  setValidCaptcha(true);
-                }}
-                onError={() => {
-                  setNotifications(pv => [
-                    {
-                      type: 'error',
-                      id: Math.random(),
-                      text: 'Algo salió mal, revisa tu conexión.'
-                    },
-                    ...pv
-                  ]);
-                  setValidCaptcha(false);
-                }}
-                onExpire={() => {
-                  setNotifications(pv => [
-                    {
-                      type: 'warning',
-                      id: Math.random(),
-                      text: 'La verificación ha caducado, vuelve a verificarte.'
-                    },
-                    ...pv
-                  ]);
-                  setValidCaptcha(false);
-                }}
-              />
+              <Captcha {...{setValidCaptcha, setNotifications}} />
               <Notification
                 notifications={notifications}
-                removeNotif={removeNotif}
+                removeNotification={removeNotification}
               />
             </div>
 
-            <button
-              className={`flex font-bold m-auto bg-main_green hover:bg-green_hover disabled:hover:bg-main_green focus:outline-green_focus text-pure_white no-underline border-none py-3 px-20 disabled:px-8 rounded-full disabled:cursor-not-allowed cursor-pointer disabled:opacity-70 transition-colors ease-linear duration-300`}
+            <Button2
+              px={'px-20'}
+              py={'py-3'}
               type="submit"
-              disabled={isLoading}
-              aria-describedby="sendTooltip"
-              title="Enviar formulario.">
-              {isLoading ? (
-                <>
-                  <div
-                    role="status"
-                    className="h-5 w-5 mr-2 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-middle motion-reduce:animate-[spin_1.5s_linear_infinite]">
-                    <span className="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]"></span>
-                  </div>
-                  <TextAnimation text={'Enviando...'} />
-                </>
-              ) : (
-                'Enviar'
-              )}
-            </button>
-            <span className="sr-only" id="sendTooltip">
-              Enviar formulario.
-            </span>
+              isDisable={false}
+              ariaId={'send'}
+              title={'Enviar formulario.'}
+              message={
+                isLoading ? (
+                  <>
+                    <div
+                      role="status"
+                      className="h-5 w-5 mr-2 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-middle motion-reduce:animate-[spin_1.5s_linear_infinite]">
+                      <span className="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]"></span>
+                    </div>
+                    <TextAnimation text={'Enviando...'} />
+                  </>
+                ) : (
+                  'Enviar'
+                )
+              }
+            />
           </fieldset>
         </form>
       </section>
-    </Laout>
+    </Layout>
   );
 };
 

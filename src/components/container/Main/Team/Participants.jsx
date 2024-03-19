@@ -1,6 +1,9 @@
 import React from 'react';
-import { Bubble } from '../../../../assets/svgs/Bubble';
 import { FaLinkedinIn } from 'react-icons/fa';
+import { LazyImage } from '../../../common/LazyImage';
+import { Bubble } from '../../../../assets/svgs/Bubble';
+import { PersonIconError } from '../../../../assets/svgs/PersonIconError';
+import { SkBubble } from '../../../common/skeletons/SkBubble';
 
 const Participants = ({
   href,
@@ -11,29 +14,46 @@ const Participants = ({
   description,
   color
 }) => {
+  const baseClass = 'relative outline-none';
+  const focusBaseClass =
+    "focus:after:content-[''] focus:after:block focus:after:border-b-2 focus:after:mt-1 focus:after:w-1/2 focus:after:mx-auto";
+  const focusColorClass = 'focus:after:border-blue_title';
+  const className = `${baseClass} ${focusBaseClass} ${focusColorClass}`;
+
+  const optionsImage = {
+    src: imgSrc,
+    figureClass: 'size-full overflow-hidden',
+    imageClass: 'absolute top-[12px] right-[5px] size-[192px]',
+    SuccessBackground: () => <Bubble bg={color} alt="" />,
+    LoadingBackground: () => <SkBubble />,
+    ErrorBackground: () => <PersonIconError bg={color} className='opacity-60' alt="" />
+  };
+
   return (
     <div>
       <a
-        className="relative outline-none focus:after:content-[''] focus:after:block focus:after:border-b-2 focus:after:border-blue_title focus:after:mt-1 focus:after:w-1/2 focus:after:mx-auto"
+        className={className}
         href={href}
         title={title}
         target="_blank"
         rel="noopener noreferrer">
-        <Bubble bg={color} alt="" />
-        <FaLinkedinIn className="absolute top-2 right-2 text-ct-base" aria-hidden="true" />
-        <figure className="absolute top-3 right-1">
-          <img className="max-w-48 h-48" src={imgSrc} alt="" loading="lazy" />
-        </figure>
+        <div className="">
+          <LazyImage {...optionsImage} />
+        </div>
+        <FaLinkedinIn
+          className="absolute top-[8px] right-[8px] text-ct-base"
+          aria-hidden="true"
+        />
         <div className="mt-7">
           <span className="sr-only">{description}</span>
-          <p aria-hidden="true">
+          <p aria-hidden>
             <b>{fullName}</b>
           </p>
-          <span aria-hidden="true">{position}</span>
+          <span aria-hidden>{position}</span>
         </div>
       </a>
     </div>
   );
 };
 
-export { Participants };
+export default Participants;
