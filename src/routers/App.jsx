@@ -11,7 +11,7 @@ const ScrollTop = lazy(() => import('./ScrollTop'));
 function App() {
   const isMobile = useGetWidthSize(768);
   const baseClass =
-    'flex justify-center items-center !right-2 !bottom-12 border-solid border-2';
+    'flex justify-center items-center !z-10 !right-2 !bottom-12 border-solid border-2';
   const colorClass =
     '!bg-blue_check border-pure_white hover:!bg-blue_title focus:!bg-blue_title';
   const className = `${baseClass} ${colorClass}`;

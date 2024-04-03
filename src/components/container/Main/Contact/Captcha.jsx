@@ -2,13 +2,12 @@ import React from 'react';
 import ReCaptcha from '@matt-block/react-recaptcha-v2';
 import { useGetWidthSize } from '../../../hooks/useGetWidthSize';
 
-const Captcha = ({ setValidCaptcha, setNotifications }) => {
+const Captcha = ({ KEY_CAPTCHA, setValidCaptcha, isNotAvailable, setNotifications }) => {
   const isCompact = useGetWidthSize(460);
-  const KEY_CAPTCHA = import.meta.env.VITE_KEY_RECAPTCHA;
 
   return (
     <>
-      {KEY_CAPTCHA ? (
+      {KEY_CAPTCHA && !isNotAvailable ? (
         <ReCaptcha
           siteKey={KEY_CAPTCHA}
           theme="light"
@@ -42,8 +41,7 @@ const Captcha = ({ setValidCaptcha, setNotifications }) => {
         />
       ) : (
         <>
-          <div>Error con el ReCaptcha de Google</div>
-          {console.error('Captcha Error:\n\t\tMissing required parameters: sitekey')}
+          {console.error('Captcha Error:\n\t\tMissing required parameters')}
         </>
       )}
     </>

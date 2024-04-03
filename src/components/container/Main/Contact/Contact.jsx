@@ -1,17 +1,28 @@
-import React, { useRef, useState } from 'react';
-import { Input } from "./Input";
+import React, { useEffect, useRef, useState } from 'react';
+import { Input } from './Input';
 import { Captcha } from './Captcha';
 import { Layout } from '../../../common/Layout';
 import { Button2 } from '../../../common/button/Button2';
 import { useMeasurement } from '../../../hooks/useMeasurement';
 import { TextAnimation } from '../../../common/TextAnimation';
 import { Notification } from '../../../common/notifications/Notification';
+import { ErrorModal } from './ErrorModal';
+
+const ENVIRONMENTS = import.meta.env;
+const URL_EMAIL = ENVIRONMENTS.VITE_URL_EMAIL;
+const KEY_EMAIL = ENVIRONMENTS.VITE_KEY_EMAIL;
+const KEY_CAPTCHA = ENVIRONMENTS.VITE_KEY_RECAPTCHA;
 
 const Contact = () => {
   const bgRef = useRef(null);
   const { width, height } = useMeasurement(bgRef);
   const [validCaptcha, setValidCaptcha] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [isNotAvailable, setIsNotAvailable] = useState(false);
+
+  useEffect(() => {
+    if (!URL_EMAIL || !KEY_EMAIL) return setIsNotAvailable(true);
+  }, []);
 
   const [formData, setFormData] = useState({
     fullName: '',
@@ -22,7 +33,8 @@ const Contact = () => {
 
   const [notifications, setNotifications] = useState([]);
 
-  const removeNotification = id => setNotifications(prev => prev.filter(n => n.id !== id));
+  const removeNotification = id =>
+    setNotifications(prev => prev.filter(n => n.id !== id));
 
   const addNotification = (type, text) => {
     setNotifications(prevNotification => [
@@ -33,12 +45,12 @@ const Contact = () => {
       },
       ...prevNotification
     ]);
-  }
+  };
 
   const handleChange = event => {
     const { name, value } = event.target;
     setFormData({ ...formData, [name]: value });
-  }
+  };
 
   const handleSubmit = async event => {
     event.preventDefault();
@@ -51,21 +63,25 @@ const Contact = () => {
     const validationRules = {
       fullName: {
         pattern: fullNamePattern,
-        errorMessage: 'Por favor, ingresa tu nombre y apellido (Solo letras y espacios)'
+        errorMessage:
+          'Por favor, ingresa tu nombre y apellido (Solo letras y espacios)'
       },
       email: {
         pattern: emailPattern,
-        errorMessage: 'Por favor, ingresa una dirección de correo electrónico válida (Solo letras, números, puntos y guiones, seguido de un @ (arroba), subdominio (opcional), dominio, un punto y la parte final (.com, .org, .es. .ar, .co, etc.))'
+        errorMessage:
+          'Por favor, ingresa una dirección de correo electrónico válida (Solo letras, números, puntos y guiones, seguido de un @ (arroba), subdominio (opcional), dominio, un punto y la parte final (.com, .org, .es. .ar, .co, etc.))'
       },
       subject: {
         pattern: hispanicPattern,
-        errorMessage: 'Por favor, ingresa un asunto válido (Letras y caracteres dentro del teclado español)'
+        errorMessage:
+          'Por favor, ingresa un asunto válido (Letras y caracteres dentro del teclado español)'
       },
       message: {
         pattern: hispanicPattern,
-        errorMessage: 'Por favor, ingresa un mensaje válido (Letras y caracteres dentro del teclado español)'
+        errorMessage:
+          'Por favor, ingresa un mensaje válido (Letras y caracteres dentro del teclado español)'
       }
-    }
+    };
 
     const validateField = fieldName => {
       const { pattern, errorMessage } = validationRules[fieldName];
@@ -74,13 +90,24 @@ const Contact = () => {
         return false;
       }
       return true;
-    }
+    };
 
     const validateAllFields = () => {
       const fieldsToValidate = ['fullName', 'email', 'subject', 'message'];
       for (const field of fieldsToValidate) {
-        if (!formData[field] || !validCaptcha) {
-          addNotification('error', 'Por favor, completa todos los campos y el reCaptcha');
+        var message = 'Por favor, completa todos los campos';
+        if (!formData[field]) {
+          if (!KEY_CAPTCHA) {
+            addNotification('error', message);
+          } else {
+            message += ' y el reCaptcha';
+            addNotification('error', message);
+          }
+          return false;
+        }
+        if (KEY_CAPTCHA && !validCaptcha) {
+          message += ' y el reCaptcha';
+          addNotification('error', message);
           return false;
         }
         if (!validateField(field)) {
@@ -88,7 +115,7 @@ const Contact = () => {
         }
         return true;
       }
-    }
+    };
 
     if (!validateAllFields()) return;
 
@@ -101,56 +128,49 @@ const Contact = () => {
 
     setIsLoading(true);
 
-    try {
-      fetch(
-        `https://${import.meta.env.VITE_URL_EMAIL}/${
-          import.meta.env.VITE_KEY_EMAIL
-        }`,
-        {
+    (async () => {
+      try {
+        const response = await fetch(`https://${URL_EMAIL}/${KEY_EMAIL}`, {
           method: 'POST',
           body: data
-        }
-      )
-        .then(response => {
-          console.log('Success:');
-          setNotifications(pv => [
-            { type: 'success', id: Math.random(), text: 'Enviado con éxito!' },
-            ...pv
-          ]);
-          setFormData({
-            fullName: '',
-            email: '',
-            subject: '',
-            message: ''
-          });
-        })
-        .then(data => {
-          setFormData({
-            fullName: '',
-            email: '',
-            subject: '',
-            message: ''
-          });
-        })
-        .catch(error => {
-          console.log('Error de envío:', error);
+        });
+
+        if (!response.ok) {
           setNotifications(pv => [
             {
-              type: 'error', id: Math.random(),
-              text: 'Algo salió mal al realizar el envío. Intentalo más tarde.'
+              type: 'error',
+              id: Math.random(),
+              text: 'Error de red o del servidor.'
             },
             ...pv
           ]);
+        }
+
+        console.log('Success:');
+        setNotifications(pv => [
+          { type: 'success', id: Math.random(), text: 'Enviado con éxito!' },
+          ...pv
+        ]);
+        setFormData({
+          fullName: '',
+          email: '',
+          subject: '',
+          message: ''
         });
-    } catch (error) {
-      console.error('Error al realizar la solicitud:', error);
-      setNotifications(pv => [
-        { type: 'error', id: Math.random(), text: 'Algo salió mal al realizar tu solicitud.' },
-        ...pv
-      ]);
-    } finally {
-      setIsLoading(false);
-    }
+      } catch (error) {
+        console.error('Error de envío:', error);
+        setNotifications(pv => [
+          {
+            type: 'error',
+            id: Math.random(),
+            text: 'Algo salió mal al realizar el envío. Intentalo más tarde.'
+          },
+          ...pv
+        ]);
+      } finally {
+        setIsLoading(false);
+      }
+    })();
   };
 
   return (
@@ -177,6 +197,8 @@ const Contact = () => {
           onSubmit={handleSubmit}
           className="w-full min-w-ct-min max-w-[37rem]">
           <fieldset className="w-full relative flex flex-col items-start border-2 p-8 pt-0 rounded-xl">
+            <ErrorModal showModal={!URL_EMAIL || !KEY_EMAIL} />
+
             <Input
               id={'fullName'}
               placeholder={'Nombre y Apellido'}
@@ -185,7 +207,7 @@ const Contact = () => {
               pattern={"^[A-Za-záéíóúüñÁÉÍÓÚÜÑ']+\\s[A-Za-záéíóúüñÁÉÍÓÚÜÑ']+$"}
               value={formData.fullName}
               onChange={handleChange}
-              readOnly={isLoading}
+              readOnly={isLoading || isNotAvailable}
               autoCapitalize="words"
             />
 
@@ -200,7 +222,7 @@ const Contact = () => {
               pattern={null}
               value={formData.email}
               onChange={handleChange}
-              readOnly={isLoading}
+              readOnly={isLoading || isNotAvailable}
               autoCapitalize="none"
             />
 
@@ -214,7 +236,7 @@ const Contact = () => {
               pattern={"^[A-Za-z0-9áéíóúüñÁÉÍÓÚÜÑ.,;:'¡!¿?\\(\\)\\s]+$"}
               value={formData.subject}
               onChange={handleChange}
-              readOnly={isLoading}
+              readOnly={isLoading || isNotAvailable}
             />
 
             <Input
@@ -228,11 +250,18 @@ const Contact = () => {
               pattern={"[A-Za-z0-9áéíóúüñÁÉÍÓÚÜÑ.,;:'¡!¿?\\(\\)\\s]+$"}
               value={formData.message}
               onChange={handleChange}
-              readOnly={isLoading}
+              readOnly={isLoading || isNotAvailable}
             />
 
             <div className="pt-4 pb-14 m-auto">
-              <Captcha {...{setValidCaptcha, setNotifications}} />
+              <Captcha
+                {...{
+                  KEY_CAPTCHA,
+                  setValidCaptcha,
+                  isNotAvailable,
+                  setNotifications
+                }}
+              />
               <Notification
                 notifications={notifications}
                 removeNotification={removeNotification}
@@ -243,9 +272,10 @@ const Contact = () => {
               px={'px-20'}
               py={'py-3'}
               type="submit"
-              isDisable={false}
+              isDisable={isLoading || isNotAvailable}
               ariaId={'send'}
               title={'Enviar formulario.'}
+              textStyles="flex"
               message={
                 isLoading ? (
                   <>

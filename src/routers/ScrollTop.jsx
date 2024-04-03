@@ -11,7 +11,7 @@ const ScrollTop = () => {
 
   return (
     <motion.div
-      className="fixed top-0 left-0 right-0 h-4 bg-blue_title origin-left z-10 rounded-e-lg hover:motion-safe:animate-pulse"
+      className="fixed top-0 left-0 right-0 h-4 bg-blue_title origin-left z-20 rounded-e-lg hover:motion-safe:animate-pulse"
       style={{ scaleX }}
     />
   );

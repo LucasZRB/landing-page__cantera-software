@@ -65,7 +65,7 @@ const HamburgerMenu = () => {
 
   return (
     <nav
-      className={`fixed z-10 ${
+      className={`fixed z-20 ${
         isVisible ? 'h-full w-screen' : ''
       } top-0 right-0`}>
       <div

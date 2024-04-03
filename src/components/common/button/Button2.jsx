@@ -9,7 +9,8 @@ const Button2 = ({
   description,
   title,
   ariaId,
-  onClick
+  onClick,
+  textStyles = ''
 }) => {
   const baseStyles = `flex m-auto no-underline border-none ${px} ${py} rounded-full cursor-pointer`;
   const colorStyles = 'bg-main_green text-pure_white';
@@ -28,7 +29,7 @@ const Button2 = ({
       aria-describedby={`${ariaId}Tooltip`}
       title={title}
       onClick={onClick}>
-      <b className="text-ct-sm font-bold">{message}</b>
+      <b className={`text-ct-sm font-bold ${textStyles}`}>{message}</b>
       <span className="sr-only" id={`${ariaId}Tooltip`}>
         {description}
       </span>
