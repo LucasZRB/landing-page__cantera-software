@@ -10,8 +10,7 @@ const SliderDataProvider = () => {
     src: imgSrc,
     alt: imgAlt,
     title: title === '' ? `Ir a la página de ${imgAlt}` : title,
-    imageClass: 'size-full object-contain',
-    LoadingBackground: null
+    imageClass: 'size-full object-contain'
   });
 
   return (
