@@ -164,3 +164,7 @@ sketch
 *.njsproj
 *.sln
 *.sw?
+
+
+# Contentlayer
+.contentlayer

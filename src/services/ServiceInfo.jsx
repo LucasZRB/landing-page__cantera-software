@@ -25,19 +25,19 @@ export const participants = [
     position: 'Co-Founder',
     description: 'Esta persona es Fernando, Coh-Founder de la empresa.'
   },
-  {
-    href: 'https://ar.linkedin.com/in/cdpanelo?trk=public_profile_browsemap-profile',
-    title: 'Ir al Linkedin de Carla.',
-    imgSrc: './images/participants/Panelo.png',
-    fullName: 'Carla Panelo',
-    position: (
-      <>
-        <Abbr abbr={'HR'} fullWord={'Recursos humanos'} /> Manager
-      </>
-    ),
-    description:
-      'Esta persona es Carla, Manayer de Recursos Humanos de la empresa.'
-  },
+  // {
+  //   href: 'https://ar.linkedin.com/in/cdpanelo?trk=public_profile_browsemap-profile',
+  //   title: 'Ir al Linkedin de Carla.',
+  //   imgSrc: './images/participants/Panelo.png',
+  //   fullName: 'Carla Panelo',
+  //   position: (
+  //     <>
+  //       <Abbr abbr={'HR'} fullWord={'Recursos humanos'} /> Manager
+  //     </>
+  //   ),
+  //   description:
+  //     'Esta persona es Carla, Manager de Recursos Humanos de la empresa.'
+  // },
   {
     href: 'https://ar.linkedin.com/in/m-paulina-ibarra?trk=org-employees',
     title: 'Ir al Linkedin de Paulina.',
